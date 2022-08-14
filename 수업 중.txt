@@ -1,0 +1,79 @@
+[단어]
+global position (전역 좌표)
+local position (지역 좌표, 상속)
+
+hierarchy 계급
+component 구성요소
+Prefab 조립부품
+material 재료, 재질
+
+
+######################################
+[기본조작]
+######################################
+[Scene 방향조절] 
+우click + a,s,d,f 
+
+[검색] 
+ctrl + k 
+
+[잘못추가된 object 찾는 법] 
+우클릭 + Find References In Scene
+
+
+[console view  :  ctrl + shift + c]
+Debug.Log("" + 변수);
+
+
+
+
+OnCollisionEnter ///isTrigger가 켜져 있지 않을 때 콜라이더끼리 충돌하면 반응하는 함수
+OnTrigger ///한 쪽 이상이 isTrigger가 켜져 있을 때 반응하며 인자로는 Collider를 사용합니다.
+
+
+
+
+
+[GetAxis]
+Input.GetAxis("Horizontal") 	        -1.0f   ~   1.0f
+Input.GetAxisRaw("Horizontall")      -1.0f,  0f,  1.0f
+
+transform.position += new Vector3(0,0,1);       transform component의 position값을 new Vector3(0,0,1)만큼 누적대입하라.
+
+[Vector3(x, y, z) - ]
+Vector3.forward    Vector3(0,0,1)
+Vector3.back        Vector3(0,0,-1)
+Vector3.right        Vector3(1,0,0)
+Vector3.left          Vector3(-1,0,0)
+Vector3.up           Vector3(0,1,0)
+Vector3.down       Vector3(0,-1,0)
+
+
+
+
+
+
+png - 격자무늬 = 투명도 정보 계산 (항상 png로 다운로드)
+ 
+
+크몽
+
+
+아두이노(arduino with unity)
+
+
+uml 다이어그램 : 실행파일에 대한 다이어그램, 설명과정을 표현할 수 있어야 (포토폴리오에 반드시)
+pdd?
+
+
+
+
+
+
+
+
+
+
+
+
+
