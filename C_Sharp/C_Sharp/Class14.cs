@@ -16,13 +16,12 @@ using System.Threading.Tasks;
 ///14강 - Static (class에 속하고 class명으로 바로 호출, data영역에서 값 공유)
 
 
-
-static class StaticClass 
+static class StaticClass
 {
-    ///int a = 0;        //static 멤버변수, static 멤버 함수만 가능하다.
+    ///int a = 0;                      //static class에는 static멤버변수/멤버함수만 가능하다
 
 }
-    
+
 
 public class Player14 
 {
@@ -62,11 +61,6 @@ public class Monster14
 namespace C_sharp_2
 {
 
- 
-
-
-
-
     internal class Class14
     {
 
@@ -83,8 +77,7 @@ namespace C_sharp_2
             Player14.PVP(newPlayer1, newPlayer2);                   ///static PVP() 함수는 class 그 자체를 받음
 
 
-            Console.WriteLine("안녕하세요");                        ///F12 - console도 static으로 선언되어 있다.
-
+            Console.WriteLine("안녕하세요");                        ///정의로이동(F12) - Console도 static Class로 선언했기에 class이름을 그대로 불러온다.
         }
     }
 }

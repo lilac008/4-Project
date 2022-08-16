@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hee\\Desktop\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj": {}
+    "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hee\\Desktop\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj": {
+    "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hee\\Desktop\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj",
+        "projectUniqueName": "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj",
         "projectName": "C_Sharp",
-        "projectPath": "C:\\Users\\hee\\Desktop\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj",
+        "projectPath": "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj",
         "packagesPath": "C:\\Users\\hee\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hee\\Desktop\\Temporary\\C_Sharp\\C_Sharp\\obj\\",
+        "outputPath": "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hee\\AppData\\Roaming\\NuGet\\NuGet.Config",
