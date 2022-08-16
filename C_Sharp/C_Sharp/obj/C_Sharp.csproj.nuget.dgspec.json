@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1302\\source\\repos\\C_sharp_2\\C_sharp_2\\C_sharp_2.csproj": {}
+    "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1302\\source\\repos\\C_sharp_2\\C_sharp_2\\C_sharp_2.csproj": {
+    "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1302\\source\\repos\\C_sharp_2\\C_sharp_2\\C_sharp_2.csproj",
-        "projectName": "C_sharp_2",
-        "projectPath": "C:\\Users\\1302\\source\\repos\\C_sharp_2\\C_sharp_2\\C_sharp_2.csproj",
-        "packagesPath": "C:\\Users\\1302\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1302\\source\\repos\\C_sharp_2\\C_sharp_2\\obj\\",
+        "projectUniqueName": "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj",
+        "projectName": "C_Sharp",
+        "projectPath": "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\C_Sharp.csproj",
+        "packagesPath": "C:\\Users\\hee\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hee\\Desktop\\학원\\Tem\\Temporary\\C_Sharp\\C_Sharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\1302\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hee\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

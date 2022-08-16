@@ -1,0 +1,299 @@
+test
+- IDE(Integrated Development Environment) :  프로그램 제작을 도와주는 프로그램, 한줄한줄 읽는 걸 도와준다.
+- visual studio 디버깅 : F10 
+
+
+- 유니티 폴더도 영어로 만들어야 한다. 한글처리가 미흡할 수 있음. 
+- C#은 고지식한 언어로, 프로그램 시작(Main method) 조차도 class 안에 묶어놔야 한다. 
+****
+object oriented(객체지향) : 
+class 안의 object를 만들고, 그 object를 기반으로 모든 걸 해결하기 때문에 객체지향이라고 한다. 
+단, object를 만들기 전에 class 부터 먼저 설계해야 한다.
+
+객체지향
+내가 구상한 개념1 : 상하좌우로 움직이는 Player를 만들고 싶다 
+class Player(){ 상하좌우로 움직이는 코드 } 라는 script(class 설계도)를 만들어서 player object에 연결시켜 프로그램 실행. 
+
+내가 구상한 개념2 : 아이템이 담기는 인벤토리를 만들고 싶다.
+-> class Inven() { 아이템이 담기는 코드, 배열 }
+
+****
+
+
+using System; //누군가 만들어 정의해놓은 코드를 쓰겠다.
+
+
+namespace Aprogramer :     //namespace : 구상한 개념이 겹칠 때 개념을 분류하는 용도
+{
+       class.Aprogramer.Potion
+       {
+     	  //HP 포션
+       }
+}
+
+
+namespace Bprogramer :     
+{
+       class.Bprogramer.Potion
+       {
+       	//MP 포션
+       }
+}
+
+
+
+literal
+리터럴 값
+리터럴 초기화
+
+
+ctrl + exe 파일
+exe파일 실행시 램에 복사됨
+
+ctrl + home : 맨 위로
+ctrl + end : 맨 아래로
+
+
+
+####################################################################
+Value형
+
+<누가 (변수선언)> 무언가 만든다는 것은 메모리를 할당한다는 것
+
+램(4giga)   	          하드디스크
+Player script                       exe
+int hp;          (주소값 할당) 
+int hp;          (똑같은 번지에 할당할 수 없으므로 빗금으로 표시된다) 
+int mp = 100; (초기값 할당)
+(const(상수, 변하지 않는) : 주소값 n번째에 int4바이트만큼 공간을 만들고 mp라 이름짓고 100이라는 값을 채워넣어라)
+
+
+
+<무엇을 할 것인가 (멤버함수)>
+몹을 공격하고, npc와 대화하고, 스킬을 사용한다.
+
+class Player
+{		          
+       Player의 공격력;	        (멤버변수)
+       Player가 공격력으로 때린다    (멤버함수)
+}
+
+
+
+class Player		(설계도)
+{
+       int lv = 1;		((class)멤버변수 )
+       int hp = 100;		
+       int mp = 100;
+       int attackPoints = 10;
+
+
+       void Fight()               ((class)멤버함수)
+       {
+	int damage = 0;	(지역변수 : 일회용, 선언되는 순간 메모리 할당되고 함수가 끝나는 순간 사라진다)
+	cw("");	
+       };
+
+
+       /// A
+       void SetStatus(int _Hp, int _Mp)                   ((class)멤버함수 : 외부에서 매개변수를 받아들여 내부 변수를 변화시키는 용도 (변화시켜 플레이어에게 전달))
+       {
+	Hp = _Hp;		                  (지역변수 : 일회용, 선언되는 순간 메모리 할당되고 함수가 끝나는 순간 사라진다)
+	Mp = _Mp;
+       }
+
+       /// B
+       void LevelUP(int _num)          	                   ((class)멤버함수)
+       {
+	attackPoints = attackPoints + (_num * 3);    (지역변수 : 일회용)
+       }
+
+       /// C 
+       void Damage(int _dam,  int _subDam)            ((class)멤버함수)       
+       {
+	Hp = Hp - _dam;		                  (지역변수 : 일회용)
+	Hp = Hp - _subDam;
+       }
+
+       /// D
+       public int LevelUP(int _num) 		     ((class)멤버함수 : return해주려는 해당 자료형과 동일한 자료형 이어야 한다.)      	  
+       {
+	return lv;	                                         (지역변수 : 일회용 / return값은 object가 자신의 상태를 외부에 알려주는 용도로, 외부에 알려주는 순간 (얼마나 많은 코드가 return아래에 있든) 함수는 끝난다.)
+       }
+
+       public int DamageToHPReturn(int _dam)        ((class)멤버함수)    
+       {
+	Hp = Hp - _dam;		                 (지역변수 : 일회용)
+	return Hp;
+       }	
+}
+
+
+
+class Program
+{
+   static void Main() 		          (main함수)
+   {
+        int Attack2 = count; 	          	          (지역변수 : 일회용, 선언되는 순간 메모리 할당되고 함수가 끝나는 순간 사라진다)
+        Player player  = new Player();              (object화(객체화) : player설계도대로 player를 생성해내라)    //obj를 만들었다는 것은 메모리를 지불했다는 것
+
+
+        /// A
+        player.SetStatus(10, 10);	  	(매개변수에 얼마가 들어갔는지 디버깅으로 확인가능)   
+        /// A-2
+        player.Hp = player.Hp + 1;	  	(값을 확인하기 힘듬, 바뀌는 곳마다 값을 재설정해야 함)
+        player.Mp = player.Mp + 1;
+	
+        /// B
+        player.LevelUP(1);
+
+        /// C
+        player.Damage(10, 1);
+
+        /// D
+        player.DamageToHPReturn(50);
+   }
+}
+
+
+
+
+code (상수형, 수정이 불가능함, 함수 그 자체가 수정이 불가)
+data 
+hip			
+stack (메모리 차지 후 사라짐) 
+
+
+
+##############################################
+C# 12화
+Reference 형 : class가 object화 되면 Reference라는 자료형이 된다. Reference형은 bool, int등 value형과 사용법이 다르게 동작.
+ //Reference : new class명();으로 만든 것을 해당 클래스 명에서 받으면 reference형 
+
+.  : 내가 가르키고 있는 위치에 있는 변수/함수를 사용하겠다
+newM. -> newM의 위치에 있는
+
+
+
+
+class Monster
+{
+     public int HP = 100;
+     public int AP = 10;
+
+     public void Attack(Player _player)          
+     {
+	//Hp -= _player.AP;
+	_player.HP -= AP;
+     }
+}
+
+
+class Player
+{
+     public int HP = 100;
+     public int AP = 10;
+
+     public void Attack(Monster _monster)      
+     {
+	//Hp -= _monster.AP;
+	_monster.HP -= AP;
+     }
+
+     public void Test(int _player)                 (멤버함수, 일회용)
+     {
+	//Hp -= _player.AP;
+	_player.HP -= AP;
+     }
+}
+
+
+
+class Program
+{
+     static void Main()
+     {
+	//Reference형 : class가 object화된 것,  hip에 생성된 어떠한 메모리 위치를 가르키는 값
+	Monster newM = new Monster();	
+	Player newP = new Player();
+
+	newM.Attack(newP);	//12화 : 
+	newP.Attack(newM);
+
+
+	//Value형 : bool, int등 value형
+	int Value = 100;
+	newP.Test(Value);
+     }
+} 
+
+code    (상수형, 수정이 불가능함, 함수 그 자체가 수정이 불가) 
+data     (static 변수)
+hip        (실제 만들어진) new Monster();의 본체 /  new Player();의 본체
+stack (휘발성, 지역변수)              newM                      newP
+
+
+
+############################################
+
+public static int PlayerCount = 0;	//static 멤버변수 : 객체화하지 않고 클래스 이름만으로 사용가능
+
+public int AP = 10;			//(class) 멤버변수 : 객체화해서 사용
+public int Hp = 100;
+
+public void Setting(int _AP, int _HP)
+{
+     PlayerCount = 100;
+
+     AP = _AP;
+     HP = _HP;
+
+}
+
+//플레이어를 3번 new 하면 플레이어가 3개 생김
+Player newPlayer1 = new Player();
+Player newPlayer2 = new Player();
+Player newPlayer3 = new Player();
+
+//객체화
+newPlayer1.AP = 10;
+newPlayer2.AP = 10;
+newPlayer3.AP = 10;
+
+newPlayer1.Setting(10, 100); // 멤버변수는 각각 존재
+newPlayer2.Setting(30, 300);
+newPlayer3.Setting(50, 500);
+
+//static 멤버변수(data 영역) - 클래스 이름만으로 사용가능, 
+Player.PlayerCount = 1;	  
+Player.PlayerCount = 2;
+Player.PlayerCount = 3;
+
+//어떤 클래스가 공유하고 싶은 값 몬스터 클래스라면 현재 존재하는 모든 몬스터의 수
+newPlayer1.Hp = 1000000;
+
+
+
+
+13화 static
+
+
+
+2021.3.7f버전
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+asset store - table
