@@ -1,56 +1,50 @@
-﻿using System;                       ///누군가 만들어 정의해놓은 코드를 쓰겠다.
+﻿using System;                       
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Sharp                   ///namespace : 구상한 개념이 겹칠 때 개념을 분류하는 용도
+
+// code  (실행 중 유지)  :  상수, 코드들, class 선언 그 자체, method 선언 그 자체  (수정불가, 한번 실행시 멤버변수 추가 x)  
+// data  (실행 중 유지)  :  정적
+// hip   (계속 변화)     :  동적
+// stack (계속 변화)     :  지역변수와 실행될 함수 영역
+
+
+
+class Player10
 {
 
-    /// - IDE(Integrated Development Environment) :  프로그램 제작을 도와주는 프로그램, 한줄한줄 읽는 걸 도와준다.
-    /// - 한글처리가 미흡하므로 유니티 폴더도 영어로 만들어야. 
-    /// 
-    /// 
-    /// - literal값 : ?
-    /// 
+    int HP = 100;
+    int AP = 10;
+
+    public void Damage(int _Dmg)
+    {
+        
+    }
 
 
 
-    /// Object Oriented(객체지향) : class 안의 obj를 만들고, 그 obj를 기반으로 모든 걸 해결하기 때문에 객체지향이라고 함. 단 obj를 만들기 전에 class부터 먼저 설계해야 한다.
-    ///
-    /// ex) 구상한 개념1 : 상하좌우로 움직이는 Player를 만들고 싶다 
-    ///                    class Player()
-    ///                    { 상하좌우로 움직이는 코드 }  
-    ///                    Player라는 class(설계도)를 만들어서 Player obj에 연결시켜 프로그램 실행.
-    ///
-    /// 
-    ///
-
-
-    /// Object Oriented(객체지향) : class 안의 obj를 만들고, 그 obj를 기반으로 모든 걸 해결하기 때문에 객체지향이라고 함. 단 obj를 만들기 전에 class부터 먼저 설계해야 한다.
-    ///
-    /// ex) 구상한 개념1 : 상하좌우로 움직이는 Player를 만들고 싶다 
-    ///                    class Player()
-    ///                    { 상하좌우로 움직이는 코드 }  
-    ///                    Player라는 class(설계도)를 만들어서 Player obj에 연결시켜 프로그램 실행.
+}
 
 
 
-    int hp; /// 주소값 할당, 똑같은 번지에 할당할 수 없으므로 중복시 빗금으로 처리된다.
-    int hp;
-    int mp = 100; ///주소값 n번째에 4byte(int형)만큼 공간을 만들고 mp라 이름짓고 100이라는 값을 채워넣어라.
-
-
-
-
-
-
-
-
+namespace C_Sharp                   
+{
 
     internal class Class10
     {
 
+
+
+        static void Main(string[] args)             ///실행함수 : stack 영역
+        {
+
+            Player10 newPlayer = new Player10();
+
+            newPlayer.Damage(10);                  ///인스턴스 매개함수 : stack 영역
+
+        }
 
 
 
