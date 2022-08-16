@@ -5,43 +5,52 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-
-///code (상수형, 수정이 불가능함, 함수 그 자체가 수정이 불가)
-///data 
-///hip			
-///stack (메모리 차지 후 사라짐) 
-
+/// code  (실행 중 유지, 수정x) :  text 영역 (상수, code들, method, class 그 자체)  / class
+/// data  (실행 중 유지)        :  global 변수, static 변수 
+/// hip   (계속 변화)           :  동적(dynamic), reference형                       /  new ClassName()의 본체
+/// stack (계속 변화, 휘발성)   :  local 변수, parameter(매개변수), value형         /  new ClassName()의 instance 객체 
 
 
-class Player                               
+
+
+///12강 - Reference형
+class Player12                               
 {
-    public int AP = 10;                    
     public int HP = 100;
+    public int AP = 10;
 
-    public void Attack(Monster _Monster)   
+    public void BeAttacked(Monster12 _Monster)
     {
-        //HP -= _Monster.AP;
-        
+        HP -= _Monster.AP;
+    }
+
+    public void Attack(Monster12 _Monster)   
+    {
+        _Monster.HP -= AP;
     }
 }
 
-class Monster
-{
-    public int AP = 10;
-    public int HP = 100;
 
-    public void Attack(Player _Player) 
+class Monster12
+{
+    public int HP = 100;
+    public int AP = 10;
+
+    public void BeAttacked(Player12 _Player) 
     {
-        _Player.HP -= AP;
+        HP -= _Player.AP;
     }
 
+    public void Attack(Player12 _Player)
+    {
+        _Player.HP -= AP;           
+    }
 
-    /// 
     public void Test(int _Test) 
     {
         _Test = 1000;
     }
-}
+}  
 
 
 
@@ -50,31 +59,23 @@ namespace C_Sharp
 {
     internal class Class12
     {
-        /// value 형     : 값이 담김    
-        /// reference 형 : 위치 주소값이 담김, new Class명();하면 객체들으 본체는 hip에 위치하고, 객체들은 
-
-        ///code  :  상수형, 수정이 불가능함, 함수 그 자체가 수정이 불가
-        ///data 
-        ///hip   :  new Class명();해서 만들어진 객체들의 본체는 hip에 위치	
-        ///stack :  함수 안에 들어있는 지역변수 (메모리 영역을 차지 후 사라짐) 
-
-
-
 
         static void Main(string[] args)
         {
-                                                 ///new Monster();   :  본체는 hip에 위치
-            Monster newMonster = new Monster();  ///newMonster       :  객체는 stack에 위치
 
-            Player newPlayer = new Player();      
+            Monster12 newMonster = new Monster12();          ///reference형(본체(hip 영역)에서 크기, 값을 빌려오기 전까지 미정) : stack 
+
+            Player12 newPlayer = new Player12();      
 
 
-            newMonster.Attack(newPlayer);        ///class가 객체화되면 Reference형이 된다.
+            newMonster.BeAttacked(newPlayer);                ///Reference형(본체(hip 영역)의 주소를 가리켜 값을 변환) : stack 
 
-            ///
-            int value = 0;
-            newMonster.Test(value);
+            newMonster.Attack(newPlayer);                 
 
+
+
+            int a = 0;                                       ///Value형에 0 저장
+            newMonster.Test(a);                              ///변수 a 값은 저장된 값 그대로
 
 
 

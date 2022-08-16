@@ -51,7 +51,7 @@ class FightUnit
 }
 
 
-class Player   
+class Player13   
 {
 
 

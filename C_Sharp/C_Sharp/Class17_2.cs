@@ -32,9 +32,9 @@ namespace C_sharp_2
 
         static void Main(string[] args)         // stack 영역
         {
-            Player newPlayer1 = new Player();
-            Player newPlayer2 = new Player();
-            Player newPlayer3 = new Player();
+            Player13 newPlayer1 = new Player13();
+            Player13 newPlayer2 = new Player13();
+            Player13 newPlayer3 = new Player13();
 
 
 

@@ -61,7 +61,7 @@ namespace C_sharp_2
         static void Main(string[] args)
         {
             int Number = 100;                   ///값형, stack에서 사라지면 전부 사라진다.
-            Player newPlayer = new Player();    ///참조형(위치만 저장하고 있다가 필요할때 위치에 가서 데이터값를 얻어오는 자료형), stack영역에서 인스턴스는 사라져도 hip영역의 본체는 남아있다.
+            Player13 newPlayer = new Player13();    ///참조형(위치만 저장하고 있다가 필요할때 위치에 가서 데이터값를 얻어오는 자료형), stack영역에서 인스턴스는 사라져도 hip영역의 본체는 남아있다.
             
             
             Struct1 newStruct1 = new Struct1(); 
