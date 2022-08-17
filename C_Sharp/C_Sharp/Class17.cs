@@ -6,72 +6,58 @@ using System.Threading.Tasks;
 
 
 
-//ctrl + shift + U : 대문자
+///ctrl + shift + U : 대문자
 
 
+///17 - Structure(구조체) : class와 유사하지만 constructor(생성자)에서만 초기화 가능, 
+struct Struct17
+{
+    public int a;
+    public int b;
+    ///public int a = 0;              //structure는 literal에서 초기화 불가능 (= 0이 기본값) 
 
-
+    public void Func()               ///structure는 constructor(생성자)에서만 초기화 가능
+    {
+        a = 100;
+        b = 100;
+    }
+}
 
 
 namespace C_sharp_2
 {
 
-    struct Struct1
-    {
-        ///int a = 0;            //구조체는 literal 초기화가 안 된다. =0이 기본 값이라고 생각하면 편하다.
-        public int a;
-        public int b;
-
-        public void Func()
-        {
-            a = 100;
-            b = 100;
-
-        }
-
-    }
-
-
-
-
-
-
-
     internal class Class17
     {
-        void Player() { }
 
-
-
-
-        static void Test(Struct1 _var1) //1-1 값형
+        static void Test(Struct17 _sturuct17)          ///stack
         {
-            _var1.a = 100;
-            
+            _sturuct17.a = 9999;
         }
 
-        static void TestNumber(int _var2) //1-2 값형:직접데이터 보관, _v ar2 자체는 바뀌지 않는다.
+        static void Test2(int _int)                   ///stack
         {
-            _var2 = 100;
-
+            _int = 100;
         }
 
 
 
         static void Main(string[] args)
         {
-            int Number = 100;                   ///값형, stack에서 사라지면 전부 사라진다.
-            Player13 newPlayer = new Player13();    ///참조형(위치만 저장하고 있다가 필요할때 위치에 가서 데이터값를 얻어오는 자료형), stack영역에서 인스턴스는 사라져도 hip영역의 본체는 남아있다.
+            int variable = 100;                        ///1 value형                : stack 
             
-            
-            Struct1 newStruct1 = new Struct1(); 
+            Player13 newPlayer = new Player13();       ///2 reference형            : 본체는 hip, instance 객체는 stack 
+
+            Struct17 newStruct1 = new Struct17();      ///3 structure(구조체)
+
 
             newStruct1.a = 10;
             newStruct1.b = 10;
+            Test(newStruct1);                          ///value형 : 저장된 값 그대로 바뀌지 않음
 
-            Test(newStruct1);          //1-1 값형 : 구조체는 함수에 들어가도 값이 변하지 않음
 
-            TestNumber(){ }
+            int variable2 = 100;                       
+            Test2(variable2);                          ///value형 : 저장된 값 그대로 바뀌지 않음
 
 
         }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ class Player15
 
 
 
-    public static void PVP(Player15 _One, Player15 _Two)
+    public static void PVP(Player15 _One, Player15 _Two)     ///static함수에서는 객체를 만들지 않고 쓸수 있으므로 this가 필요없다.
     {
         ///HP = 1000;                                        //static class는 static멤버변수만 가능
         SP = 50;
@@ -40,18 +40,16 @@ class Player15
     }
 
 
-    public void Heal(int _Heal)
-    {
-        HP += _Heal;                                             ///1-3 눈에 보이지 않아도 this가 생략된 것.
-        this.HP += _Heal;                                        ///1-2 Heal2 함수의 매개변수 방식 대신 사용하는 방식, 단 static함수에서는 객체를 만들지 않고 쓸수 있으므로 this가 필요없다.
-
-    }
-
-    public void Heal(Player15 _One, int _Heal)                   ///1-1 잘 사용하지 않는다.
+    public void Heal(Player15 _One, int _Heal)                   ///잘 사용하지 않는다.
     {
         _One.HP += _Heal;
     }
 
+    public void Heal(int _Heal)
+    {
+        this.HP += _Heal;
+        HP += _Heal;                                             ///눈에 보이지 않아도 this가 생략된 것.
+    }
 }
 
 
@@ -79,7 +77,8 @@ namespace C_sharp_2
             Player15.Damage(newPlayer1,100);
 
 
-            newPlayer2.Heal(newPlayer2, 100);                   ///조금 불편하므로 잘 사용하진 않는다.
+            newPlayer2.Heal(newPlayer2, 100);                   ///불편하므로 잘 사용하진 않는다.
+            newPlayer2.Heal(100);                               ///생략된 방식
         }
 
 
