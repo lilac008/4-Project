@@ -1,0 +1,119 @@
+유니티 교과서 : 그림으로 이해하고 만들면서 익히는 유니티 교과서
+유니티 C# 스크립팅 마스터하기
+https://blog.naver.com/ndskr/222660166494
+http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=9788960778214
+
+-----------------------------------------------------------------------------------------
+
+Renderer
+유니티 쉐이더
+String -  / 이미지도 string으로 된 집합 / 구글 : 유니티 stirng 함수 검색 (데이터를 쪼개서 내가 원하는 부분값(string)을 얻을 수 있게끔)
+
+
+
+a == b  ?  true   : false
+onCreate?.Invoke() : on 이벤트 함수가 있으면 .이후 실행하라.
+
+
+camera
+
+
+70p 2d는 라이팅을 먹지 않고, 쉐이더는 먹는다.
+
+
+배열 사용하기 (97페이지)
+
+int [] a;
+list<>
+dictionary<key, data>  - 격자 정보를 담기 위해 많이 씀
+dictionary<string, list<string>>
+
+
+key a
+list<string>
+apple, banana, 
+
+dictionary < list<x>, list<y>>
+list[0], - key를 list[0]으로 가져왔을 때
+
+--------------
+instance = 접근자
+
+Player m = new Player();
+Player p = new Player(); 
+
+옅은복사 <-> new 새로 만듬, 메모리 공간을 하나 더 산다, instantce라고 함
+
+--------------
+private  너와 난 가족이 아니므로 공개안함
+protect 부모가 자식에게만 보여줌 
+
+
+3.3.2 전 Tips  z좌표값이 -10보다 작으면 스프라이트가 카메라에 비치지 않는다. 또한 ui의 경우 카메라를 따로 만드는 것이 좋다.
+
+Rotate(x,y,z) 카메라를 회전시키는 연출할때도 쓴다
+
+
+Quaternion
+
+scene - 전역좌표
+local - 지역좌표 (부모의 기준에서 좌표 고정값, 부모가 전역좌표를 이동해도 자식obj를 바꾸지 않으면 지역좌표는 그대로다.)
+
+
+사람눈으로 인지할 수있는 프레임은 15프레임
+컴퓨터는 초당 60프레임 이상(VR의 경우 초당 45프레임)으로 돌아간다. 따라서 사람 눈에는 거의 동시에 진행되는 것처럼 보인다.
+ex) while 무한반복문일 경우 
+
+
+awake() : 
+start() : scene에서 시작되자마자 눈에 보이는 장면 , 프레임이 빠를수록 awake나 start에 넣는거나 큰 차이는 없다. 정밀도(물리엔진의 영향을 받을 경우)를 요구하는 경우에만 구분함.
+update() : rendering하는 함수, 웹도 일종의 rendering
+
+
+
+그래픽의 3대요소(★★★★★) - 카메라, lighting, shader
+
+업계)
+모든 걸 해본 건 의미가 없고, 체계화된 회사에서 각자 분리된 파트를 제대로 처리하느냐가 중요함.
+
+
+
+physics - 
+
+
+update()
+{ += (0,1)}  translate -> 질량상관없이 똑같은 속도로 일정하게 움직임, 따라서 Rigidbody의 addforce씀
+
+
+-Key : 키 입력시 방향(Vector)이 중요
+
+
+총알 맞을때
+collision : 연산이 더 많음, 프레임이 떨어지면 물리적 이펙트에 영향을 주는 것이 약간 보임
+Trigger : 보통 트리거씀
+
+
+마야 등 작업해서 3d CG software 설치시 유니티로 가져올 수 있음
+fbx, obj 차이 - 정점정보가 더 풍부함, 정점에 lighting을 씀
+shader - 정점정보를 바꿈
+
+
+AssetStore - particle - 다운로드 후 유니티에서 하나씩 분석하기 
+
+
+ScreenPointToRay() : 폰 터치 인식과 같은 방식
+
+
+Urp - Postprocessing(카메라 필터링)적용
+https://www.youtube.com/watch?v=oXNy9mszKxw
+
+
+낮은 수준의 코딩, 그래픽으로 고수익을 낸 게임들
+- 길건너친구들 
+- monument valley2
+- 동물의숲 (몽환적인 색채감)
+- 아동산업 : 핑크퐁
+
+
+
+
