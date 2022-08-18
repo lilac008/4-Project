@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 
 ///13강 - Static (class에 속하고 class명으로 바로 호출, data영역에서 값 공유)
-class Player13                                        ///class : 설계도
+class Player13                                        ///class : 설계도     (생성되지 않음, 주실행함수에서 instance로 생성시 생성됨)
 {
 
     public static int playerCount = 0;                /// static멤버 변수 : data 

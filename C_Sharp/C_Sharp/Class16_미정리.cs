@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// 코드 머리 굴리지 말고 디버깅 실행해서 눈으로 확인할것
 
 
 
+///정리 안했음
 namespace C_sharp_2
 {
-    internal class Class16
+    internal class Class16_미정리
     {
-        static void Main(string[] args)   ///함수 안에서만 조건문을 사용할 수 있다.
+        static void Main(string[] args)         ///주실행함수 안에서만 조건문을 사용할 수 있다.
         {
             ///for ( 초기화문; 조건문; 증감문  ){}
 

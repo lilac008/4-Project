@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 
-///ctrl + shift + U : 대문자
+
 
 
 ///17 - Structure(구조체) : class와 유사하지만 constructor(생성자)에서만 초기화 가능, 
@@ -14,9 +14,9 @@ struct Struct17
 {
     public int a;
     public int b;
-    ///public int a = 0;              //structure는 literal에서 초기화 불가능 (= 0이 기본값) 
+    ///public int a = 0;                                  //1 structure는 literal에서 초기화 불가능 (= 0이 기본값) 
 
-    public void Func()               ///structure는 constructor(생성자)에서만 초기화 가능
+    public void Struct17_()                             ///1 structure는 constructor(생성자)에서만 초기화 가능
     {
         a = 100;
         b = 100;
@@ -24,40 +24,43 @@ struct Struct17
 }
 
 
+class Player17 
+{
+    
+}
+
+
 namespace C_sharp_2
 {
-
     internal class Class17
     {
 
         static void Test(Struct17 _sturuct17)          ///stack
         {
-            _sturuct17.a = 9999;
+            _sturuct17.a = 300;
         }
 
-        static void Test2(int _int)                   ///stack
+        static void Test(int _int)                    ///stack 
         {
-            _int = 100;
+            _int = 400;
         }
-
 
 
         static void Main(string[] args)
         {
-            int variable = 100;                        ///1 value형                : stack 
-            
-            Player13 newPlayer = new Player13();       ///2 reference형            : 본체는 hip, instance 객체는 stack 
+            int variable = 100;                           ///2-1 일반 변수 : value형(저장된 값 그대로)  : stack 
+            Test(variable);                               
+            Console.WriteLine(variable);                  ///value형 : 저장된 값 그대로 바뀌지 않음
 
-            Struct17 newStruct1 = new Struct17();      ///3 structure(구조체)
-
-
-            newStruct1.a = 10;
-            newStruct1.b = 10;
-            Test(newStruct1);                          ///value형 : 저장된 값 그대로 바뀌지 않음
+            Player17 newPlayer = new Player17();          ///2-2 new 인스턴스 변수 : reference형(본체의 위치를 가르키며 객체가 사라져도 본체는 남음) : 본체는 hip, 인스턴스 객체는 stack 
 
 
-            int variable2 = 100;                       
-            Test2(variable2);                          ///value형 : 저장된 값 그대로 바뀌지 않음
+            Struct17 newStruct = new Struct17();          ///2-3 구조체 변수 : value형(저장된 값 그대로) 
+            newStruct.a = 200;
+            newStruct.b = 200;
+            Test(newStruct);                              
+            Console.WriteLine(newStruct);                 ///value형 : 저장된 값 그대로 바뀌지 않음
+
 
 
         }

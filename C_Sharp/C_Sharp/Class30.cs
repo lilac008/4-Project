@@ -5,41 +5,63 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//struct, enum, property, (overriding), 생성자-배열, 
+
+/// 30 - interface : 멤버변수는 구현할 수 없고(실체가 없다 = new로 사용불가/여러명에게 상속 가능), 함수의 형식을 상속받는 자식함수에게 강제 
+interface IQuestUnit
+{
+    /// int variable = 0;                     ///1 interface 내에서 멤버변수 불가 
+
+    void Talk(IQuestUnit _QuestUnit);         ///2 자식에게 interface 내의 함수 구현을 강제함
+    void Event(IQuestUnit _QuestUnit);     
+}
+
+class FightUnit
+{
+    int AP;  
+    int DMG;
+
+    public void Damage() { }
+}
+
+
+class Player30 : FightUnit, IQuestUnit
+{
+    public void Talk(IQuestUnit _QuestUnit) 
+    {        
+    }
+
+    public void Event(IQuestUnit _QuestUnit) 
+    { 
+    }
+}
+
+class NPC30 : FightUnit, IQuestUnit
+{
+    public void Talk(IQuestUnit _QuestUnit)
+    {
+    }
+
+    public void Event(IQuestUnit _QuestUnit)
+    {
+    }
+} 
+
 
 
 namespace C_Sharp
 {
     internal class Class30
     {
-
-        interface QuestNPC 
-        {
-            
-        }
-
-        class Item 
-        {
-            string Name;
-            int AP;
-            int DF;
-        }
-
         static void Main(string[] args)
         {
-            ///     기본 자료형[]      int[] 변수 = new float[]
-            ///사용자정의 자료형[]     ClassName[] 변수 = new float[]
+            Player30 newPlayer = new Player30();
+            NPC30 newNPC = new NPC30();
 
-            new Item();     ///아이템 생성
-            new Item[100]   ///아이템 100개를 담을 수 있는 공간 생성
+            newPlayer.Talk(newNPC);
+            newNPC.Talk(newPlayer);
 
-
-            Item[] arrItem = new Item[10];              ///공간생성
             
-            for (int i = 0; i < arrItem.Length - 1; i++)
-            {
-                arrItem[i] = new Item();                ///item 생성
-            }
+
 
         }
 
