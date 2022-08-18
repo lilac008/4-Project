@@ -11,7 +11,7 @@ namespace C_Sharp                   ///namespace : 구상한 개념이 겹칠 �
 {
 
 
-    internal class Class1_9
+    internal class _1_9
     {
 
 

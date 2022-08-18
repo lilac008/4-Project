@@ -61,7 +61,7 @@ public class Monster14
 namespace C_sharp_2
 {
 
-    internal class Class14
+    internal class _14_Static
     {
 
         static void Main(string[] args)                             ///static 주실행함수 -> C# 프로그램은 static멤버함수로부터 시작한다는 것을 알 수 있다.

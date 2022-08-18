@@ -57,7 +57,7 @@ class Monster12
 
 namespace C_Sharp
 {
-    internal class Class12
+    internal class _12_Reference
     {
 
         static void Main(string[] args)

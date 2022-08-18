@@ -57,7 +57,7 @@ namespace C_sharp_2
 {
 
 
-    internal class Class15
+    internal class _15_This
     {
         static void Main(string[] args)
         {

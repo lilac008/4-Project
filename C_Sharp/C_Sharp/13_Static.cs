@@ -50,7 +50,7 @@ class Monster13
 namespace C_Sharp 
 {
 
-    internal class Class13
+    internal class _13_Static
     {
 
         static void Main()                                  ///static 주실행함수

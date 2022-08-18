@@ -36,7 +36,7 @@ class Player11
 
 namespace C_Sharp
 {
-    internal class Class11
+    internal class _11_Value
     {
 
 

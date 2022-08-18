@@ -12,12 +12,15 @@ using System.Threading.Tasks;
 
 ///17 - enum : 
 
-/// 자료형 - 기본형 (정의됨) :   
-///          사용자정의형 (재정의 가능) : class(reference형), struct(value형), enum(value형, ex)ConsoleKey ), interface
+/// 자료형 - 기본형 (정의됨) : int, float 등   
+///          사용자정의형 (재정의 가능) :  1) class  (reference형)
+///                                        2) struct (value형) 
+///                                        3) enum   (value형,  ex) ConsoleKey )
+///                                        4) interface
 
 
 
-///아래와 같이 일일이 skript를 만들면 너무 많아진다
+///아래와 같이 일일이 script를 만들면 너무 많아진다
 class EquipItem               
 { }
 class PotionItem 
@@ -54,7 +57,7 @@ class Item
 
 namespace C_sharp_2
 {
-    internal class Class17_2
+    internal class _17_2_Structure
     {
 
         static void Main(string[] args)

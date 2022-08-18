@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 
 
-///17 - Structure(구조체) : class와 유사하지만 constructor(생성자)에서만 초기화 가능, 
+///17 - Structure(구조체) : 1. class와 유사하지만 literal에서 초기화 불가, constructor(생성자)에서만 초기화 가능 
+///                         2. value형
+
+
 struct Struct17
 {
     public int a;
@@ -32,7 +35,7 @@ class Player17
 
 namespace C_sharp_2
 {
-    internal class Class17
+    internal class _17_1_Structure
     {
 
         static void Test(Struct17 _sturuct17)          ///stack
@@ -50,7 +53,7 @@ namespace C_sharp_2
         {
             int variable = 100;                           ///2-1 일반 변수 : value형(저장된 값 그대로)  : stack 
             Test(variable);                               
-            Console.WriteLine(variable);                  ///value형 : 저장된 값 그대로 바뀌지 않음
+            Console.WriteLine(variable);                  ///value형 
 
             Player17 newPlayer = new Player17();          ///2-2 new 인스턴스 변수 : reference형(본체의 위치를 가르키며 객체가 사라져도 본체는 남음) : 본체는 hip, 인스턴스 객체는 stack 
 
@@ -59,7 +62,7 @@ namespace C_sharp_2
             newStruct.a = 200;
             newStruct.b = 200;
             Test(newStruct);                              
-            Console.WriteLine(newStruct);                 ///value형 : 저장된 값 그대로 바뀌지 않음
+            Console.WriteLine(newStruct);                 ///value형  
 
 
 

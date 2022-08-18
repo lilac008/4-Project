@@ -32,25 +32,25 @@ class Player10                                           ///설계도 본체 (�
 namespace C_Sharp
 {
 
-    internal class Class10
+    internal class _10_Memory
     {
 
 
 
 
-        static void Main(string[] args)                 ///주실행함수 : stack
+        static void Main(string[] args)                 ///주실행함수(main함수 내의 지역변수는 main함수 내에서만 사용가능) : stack
         {
 
             Console.WriteLine("안녕하세요");            ///WriteLine()함수 : stack (에 위치해있다가 "안녕하세요" 출력 즉시 사라짐) 
 
             int a = 0;                                  ///local변수, value형 : stack
 
-            Player10 newPlayer = new Player10();            ///reference로 크기, 값을 본체에서 빌려오기 전까지 미정 : stack 
+            Player10 newPlayer = new Player10();        ///reference로 크기, 값을 본체에서 빌려오기 전까지 미정 : stack 
 
             newPlayer.Damage(100);                      ///객체로 복사된 내부함수, 내부 지역 변수 : stack (에 있다가 출력 즉시 사라짐) 
 
 
 
-        }///주 실행함수가 끝나면 모든 메모리가 사라진다. (프로그램 종료)
+        }///주실행함수가 끝나면 모든 메모리가 사라진다. (프로그램 종료)
     }
 }
