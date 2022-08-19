@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 
 
-/// 20 의문, 22화 19분보다 말음
+/// 20 의문
 
 
-/// break는 switch문을 벗어나고, return은 전체조건문 자체를 벗어난다.
+
 
 
 
@@ -51,12 +51,12 @@ class FightUnit18   ///class 상속은 C#에서 1개만 가능하다
         return HP <= 0;                                              ///연산자에도 함수처럼 return값이 있다.
     }
 
-    void Damage(FightUnit18, _fightUnit)
+    public void Damage(FightUnit18 _fightUnit)
     {
         Console.Write(Name);
         Console.Write("가");
         Console.Write(_fightUnit.AP);
-        Console.Write("의 데미지를 입었습니다.");
+        Console.WriteLine("의 데미지를 입었습니다.");
         Console.ReadKey();
         HP -= _fightUnit.AP;
     }
@@ -157,7 +157,7 @@ namespace C_sharp_2
         }
 
 
-        static void Town(Player18 _Player)                               //2, 3
+        static EnumStartSelect Town(Player18 _Player)                               //2, 3
         {
             while (true)
             {
@@ -178,33 +178,50 @@ namespace C_sharp_2
                             _Player .MaxHeal();                           //3-2
                         //}
                         //else { 경고! hp가 가득찼습니다. }
-                        break;                                            ///break는 switch문을 벗어난다.
+                        break;                                            
                     case ConsoleKey.D2:
                         break;
                     case ConsoleKey.D3:
-                        return;                                           ///return은 while문을 벗어난다. 
+                        return EnumStartSelect.NoneSelect;               /// 
                 }
                 Console.ReadKey();
             }
-        }   
+        }
 
-        static void Battle(Player18 _Player)                              //2, 4
+        static EnumStartSelect Battle(Player18 _Player)                              //2, 4
         {
             Monster18 newMonster = new Monster18("오크");
             ///Player18 newPlayer = new Player18();
 
-            while (true == newMonster.IsDeath() || _Player.IsDeath() )   
+            while (true != newMonster.IsDeath() && true != _Player.IsDeath() )   
             {
                 Console.Clear();
                 _Player.StatusRender();
                 newMonster.StatusRender();
-                Console.ReadKey();
+
+                ///서로 번갈아 싸우게함
+                newMonster.Damage(_Player);                                ///데미지
+                if (false == newMonster.IsDeath())                         ///한대씩 때리도록? 20화
+                {
+                    _Player.Damage(newMonster);                            ///업캐스팅, 20_Inheritance 참고
+                }
+                ///Console.ReadKey();
             }
             Console.WriteLine("싸움이 결판났습니다.");
+            if (true != newMonster.IsDeath())
+            {
+                Console.WriteLine("플레이어의 승리입니다");
+            }
+            else 
+            {
+                Console.WriteLine("몬스터의 승리입니다");
+            }
             Console.ReadKey();
+
+            return EnumStartSelect.Town;
         }
 
-        
+
 
 
 
@@ -214,18 +231,22 @@ namespace C_sharp_2
         {
             Player18 newPlayer = new Player18();                           //3 
 
+            ///1 StartSelect(); 
+            ///2 EnumStartSelect select = StartSelect();                    ///StartSelect()에서 return하는 것을 받아야 함.  
+            
+            EnumStartSelect select = EnumStartSelect.NoneSelect;                      
             while (true)                                                   //1
             {
-                ///StartSelect();    
-                
-                EnumStartSelect select = StartSelect();                    ///StartSelect()에서 return하는 것을 받아야 함.  
                 switch (select)
                 {
+                    case EnumStartSelect.NoneSelect:
+                        select = StartSelect();
+                        break;
                     case EnumStartSelect.Town:
-                        Town(newPlayer);
+                        select = Town(newPlayer);                         ///EnumStartSelect로 return
                         break;                                              
                     case EnumStartSelect.BattleField:
-                        Battle();
+                        select = Battle(newPlayer);                       ///EnumStartSelect로 return
                         break;
                 }
             }

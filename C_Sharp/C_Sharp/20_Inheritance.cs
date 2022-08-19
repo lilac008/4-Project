@@ -37,7 +37,7 @@ class Monster20 : FightUnit20
 
 namespace C_Sharp
 {
-    internal class _20_
+    internal class _20_Inheritance
     {
 
         static void Main(string[] args)

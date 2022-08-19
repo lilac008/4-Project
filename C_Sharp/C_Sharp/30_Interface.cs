@@ -50,7 +50,7 @@ class NPC30 : FightUnit, IQuestUnit
 
 namespace C_Sharp
 {
-    internal class Class30
+    internal class _30_Interface
     {
         static void Main(string[] args)
         {

@@ -5,21 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
+
+
+
+
 ///30 - Array(배열) :   - 일반 자료형       :  int[] variable = new int[]
 ///                     - 사용자정의 자료형 :  ClassName[] variable = new ClassName[]
-
-
-
-
-
-
-
-
 
 namespace C_Sharp
 {
 
-    internal class Class32
+    internal class _31_Array
     {
 
         class Item 
