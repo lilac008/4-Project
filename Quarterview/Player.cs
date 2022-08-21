@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     bool isFireReady = true;             /// 공격 준비
     bool isBorder;
     bool isDamage;
+    bool isShop;                    ///쇼핑중 변수
 
     GameObject obj;                 /// isTrigger로 접촉한 obj 인식
 
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour
     public GameObject grenadeObj;           /// Throw Grenade prefab끌어서 드래그
 
     public int hasAmmo;
-    public int hasCoin;
+    public int hasCoin;                     /// 4000
     public int health;
     public int hasGrenades;
     public int maxAmmo;                   /// 각각 초기값 999, 99999, 100, 4 
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour
         vKey = Input.GetAxisRaw("Vertical")
         walkKey = Input.GetButton("Walk");           /// GetButton : 누르고 있는 동안 걷기
         sKey = Input.GetButtonDown("Jump");
-        fireKey = Input.GetButton("fire1");        /// GetButton : 누르고 있는 동안 계속 발사, GetButtonDown : 눌렀다 떼야 발사 가능
+        fireKey = Input.GetButton("fire1");          /// GetButton : 누르고 있는 동안 계속 발사, GetButtonDown : 눌렀다 떼야 발사 가능
         grenadeKey = Input.GetButton("fire2");        
         rKey = Input.GetButtonDown("Reload");
         eKey = Input.GetButtonDown("Interation");
@@ -246,7 +247,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.attackSpeed < fireDelay;    /// true = 무기공속 < fireDelay;  공속 시간동안 연타 금지
 
-        if (fireKey && isFireReady && !isDodge && !isSwap)
+        if (fireKey && isFireReady && !isDodge && !isSwap && !isShop )
         {
             equipWeapon.Use();
             a.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "tSwing" : "tShot");  ///9 Weapon script
@@ -265,7 +266,7 @@ public class Player : MonoBehaviour
         if (hasAmmo == 0)                              ///소유 탄약 0일시 탈출
             return;
 
-        if (rKey && !isJump && !isDodge && !isSwap && isFireReady)   ///r키,공격준비시간 o 점프,회피,무기교체시 x
+        if (rKey && !isJump && !isDodge && !isSwap && isFireReady && !isShop)   ///r키,공격준비시간 o 점프,회피,무기교체시 x
         {
             a.SetTrigger("tReload");                            ///애니메이터 호출
             isReload = true;                                      ///장전 활성화
@@ -360,11 +361,17 @@ public class Player : MonoBehaviour
         {
             if (obj.tag == "Weapon")
             {
-                Item cItem = obj.GetComponent<Item>();
-                int wIndex = cItem.value;
+                Item item = obj.GetComponent<Item>();
+                int wIndex = item.value;
                 hasWeapon[wIndex] = true;
 
                 Destroy(obj);
+            }
+            else if (obj.tag == "Shop")                         ///15강-2) Shop script
+            {
+                Shop shop = obj.GetComponent<Shop>();           
+                shop.Enter(this);                               ///this = Player script
+                isShop = true;                                  ///15강-
             }
         }
     }
@@ -456,17 +463,25 @@ public class Player : MonoBehaviour
         }
 
     }
-    void OnTriggerStay(Collider t)      ///5-1 접촉 중
+    void OnTriggerStay(Collider colider)      ///5-1 접촉 중
     {
-        if(t.tag == "Weapon")            
-            obj = t.gameObject;   
+        if(colider.tag == "Weapon" || colider.tag == "Shop")    ///15강-2) Shop script            
+            obj = colider.gameObject;   
 
         Debug.Log(obj.name);            ///출력 확인
     }
-    void OnTriggerExit(Collider t)      ///5-1 접촉 끝
-    { 
-        if(t.tag == "Weapon")
+    void OnTriggerExit(Collider collider)      ///5-1 접촉 끝
+    {
+        if (collider.tag == "Weapon")
             obj = null;                 ///비우기
+        else if (collider.tag == "Shop")                        ///15강-3) 퇴장함수 + Shop script 
+        {
+            Shop shop = obj.GetComponent<Shop>();
+            shop.Exit();
+            obj = null;
+            isShop = false;                                  ///15강-
+        }
+
 
     }
 
