@@ -26,10 +26,10 @@ public class GameManager : MonoBehaviour
     /// Score Group
     public Text curScoreText;
     /// Stage Group 
-    public Text stageTxt;
-    public Text playTimeTxt;
+    public Text stageTxt;                           ///Game Panel - Stage Group - Stage Text    
+    public Text playTimeTxt;                        ///Game Panel - Stage Group - Time Text 
     /// Status Group
-    public Text playerHealthTxt;
+    public Text playerHealthTxt;                    ///G
     public Text playerAmmoTxt;
     public Text playerCoinTxt;
     /// Equip Group
@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
     public RectTransform bossHealthBar;
     /// GameOver
     public Text bestText;
-    public Text maxScoreTxt;
-    public Text scoreTxt;
+    public Text maxScoreTxt;                        ///Canvas - Max Score Text
+    public Text scoreTxt;                           ///Game Panel - Score Group - Score Text 
 
 
 
