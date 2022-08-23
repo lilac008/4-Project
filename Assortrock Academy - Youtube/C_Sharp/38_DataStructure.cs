@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+
+
 namespace C_Sharp
 {
     internal class _38_DataStructure
@@ -15,14 +19,6 @@ namespace C_Sharp
 
             Arr[0] = 1;
             Arr[1] = 1;
-
-
-
-
-
-
-
-
 
         }
 

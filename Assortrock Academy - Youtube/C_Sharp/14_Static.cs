@@ -40,7 +40,7 @@ public class Player14
         HP -= 10;
     }
 
-    public void Damage(Player14 _Damage)                    ///Monster14(내부 변수가 private이므로)를 넣을 수 없다    
+    public void Damage(Player14 _Damage)                     ///Monster14(내부 변수가 private이므로)를 넣을 수 없다    
     {
         HP -= 10;
     }

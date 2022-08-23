@@ -1,0 +1,140 @@
+5강 - enum
+
+enum : 호출시 코드 가독성 떨어지는 것 방지
+
+1) 예제1
+namespace EnumTest 	 //namespace안에 사용할 경우 다른 클래스에서도 참조 가능하다.
+{
+enum Item	
+{
+	Coffee,
+	Tea,
+	IceCream,
+	Bread
+}
+
+
+static void main()
+{
+	Order(Item.Tea, 3);
+}
+
+
+static void Order(Item _Item, Quantity _Quantity)
+{
+	case Item.Coffe:
+	       break;
+	case Item.Tea:
+	       break;
+	case Item.Bread:
+	       break;
+	default :
+	       break;
+
+}
+
+
+
+}
+
+
+2)예제2
+namespace EnumTest  	 //namespace안에 사용할 경우 다른 클래스에서도 참조 가능하다.
+{
+
+class Program
+{
+
+[Flags]
+enum Border
+{
+	None = 0,	///0000 0000
+	Top = 1,		///0000 0001
+	Right = 2,	///0000 0010
+	Bottom = 4,	///0000 0100
+	Left = 8		///0000 1000
+}	
+
+
+
+static void main()
+{
+	Border b = Border.Top | Border.Bottom;	//or 다중 flag 할당
+	
+	if ((b&Border.Top) !=0){
+	
+	}
+}
+
+
+static void Order(Item _Item, Quantity _Quantity)
+{
+	case Item.Coffe:
+	       break;
+	case Item.Tea:
+	       break;
+	case Item.Bread:
+	       break;
+	default :
+	       break;
+}
+
+
+}
+
+
+}
+
+##################################
+9강 yield 순차적 진행
+
+namespace YieldTest
+{
+  class Program
+  {
+      static void Main()			 ///함수호출
+      {
+          foreach(var data in GetAllScores()){	 ///GetAllScores()함수를 한번에 가져옴
+             cw(data);
+          }
+
+          foreach(var data in GetScores()){	 ///in GetScores()에서 순차적으로 yield 문법 하나씩 가져와 출력하는 식
+             cw(data);
+          }
+
+      }
+
+      static int[] GetAllScores()
+      {
+          int[] scores = new int[] {0, 1, 2};
+          return scores;
+      }
+
+     staitc IEnumerable<int> GetScores()
+     {
+ 	int[] scores = new int[] { 0, 1, 2, 3, 4};
+	
+	///호출방법1 (택1)
+	yield return scores[0];
+	yield return scores[1];
+	yield return scores[2];
+
+	///호출방법2 (택1)
+	for(int i = 0;  i < data.length;  i++)
+	{
+	   if(scores[i] == 30)		//30일 경우에
+	   {
+	       yield break;	    		//탈출
+	   }
+	   yield return data[0];
+	   Debug.WriteLine(i + ": Done");	        ///console이 아닌 debug창에서 출력, 10과 20만 출력
+	}
+
+     }
+   }
+
+}
+
+
+
+
