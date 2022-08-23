@@ -1,16 +1,9 @@
-[단어]
-global position (전역 좌표)
-local position (지역 좌표, 상속)
 
-hierarchy 계급
-component 구성요소
-Prefab 조립부품
-material 재료, 재질
-
-
-######################################
 [기본조작]
+
 ######################################
+
+
 [Scene 방향조절] 
 우click + a,s,d,f 
 
