@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;               /// 
 
+
+/// Menu Camera : follow script 삭제, YoYoRotation Animatior(speed:0.1, AddProperty - Transform - Rotation) 드래그 후 script가 자동생성되었는지 확인  
+/// Game Camera : 비활성화
+/// Canvas      : Menu Panel, Game Panel  비활성화
+/// Player      : 비활성화
+/// 
+/// 
+/// 
+///
+
+
+
+
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject menuCamera;                   /// Menu Camera drag
-    public GameObject gameCamera;                   /// game Camera drag
+    public GameObject menuCamera;                   /// Menu Camera 드래그
+    public GameObject gameCamera;                   /// game Camera 드래그
 
-    public Player player;                           /// Player script drag
-    public Boss boss;                               /// Boss script drag
+    public Player player;                           /// Player script 드래그
+    public Boss boss;                               /// Boss script 드래그
     public int stage;
     public float playTime;
     public bool isBattle;
@@ -77,8 +90,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("MaxScore", 0);
     }
 
-    /// 게임 스타트 버튼 클릭 이벤트
-    public void GameStart()
+
+    public void GameStart()  /// game start 버튼 클릭 이벤트
     {
         menuCamera.SetActive(false);
         gameCamera.SetActive(true);
