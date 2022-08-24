@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;               /// 
+using UnityEngine.UI;  /// 
 
 
-/// Menu Camera : follow script 삭제, YoYoRotation Animatior(speed:0.1, AddProperty - Transform - Rotation) 드래그 후 script가 자동생성되었는지 확인  
+/// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
 /// Game Camera : 비활성화
 /// Canvas      : Menu Panel, Game Panel  비활성화
 /// Player      : 비활성화
 /// 
-/// 
-/// 
-///
+
+/// Game Manager(빈 obj,) 생성
+/// Canvas - Game Panel - Score Group, Status Group, Stage Group, Enemy Group, Equip Grop, Boss Group, Item Shop Group, Weapon Shop Group 
 
 
 
@@ -39,28 +39,28 @@ public class GameManager : MonoBehaviour
     /// Score Group
     public Text curScoreText;
     /// Stage Group 
-    public Text stageTxt;                           ///Game Panel - Stage Group - Stage Text    
-    public Text playTimeTxt;                        ///Game Panel - Stage Group - Time Text 
+    public Text stageTxt;                           ///Game Panel - Stage Group - Stage Text 드래그   
+    public Text playTimeTxt;                        ///Game Panel - Stage Group - TimeText 드래그   
     /// Status Group
-    public Text playerHealthTxt;                    ///G
-    public Text playerAmmoTxt;
-    public Text playerCoinTxt;
+    public Text playerHealthTxt;                    ///Game Panel - status group - HealthText
+    public Text playerAmmoTxt;                      ///Game Panel - status group - AmmoText
+    public Text playerCoinTxt;                      ///Game Panel - status group - CoinText
     /// Equip Group
-    public Image weapon1Img;
-    public Image weapon2Img;
-    public Image weapon3Img;
-    public Image weaponRImg;
+    public Image weapon1Img;                        ///Game Panel - Equip group - weapon1 image
+    public Image weapon2Img;                        ///Game Panel - Equip group - weapon2 image
+    public Image weapon3Img;                        ///Game Panel - Equip group - weapon3 image
+    public Image weaponRImg;                        ///Game Panel - Equip group - weapon4 image
     /// Enemy Group
-    public Text enemyATxt;
-    public Text enemyBTxt;
-    public Text enemyCTxt;
+    public Text enemyATxt;                          ///Game Panel - Equip group - enemyAText
+    public Text enemyBTxt;                          ///Game Panel - Equip group - enemyBText
+    public Text enemyCTxt;                          ///Game Panel - Equip group - enemyCText
     /// Boss Group
     public RectTransform bossHealthGroup;
     public RectTransform bossHealthBar;
     /// GameOver
     public Text bestText;
-    public Text maxScoreTxt;                        ///Canvas - Max Score Text
-    public Text scoreTxt;                           ///Game Panel - Score Group - Score Text 
+    public Text maxScoreTxt;                        ///Menu Panel - Max Score Text
+    public Text scoreTxt;                           ///Game Panel - Score group - Score Text 드래그 
 
 
 
