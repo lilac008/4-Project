@@ -1,0 +1,36 @@
+Unity랑 연동 (XR interaction tool kit - you tube)
+
+
+1 Project Setting
+XR plugin Management 설치 - Oculus 설치 
+Package Manager - (링크 - com.~ 복사 - + 눌러서 add package by name복붙 - yes)  - Enable Pre-release Packages 
+
+링크 : https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/manual/installation.html
+
+
+2. 폴더
+XR 폴더, XRI 폴더 생성됨 / 삭제 : Tutorial info 폴더, Readme 
+Project Setting - Package Manager - XR interaction toolkit - Sample - Starter, XR device 설치 
+
+
+3 하이러키
+삭제 : Main Camera
+XR origin - device-based - XR origin - 위치 초기화 
+XR origin - Tracking~ - floor설정
+
+
+4 폴더
+Start Asset 폴더 - input Actions 제외하고 전부 Add  
+
+
+5 하이러키
+left/right hand ccontroller - prefab에서 add
+
+
+6 
+sample - XR device simulator (파란색) -   
+
+
+7  XR - grab interactable 클릭 - mesh, collider, rigidbody는 필수 / grab interactable script  -  
+XR device simulator 비활성화해야 함(헤드카메라 돌아감)
+
