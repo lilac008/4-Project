@@ -11,36 +11,36 @@ using UnityEngine.AI;  ///NavMeshAgent
 
 
 
-/// TestEnemy(Cube obj)
-/// 1. Rigidbody(Freeze Rotation:x,z), Box Collider, Enemy script 설정
-/// 2. Layer : 13:Enemy, 14:EnemyDead(Floor, Wall, EnemyDead 외 전부 해제) 추가
-/// 
-/// 
+/// TestEnemy(Cube obj) : 1. Rigidbody(Freeze Rotation:x,z), Box Collider, Enemy script 설정
+///                       2. Layer : 13:Enemy, 14:EnemyDead(Floor, Wall, EnemyDead 외 전부 해제) 추가
+
 
 /// Enemy A (일반형)
 /// 1. Rigidbody(FreezeRotation x,z 활성화), Box Collider(center(y:1.13),size(2.5,2.5,2.5)), Enemy Script 추가 후 아래 설정, Tag/Layer : Enemy 추가 후 Project Setting - Physics - LayerCollisionMask(EnemyBullet-Enemy 비활성화) 
 /// 2. Nav Mesh Agent(AngularSpeed(회전속도):360, Acceleration(가속도):30) 추가 / Floor,Wall : Static 설정(static만 bake가능) / Window - AI - Navigation - Bake - Advanced:Bake  (NavMesh는 NavAgent가 경로를 그리기 위한 바탕, NavMeshAgent는 navigation을 사용하는 AI)
 /// 3. Mesh Obj - Animator(Enemy A) 추가, 애니메이션 Idle(우클릭-SetAsLayerDefaultState), Walk, Attack, Die 추가 (영상11부 12분 참조), bWalk, bAttack, tDie
 /// 4. 아래의 Enemy Bullet 추가 후 Enemy A 정면 앞에 배치
+/// EnemyA/B/C/D 위치 초기화 후 prefab
 
-/// Enemy B (돌격형)
-/// 1. Enemy A 따라서 그대로 복사
-/// 2. Nav Mesh Agent (speed:20, AngularSpeed:360, Acceleration:50) 
 
-/// Enemy C (원거리)
-/// 1. Enemy A 따라서 그대로 복사
-/// 2. NavMeshAgent (speed:5, AngularSpeed:480, Acceleration:60) 
-/// 3. Enemy Script의 Melee Area는 비워둠, Animator의 애니메이션은 모두 교체 
+/// Enemy B (돌격형) : 1. Enemy A 따라서 그대로 복사
+///                    2. Nav Mesh Agent (speed:20, AngularSpeed:360, Acceleration:50) 
+
+
+/// Enemy C (원거리) : 1. Enemy A 따라서 그대로 복사
+///                    2. NavMeshAgent (speed:5, AngularSpeed:480, Acceleration:60) 
+///                    3. Enemy Script의 Melee Area는 비워둠, Animator의 애니메이션은 모두 교체 
 
 
 /// EnemyBullet(빈 obj) : 근접공격범위
-/// 1. Box Collider(isTrigger, size:2,2,2, boxCollider 비활성화) + Tag/Layer:EnemyBullet + Bullet Script 추가
+///                       1. Box Collider(isTrigger, size:2,2,2, boxCollider 비활성화) + Tag/Layer:EnemyBullet + Bullet Script 추가
+
 
 /// Missile (Transform:P/R(0,0,0))   (영상 12부 34분 참조, z축(blue) 각도 참조)
-/// 1. Missile - Mesh obj(Transform P(0,0,0), R(0,-90,0)) - Missile script 추가 
-/// 2. Missile - Effect(빈obj, 꼬리부분위치, Transform.P(0,3,-1)) - Particle System (Renderer:Default-Line, Effect(startLifetime:0.6,startSpeed:15,startSize:0.7), Emission(RoT:30), Shape(Angle:13, Radius:0.5, Rotation(0,180,0)), ColorOverLifetime(alpha:100), sizeOverLifetime:역방향) 추가
-/// 3. Missile - Rigidbody(useGravity 해제),  Box Collider(피격범위, center(0,3,0), size(2,2,2), isTrigger, Bullet script(damage:15), Tag/Layer:EnemyBullet 후 Prefab 등록
-/// 4. Open prefab(Tranform(0,0,0), )
+///                                  1. Missile - Mesh obj(Transform P(0,0,0), R(0,-90,0)) - Missile script 추가 
+///                                  2. Missile - Effect(빈obj, 꼬리부분위치, Transform.P(0,3,-1)) - Particle System (Renderer:Default-Line, Effect(startLifetime:0.6,startSpeed:15,startSize:0.7), Emission(RoT:30), Shape(Angle:13, Radius:0.5, Rotation(0,180,0)), ColorOverLifetime(alpha:100), sizeOverLifetime:역방향) 추가
+///                                  3. Missile - Rigidbody(useGravity 해제),  Box Collider(피격범위, center(0,3,0), size(2,2,2), isTrigger, Bullet script(damage:15), Tag/Layer:EnemyBullet 후 Prefab 등록
+///                                  4. Open prefab(Tranform(0,0,0), )
 
 
 
@@ -55,9 +55,11 @@ public class Enemy : MonoBehaviour
     public Type enemyType;             /// 타입 지정할 변수 생성
     public int maxHealth;              /// TestEnemy:200, EnemyA:50, EnemyB:80, EnemyC:200
     public int curHealth;              /// TestEnemy:200, EnemyA:50, EnemyB:80, EnemyC:200
+    public int score;                  /// EnemyA:100, B:250, C:500, D:2000
     public Transform target;           /// Player 드래그
     public BoxCollider meleeArea;      /// 공격범위 : EnemyA의 EnemyBullet 드래그
     public GameObject bullet;          /// EnemyC에 Missile prefab 드래그
+    public GameObject[] coins;         /// EnemyA/B/C/D -> coin prefab 3개
     public bool isChase;
     public bool isAttack;              
     public bool isDead;                /// 죽었을 때를 알기 위한 flag
@@ -266,6 +268,11 @@ public class Enemy : MonoBehaviour
             nav.enabled = false;         ///16-3 nav 비활성화
             ani.SetTrigger("tDie");      ///16-3 사망 애니메이션
 
+            Player player = target.GetComponent<Player>();                          /// 17강-1
+            player.score += score;                                                  /// 
+            int ranCoin = Random.Range(0, 3);                                       ///
+            Instantiate(coins[ranCoin], transform.position, Quaternion.identity);   ///회전제로?
+
             if (isGrenade)
             {
                 reactVec = reactVec.normalized;                             
@@ -284,7 +291,7 @@ public class Enemy : MonoBehaviour
                 r.AddForce(reactVec * 5, ForceMode.Impulse);
             }
 
-            if(enemyType != Type.D)                                      ///20미정 조건추가
+            ///if(enemyType != Type.D)                                      ///17강-1 보스도 조건에 따라 삭제
                 Destroy(gameObject, 4);
 
 

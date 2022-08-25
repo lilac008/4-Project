@@ -4,25 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;  /// 
 
 
-
+///16강
 /// Game Manager(빈 obj,) 생성
 /// Canvas - Game Panel - Score Group, Status Group, Stage Group, Enemy Group, Equip Grop, Boss Group, Item Shop Group, Weapon Shop Group 
 
 
 /// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
-/// 
 
+
+///Enemy Zone Group - Enemy Respawn Zone 4개() 
 
 
 
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject menuCamera;                   /// Menu Camera 드래그
-    public GameObject gameCamera;                   /// game Camera 드래그
+    public GameObject menuCamera;                   /// Menu Camera drag
+    public GameObject gameCamera;                   /// game Camera drag
 
-    public Player player;                           /// Player script 드래그
-    public Boss boss;                               /// Boss script 드래그
+    public Player player;                           /// Player script drag
+    public Boss boss;                               /// Boss script drag
     public int stage;                               ///4
     public float playTime;
     public bool isBattle;                           ///활성화시 누적시간
@@ -37,8 +38,8 @@ public class GameManager : MonoBehaviour
     /// Score Group
     public Text curScoreText;
     /// Stage Group 
-    public Text stageText;                           ///Game Panel - Stage Group - Stage Text 드래그   
-    public Text playTimeText;                        ///Game Panel - Stage Group - TimeText 드래그   
+    public Text stageText;                           ///Game Panel - Stage Group - Stage Text  
+    public Text playTimeText;                        ///Game Panel - Stage Group - TimeText 
     /// Status Group
     public Text playerHealthText;                    ///Game Panel - status group - HealthText
     public Text playerAmmoText;                      ///Game Panel - status group - AmmoText
@@ -58,36 +59,38 @@ public class GameManager : MonoBehaviour
     /// GameOver
     public Text bestText;
     public Text maxScoreText;                        ///Menu Panel - Max Score Text
-    public Text scoreText;                           ///Game Panel - Score group - Score Text 드래그 
+    public Text scoreText;                           ///Game Panel - Score group - Score Text
 
 
-    public GameObject itemShop;
-    public GameObject weaponShop;
-    public GameObject startZone;
+    public GameObject itemShop;                      ///drag
+    public GameObject weaponShop;                    ///drag
+    public GameObject startZone;                     ///drag
     public GameObject startWall1;
     public GameObject startWall2;
     public GameObject startWall3;
     public GameObject startWall4;
     public GameObject bossMap;
 
-    public Transform[] enemyZone;
-    public GameObject[] enemyPrefabs;
+    public Transform[] enemyZone;                    /// Enemy Respawn Zone 4개 drag
+    public GameObject[] enemies;                     /// Enemy A/B/C/D prefab drag
     public List<int> enemyList;
 
 
 
 
-    void Awake() ///16강-1
+    void Awake() ///16-1
     {
-        maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));    ///string.Format() 문자열 양식
-        enemyList = new List<int>();
+        enemyList = new List<int>();                ///17-2
 
-        if (PlayerPrefs.HasKey("MaxScore"))        /// HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
+
+        maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));    ///16-1 string.Format() 문자열 양식
+
+        if (PlayerPrefs.HasKey("MaxScore"))                                             /// HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
             PlayerPrefs.SetInt("MaxScore", 0);
     }
 
 
-    public void GameStart()  ///16강-2   Menu Panel - Start Button - Button(OnClick-GameManager-GameStart)
+    public void GameStart()             ///16-2   Menu Panel - Start Button - Button(OnClick-GameManager-GameStart)
     {
         menuCamera.SetActive(false);    ///menu관련 비활성, game관련 활성
         gameCamera.SetActive(true);
@@ -104,7 +107,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StageStart()
+    public void StageStart()  ///17-1
     {
         itemShop.SetActive(false);
         weaponShop.SetActive(false);
@@ -113,16 +116,16 @@ public class GameManager : MonoBehaviour
         startWall2.SetActive(false);
         startWall3.SetActive(false);
         startWall4.SetActive(false);
-        foreach (Transform zone in enemyZone) zone.gameObject.SetActive(true);
+
+        foreach (Transform data in enemyZone) data.gameObject.SetActive(true);
 
         isBattle = true;
         StartCoroutine(InBattle());
     }
 
-    public void StageEnd()
+    public void StageEnd()  ///17-1
     {
-        /// 플레이어 재위치
-        player.transform.position = Vector3.back * 40f;
+        player.transform.position = Vector3.back * 0.8f;   /// 플레이어 재위치
 
         itemShop.SetActive(true);
         weaponShop.SetActive(true);
@@ -131,23 +134,22 @@ public class GameManager : MonoBehaviour
         startWall2.SetActive(true);
         startWall3.SetActive(true);
         startWall4.SetActive(true);
-        foreach (Transform zone in enemyZone) zone.gameObject.SetActive(false);
+
+        foreach (Transform data in enemyZone) data.gameObject.SetActive(false);
 
         isBattle = false;
-        stage++;
+        stage++;                                        ///스테이지 종료시 stage값 1 증가
     }
 
-    IEnumerator InBattle()
+    IEnumerator InBattle() ///17-1
     {
         if (stage % 5 == 0)
         {
             enemyCntD++;
-            GameObject instantEnemy = Instantiate(enemyPrefabs[3], enemyZone[2].position, enemyZone[2].rotation);
-            /// 프리팹화 된 오브젝트들이 플레이어에게(하이어라키) 접근하기 위해 컴포넌트를 가져온다.
-            Enemy enemy = instantEnemy.GetComponent<Enemy>();
+            GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
+            Enemy enemy = instantEnemy.GetComponent<Enemy>();            
             enemy.target = player.transform;
-            /// Enemy 스크립트에서 감소된 카운트를 가져온다.
-            enemy.manager = this;
+            enemy.manager = this;                                               
             boss = instantEnemy.GetComponent<Boss>();
 
             if (boss) bossMap.SetActive(true);
@@ -155,7 +157,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < stage; i++)
+            for (int i = 0; i < stage; i++)         ///17-2
             {
                 int ran = Random.Range(0, 3);
                 enemyList.Add(ran);
@@ -174,19 +176,15 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            while (enemyList.Count > 0)
+            while (enemyList.Count > 0)         ///17-2
             {
-                int ranZone = Random.Range(0, 5);
-                GameObject instantEnemy = Instantiate(enemyPrefabs[enemyList[0]], enemyZone[ranZone].position, enemyZone[ranZone].rotation);
-                /// 프리팹화 된 오브젝트들이 플레이어에게(하이어라키) 접근하기 위해 컴포넌트를 가져온다.
-                Enemy enemy = instantEnemy.GetComponent<Enemy>();
+                int ranZone = Random.Range(0, 4);
+                GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZone[ranZone].position, enemyZone[ranZone].rotation);
+                Enemy enemy = instantEnemy.GetComponent<Enemy>();                /// prefab화 된 obj는 scene에 접근할 수 없다.       ///따라서 hierarchy Player에 접근하기 위해 component를 가져옴
                 enemy.target = player.transform;
-                /// Enemy 스크립트에서 감소된 카운트를 가져온다.
-                enemy.manager = this;
-                /// 생성 후에는 사용된 데이터는 RemoveAt() 함수로 삭제
-                enemyList.RemoveAt(0);
-                /// while문에선 코루틴으로 타이밍 맞추기
-                yield return new WaitForSeconds(4f);
+                enemy.manager = this;                                            /// Enemy 스크립트에서 감소된 카운트를 가져온다.
+                enemyList.RemoveAt(0);                                           /// 생성 후에 사용된 데이터 삭제, nemyList.Count = 0이되면 while문 종료
+                yield return new WaitForSeconds(4f);                             ///
             }
         }
 
@@ -263,7 +261,7 @@ public class GameManager : MonoBehaviour
         enemyCText.text = enemyCntC.ToString();
 
         ///보스 UI 
-        if (boss != null)         /// 보스 변수가 비어있을 때 UI 업데이트 하지 않도록 조건 추가
+        if (boss != null)         /// 보스 변수가 비었을때 UI 업데이트 하지 않도록
         {
             bossHealthGroup.anchoredPosition = Vector3.down * 30;
             bossHealthBar.localScale = new Vector3((float)boss.curHelath / boss.maxHelath, 1, 1);         

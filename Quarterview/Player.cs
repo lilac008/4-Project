@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     /// Player 
     /// 1) x,z rotation 얼림
     /// 2) transform이동 : 물리 충돌 무시하는 경우, 추가로 Rigidbody에서 collision ditection - Continuous로 변경, Floor과 Wall은 모두 static으로 변경
-    /// 3) Layer : Player 추가
+    /// 3) Tag/Layer : Player 추가
 
 
     /// World space - Floor,Wall 
