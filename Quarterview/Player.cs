@@ -57,31 +57,31 @@ public class Player : MonoBehaviour
     Rigidbody r;
     MeshRenderer[] meshs;           /// 모든 몸통 부위의 mesh를 가져오기 위해 배열로 가져옴
 
-    bool isJump;                      /// 점프 활성화, 비활성화 : 무한점프 방지
-    bool isDodge;                     /// 회피 활성화, 비활성화 : 회피중 방향이동 방지 
-    bool isSwap;                      /// 무기교체 활성화, 비활성화 : 교체 시간차를 위해
+    bool isJump;                    /// 점프 활성화, 비활성화 : 무한점프 방지
+    bool isDodge;                   /// 회피 활성화, 비활성화 : 회피중 방향이동 방지 
+    bool isSwap;                    /// 무기교체 활성화, 비활성화 : 교체 시간차를 위해
     bool isReload;
-    bool isFireReady = true;             /// 공격 준비
+    bool isFireReady = true;        /// 공격 준비
     bool isBorder;
     bool isDamage;
-    bool isShop;                    ///쇼핑중 변수
+    bool isShop;                            ///쇼핑중 변수
 
-    GameObject obj;                 /// isTrigger로 접촉한 obj 인식
+    GameObject obj;                         /// isTrigger로 접촉한 obj 인식
 
-    public GameObject[] inactiveWeapons;  /// 손에 든 비활성 무기들 : 무기 3종 Prefab을 여기에 연결 후 비활성화 (준비:Player - righthand - Weapon Points(cylinder형 비활성obj, 4부10분참조) - 무기 3종 prefab 단 후 비활성화)
-    public bool[] hasWeapon;           /// 가지고 있는, 소유한 무기들의 bool(활성, 비활성) 상태 여부 : 3 으로 설정 
-    Weapon equipWeapon;                   /// 장착한 무기, equipW = weaponsInHand[wIndex].GetComponent<Weapon>(); 
-    int equipWIndex = -1;                 /// 장착한 무기 index
+    public GameObject[] inactiveWeapons;    /// 손에 든 비활성 무기들 : 무기 3종 Prefab을 여기에 연결 후 비활성화 (준비:Player - righthand - Weapon Points(cylinder형 비활성obj, 4부10분참조) - 무기 3종 prefab 단 후 비활성화)
+    public bool[] hasWeapon;                /// 가지고 있는, 소유한 무기들의 bool(활성, 비활성) 상태 여부 : 3 으로 설정 
+    public Weapon equipWeapon;              /// 장착한 무기, equipW = weaponsInHand[wIndex].GetComponent<Weapon>(); 
+    int equipWIndex = -1;                   /// 장착한 무기 index
 
 
     public GameObject[] inactiveGrenades;   /// 몸 주위에 공전하는 비활성 수류탄들 : (G Group(빈obj) - Front/Back/Right/Left(각각 빈obj)에 G prefab 추가 - 하위 mesh obj에 각각 Light, Particle( Emission:(RoT:0, RoD:10) )추가 및 mesh obj - Simulation Space - World   / Orbit script 추가 )
     public GameObject grenadeObj;           /// Throw Grenade prefab끌어서 드래그
 
-    public int hasAmmo;
-    public int hasCoin;                     /// 4000
+    public int hasAmmo;                     ///각각 100, 5000, 99
+    public int hasCoin;                     
     public int health;
     public int hasGrenades;
-    public int maxAmmo;                   /// 각각 초기값 999, 99999, 100, 4 
+    public int maxAmmo;                     ///각각 999, 99999, 100, 4 
     public int maxCoin;
     public int maxHealth;
     public int maxGrenades;
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
 
     public Camera cam;                     ///메인카메라 드래그
 
-
+    public int score;                      ///16강-3,  50000
 
 
 

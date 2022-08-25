@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;  /// 
 
 
-/// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
-/// Game Camera : 비활성화
-/// Canvas      : Menu Panel, Game Panel  비활성화
-/// Player      : 비활성화
-/// 
 
 /// Game Manager(빈 obj,) 생성
 /// Canvas - Game Panel - Score Group, Status Group, Stage Group, Enemy Group, Equip Grop, Boss Group, Item Shop Group, Weapon Shop Group 
+
+
+/// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
+/// 
 
 
 
@@ -24,44 +23,42 @@ public class GameManager : MonoBehaviour
 
     public Player player;                           /// Player script 드래그
     public Boss boss;                               /// Boss script 드래그
-    public int stage;
+    public int stage;                               ///4
     public float playTime;
-    public bool isBattle;
-    public int enemyCntA;
-    public int enemyCntB;
+    public bool isBattle;                           ///활성화시 누적시간
+    public int enemyCntA;                           ///각각 2,3,5
+    public int enemyCntB;                           
     public int enemyCntC;
     public int enemyCntD;
-
-    public GameObject menuPanel;
-    public GameObject gamePanel;
+    ///Panel
+    public GameObject menuPanel;                    ///Canvas - menuPanel
+    public GameObject gamePanel;                    ///Canvas - gamePanel
     public GameObject gameoverPanel;
-
     /// Score Group
     public Text curScoreText;
     /// Stage Group 
-    public Text stageTxt;                           ///Game Panel - Stage Group - Stage Text 드래그   
-    public Text playTimeTxt;                        ///Game Panel - Stage Group - TimeText 드래그   
+    public Text stageText;                           ///Game Panel - Stage Group - Stage Text 드래그   
+    public Text playTimeText;                        ///Game Panel - Stage Group - TimeText 드래그   
     /// Status Group
-    public Text playerHealthTxt;                    ///Game Panel - status group - HealthText
-    public Text playerAmmoTxt;                      ///Game Panel - status group - AmmoText
-    public Text playerCoinTxt;                      ///Game Panel - status group - CoinText
+    public Text playerHealthText;                    ///Game Panel - status group - HealthText
+    public Text playerAmmoText;                      ///Game Panel - status group - AmmoText
+    public Text playerCoinText;                      ///Game Panel - status group - CoinText
     /// Equip Group
-    public Image weapon1Img;                        ///Game Panel - Equip group - weapon1 image
-    public Image weapon2Img;                        ///Game Panel - Equip group - weapon2 image
-    public Image weapon3Img;                        ///Game Panel - Equip group - weapon3 image
-    public Image weaponRImg;                        ///Game Panel - Equip group - weapon4 image
+    public Image weapon1Img;                        ///Game Panel - Equip group - Equip1 - weapon1 image
+    public Image weapon2Img;                        ///Game Panel - Equip group - Equip2 - weapon2 image
+    public Image weapon3Img;                        ///Game Panel - Equip group - Equip3 - weapon3 image
+    public Image weaponRImg;                        ///Game Panel - Equip group - Equip4 - weapon4 image
     /// Enemy Group
-    public Text enemyATxt;                          ///Game Panel - Equip group - enemyAText
-    public Text enemyBTxt;                          ///Game Panel - Equip group - enemyBText
-    public Text enemyCTxt;                          ///Game Panel - Equip group - enemyCText
+    public Text enemyAText;                          ///Game Panel - Equip group - enemyAText
+    public Text enemyBText;                          ///Game Panel - Equip group - enemyBText
+    public Text enemyCText;                          ///Game Panel - Equip group - enemyCText
     /// Boss Group
-    public RectTransform bossHealthGroup;
-    public RectTransform bossHealthBar;
+    public RectTransform bossHealthGroup;           ///Game Panel - Boss group
+    public RectTransform bossHealthBar;             ///Game Panel - Boss group - Image - Boss Health Image
     /// GameOver
     public Text bestText;
-    public Text maxScoreTxt;                        ///Menu Panel - Max Score Text
-    public Text scoreTxt;                           ///Game Panel - Score group - Score Text 드래그 
-
+    public Text maxScoreText;                        ///Menu Panel - Max Score Text
+    public Text scoreText;                           ///Game Panel - Score group - Score Text 드래그 
 
 
     public GameObject itemShop;
@@ -73,7 +70,6 @@ public class GameManager : MonoBehaviour
     public GameObject startWall4;
     public GameObject bossMap;
 
-
     public Transform[] enemyZone;
     public GameObject[] enemyPrefabs;
     public List<int> enemyList;
@@ -81,29 +77,31 @@ public class GameManager : MonoBehaviour
 
 
 
-    void Awake()
+    void Awake() ///16강-1
     {
-        maxScoreTxt.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
+        maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));    ///string.Format() 문자열 양식
         enemyList = new List<int>();
-        /// ★HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
-        if (PlayerPrefs.HasKey("MaxScore"))
+
+        if (PlayerPrefs.HasKey("MaxScore"))        /// HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
             PlayerPrefs.SetInt("MaxScore", 0);
     }
 
 
-    public void GameStart()  /// game start 버튼 클릭 이벤트
+    public void GameStart()  ///16강-2   Menu Panel - Start Button - Button(OnClick-GameManager-GameStart)
     {
-        menuCamera.SetActive(false);
+        menuCamera.SetActive(false);    ///menu관련 비활성, game관련 활성
         gameCamera.SetActive(true);
 
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
 
+        player.gameObject.SetActive(true);
+
         startWall1.SetActive(true);
         startWall2.SetActive(true);
         startWall3.SetActive(true);
         startWall4.SetActive(true);
-        player.gameObject.SetActive(true);
+
     }
 
     public void StageStart()
@@ -207,7 +205,7 @@ public class GameManager : MonoBehaviour
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(true);
 
-        curScoreText.text = scoreTxt.text;
+        curScoreText.text = scoreText.text;
 
         /// 기존에 저장된 최고점수를 불러와 비교 후 높으면 갱신
         int maxScore = PlayerPrefs.GetInt("MaxScore");
@@ -223,54 +221,52 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    void Update()
+    void Update()     
     {
-        /// 플레이 타임은 델타타임을 사용하여 증가
+        ///16-4 플레이타임  :  deltaTime으로 증가    
         if (isBattle) playTime += Time.deltaTime;
     }
 
-    /// 인게임 UI
-    void LateUpdate()
+
+    void LateUpdate()   ///16-3 
     {
         /// 상단 UI
-        scoreTxt.text = string.Format("{0:n0}", player.score);
-        stageTxt.text = "STAGE " + stage;
-        /// 초단위 시간을 3600, 60으로 나누어 시분초로 계산
-        int hour = (int)(playTime / 3600);
-        /// hour를 먼저 계산하고 남은 것을 빼준다.
-        int min = (int)((playTime - hour * 3600) / 60);
-        int second = (int)(playTime % 60);
-        playTimeTxt.text = string.Format("{0:00}", hour) + ":" +
+        scoreText.text = string.Format("{0:n0}", player.score);
+        stageText.text = "STAGE " + stage;
+
+        ///16-4  플레이타임 : update함수 참조
+        int hour = (int)(playTime / 3600);          
+        int min = (int)((playTime - hour * 3600) / 60);   
+        int second = (int)(playTime % 60);   ///나머지
+        playTimeText.text = string.Format("{0:00}", hour) + ":" +
                            string.Format("{0:00}", min) + ":" +
                            string.Format("{0:00}", second);
 
-        /// 플레이어 UI
-        playerHealthTxt.text = player.health + " / " + player.maxHealth;
-        playerCoinTxt.text = string.Format("{0:n0}", player.coin);
-        /// 무기를 보유하지 않았다면,
-        if (player.equipWeapon == null) playerAmmoTxt.text = "- / " + player.ammo;
-        /// 보유한 무기가 근접 무기라면,
-        else if (player.equipWeapon.type == Weapon.Type.Melee) playerAmmoTxt.text = "- / " + player.ammo;
-        else playerAmmoTxt.text = player.equipWeapon.curAmmo + " / " + player.ammo;
+        ///플레이어 UI
+        playerHealthText.text = player.health + " / " + player.maxHealth;
+        playerCoinText.text = string.Format("{0:n0}", player.coin);
 
-        /// 무기 UI | 아이콘은 보유 상황에 따라 알파값만 변경
+        ///무기 UI  :  무기 보유상태에 따른 
+        if (player.equipWeapon == null) playerAmmoText.text = "- / " + player.ammo;
+        else if (player.equipWeapon.type == Weapon.Type.Melee) playerAmmoText.text = "- / " + player.ammo;
+        else playerAmmoText.text = player.equipWeapon.curAmmo + " / " + player.ammo;
+
+        ///무기 UI  :  무기 보유 상태에 따라 알파값만 변경
         weapon1Img.color = new Color(1, 1, 1, player.hasWeapons[0] ? 1 : 0);
         weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1] ? 1 : 0);
         weapon3Img.color = new Color(1, 1, 1, player.hasWeapons[2] ? 1 : 0);
         weaponRImg.color = new Color(1, 1, 1, player.hasGranades > 0 ? 1 : 0);
 
-        /// 몬스터 숫자 UI
-        enemyATxt.text = enemyCntA.ToString();
-        enemyBTxt.text = enemyCntB.ToString();
-        enemyCTxt.text = enemyCntC.ToString();
+        ///몬스터수 UI
+        enemyAText.text = enemyCntA.ToString();
+        enemyBText.text = enemyCntB.ToString();
+        enemyCText.text = enemyCntC.ToString();
 
-        /// 보스 UI 
-        /// int 형태끼리 연산하면 결과값도 int이므로 주의 (하나만 float 변환)
-        /// 보스 변수가 비어있을 때 UI 업데이트 하지 않도록 조건 추가
-        if (boss != null)
+        ///보스 UI 
+        if (boss != null)         /// 보스 변수가 비어있을 때 UI 업데이트 하지 않도록 조건 추가
         {
             bossHealthGroup.anchoredPosition = Vector3.down * 30;
-            bossHealthBar.localScale = new Vector3((float)boss.curHelath / boss.maxHelath, 1, 1);
+            bossHealthBar.localScale = new Vector3((float)boss.curHelath / boss.maxHelath, 1, 1);         
         }
         else
         {
