@@ -66,26 +66,27 @@ Occulusion 겹친 부분 처리함
 3) 구글 : AR foundation sample 검색 (https://github.com/Unity-Technologies/arfoundation-samples) - 2021.3  4.2 (verified) 다운로드 - arfoundation-samples-4.2 압축 해제 후 unity로 연결(Unity 2021.3.5f1 버전) 
 
 
-[Unity에서 Hierarchy / Inspector에서 설명한 부분]
-- (놓침) Layer 
+[Unity - Hierarchy / Inspector에서 설명한 부분]
+- Layer : (놓침) 
 - Light : Point (부분 그림자 제거, 보통 영화에는 사람 1당 수천개가 들어간다)
-- UI (Graphic User Interface) : Canvas (2d 형태) - image : 원 그림을 손실시켜 압축시킴 / raw image : 원 그림 그대로 / UI생성시 자동으로 생성되는 EventSystem : 유저가 액션을 취했을 때 이벤트를 처리
+- UI(Graphic User Interface) : Canvas(2D형태) - image : 원 그림을 손실시켜 압축시킴 / raw image : 원 그림 그대로 / UI생성시 자동으로 생성되는 EventSystem : 유저가 액션을 취했을 때 이벤트를 처리
+- Package Manager : 모든 패키지 설치 및 관리하는 곳
 - 우클릭 - XR (Package Manager를 통해 폴더에 설치된 패키지들은 XR로 전부 소환가능)
 
 
-[AR Session Origin]
-- AR Session Origin : 3D AR에서 쓰는 가상 카메라 매칭
-우클릭 - XR - AR Session
+
+[AR Session Origin] #이 부분 한번 더 확인할 것
+(우클릭 - XR - AR Session)
 - AR Session : tracking mode :  position and rotation(위치는 고정하고 그 주위를 회전하는)
 
-AR Session Origin 컴포넌트
+(우클릭 - XR - AR Session Origin)
 - AR Session Origin : 3D AR에서 쓰는 가상 카메라 매칭
-- AR Plane Manager : 평면 찾아내기, 정확하게 찾아내지는 못함  / image processing : 1+1 = 2가나올 확률이 50%냐, 70%냐 ex)주차할때 인식하는 용도 / HolloRense는 정확하게 잡아내지만 AR은 image processing이 정확도가 떨어지고, 발전 가능성이 낮다.
-- AR Point Clouds Manager : 평면을 구분하는 용도로 점 찾아내기 (점 없는 부분: 평면, 거의 쓸일이 없음)
-- AR Raycast Manager : 빛으로 추적한 obj 전부 끌고 옴 
+- AR Plane Manager : 평면을 image processing하여 추적, 정확하게 찾아내지는 못함  / image processing : 1+1 = 2가나올 확률이 50%냐, 70%냐 ex)주차할때 인식하는 용도 / HolloRense는 정확하게 잡아내지만 AR은 image processing 정확도가 떨어지므로 발전 가능성이 낮다.
+- AR Point Clouds Manager : 평면을 인식하는 용도로 점을 찾아낸다 (점 없는 부분 : 평면, 거의 쓸일이 없음)
+- AR Raycast Manager : 광선으로 추적한 obj 정보를 전부 가져옴 
 - Place On Plane : 사각형 평면을 찾아냈을 때 그 위에 어떤 obj를 올릴 건지에 대한 내용
 
-AR Session Origin - AR Camera 컴포넌트
+AR Session Origin - AR Camera - component
 - Audio listener : 외부 사운드 파일을 재생하는 컴포넌트, 마우스 오른쪽에 붙이면 오른쪽에 소리남 (하나만 있어야 함, 두 개 이상 에러남)
 - AR Pose Driver(Script) : AR 카메라 데이터를 가져와 화면에 뿌려줌 (? 확실하지 안흥ㅁ)
 - AR Occlusion Manager (Script) : 화면이 겹쳤을 때 겹친부분 처리, 구석진 데 좀 더 어둡게 처리해서 현실감
