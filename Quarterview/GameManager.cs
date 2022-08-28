@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
     {
         if (stage % 5 == 0)
         {
-            enemyCntD++;
+            enemyCntD++;  
             GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
             Enemy enemy = instantEnemy.GetComponent<Enemy>();            
             enemy.target = player.transform;
