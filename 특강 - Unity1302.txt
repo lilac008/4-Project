@@ -1,3 +1,4 @@
+# 22.08.25 특강
 
 
 
@@ -32,23 +33,18 @@ VR : 가상현실 / 1인칭 / 만들기쉬움 / 최소 3840해상도의 그림�
 AR : 증강현실 / 3인칭 /               / image processing, depth 카메라 2개  
 
 
-[AR component 종류]
+[AR component 종류] 
 수 많은 AR component 중  AR Foundation / MAXST / Vuforia 가 대표적이다.
-1) AR Foundation   : Unity 공식 제공, 상업용에 비해 질이 떨어짐
-2) MAXST : 상업용
-3) Vuforia : 상업용
 
-
-[1. AR Foundation (Unity 공식 제공, PC (X), Android폰 (O))]
-- Support Platform
+1) AR Foundation   : Unity 공식 제공 ( https://unity.com/kr/unity/features/arfoundation ), 상업용에 비해 질이 떨어짐.
+- 지원하는 플랫폼 (Support Platform)
 ARCore :  안드로이드( - java,c# ) 연결
 ARKit    :  아이폰(IOS - c,c++ ) 연결
 MagicLeap : 미래기술 (안경으로 씀, 컴퓨터 연결해야함)
 HoloLens    : 미래기술 (안경으로 씀) 
 
-- Feature Support Per Platform
-(tracking이란 : obj 주위로 카메라를 흔들거나 360도로 돌리면서 깊이감을 인식한 뒤 점으로 좌표를 나타냄)
-Device tracking 화면 추적
+- 지원하는 기능들 (Feature Support Per Platform)
+Device tracking 화면 추적 (tracking이란 : obj 주위로 카메라를 흔들거나 360도로 돌리면서 깊이감을 인식한 뒤 점으로 좌표를 나타냄)
 Plane tracking 4개의 점 좌표를 기반해 평면을 잡아냄
 Point clouds 점 좌표 추적 
 Face tracking 얼굴 추적
@@ -58,108 +54,130 @@ Face tracking 얼굴 추적
 Raycast
 Occulusion 겹친 부분 처리함
 
+2) MAXST : 상업용
+
+3) Vuforia : 상업용
 
 
-[Unity - AR 설치]
+[1. AR Foundation (Unity 공식 제공, PC (X), Android폰 (O))]
+# AR Setup in Unity 
 1) Window - Package Manager - packages : Unity Registry로 설정 - 검색창에 AR 검색 - AR Foundation / ARCore XR Plugin / ARKit Face Tracking / ARKit XR Plugin 설치
-2) 위 순서대로 설치 후 project창의 Package폴더에 설치된 폴더 5개 확인.
-3) 구글 : AR foundation sample 검색 (https://github.com/Unity-Technologies/arfoundation-samples) - 2021.3  4.2 (verified) 다운로드 - arfoundation-samples-4.2 압축 해제 후 unity로 연결(Unity 2021.3.5f1 버전) 
+순서대로 설치 후 project창의 Package폴더에 설치된 폴더 5개 확인.
+2) 구글 : AR foundation sample 검색 (https://github.com/Unity-Technologies/arfoundation-samples) - 2021.3  4.2 (verified) 다운로드 - arfoundation-samples-4.2 압축 해제 후 unity로 연결(Unity 2021.3.5f1 버전) 
+
+# AR Foundation Module Option 
+(우클릭 - XR(eXtended Reality : Package Manager를 통해 폴더에 설치된 패키지들은 전부 XR로 소환가능) )
+
+1) AR Session 
+- AR Session (script) : AR Session이 활성화되어 있으면 해당 scene은 AR system에 의해 관리된다. 
+(tracking mode - position and rotation(위치는 고정하고 그 주위를 회전하는) )
+- AR Input Manager (script)
+- (Assets폴더 - Scenes폴더 - SimpleAR폴더 - ARSessionPrefab (hierarchy창에 놓으면 파란색으로 뜨고, inspector창에서 prefab select를 누르면 prefab이 만들어진 위치가 뜬다 ) )
+
+2) AR Session Origin 
+- AR Session Origin (script) : AR Camera가 연결되어 있다. AR Camera(플레이어 위치)를 가져온다. 기기 카메라로 추적한 요소들과의 상대적인 위치를 계산하여 Unity에서 Scene의 전역 공간으로 변환시키는 역할. 이 obj의 transform 정보는 자식 obj인 AR Camera의 transform에 영향을 준다.
+- AR Plane Manager (script) : 평면을 image processing하여 추적, 정확하게 찾아내지는 못함  / image processing : 1+1 = 2가나올 확률이 50%냐, 70%냐 ex)주차할때 인식하는 용도 / HolloRense는 정확하게 잡아내지만 AR은 image processing 정확도가 떨어지므로 발전 가능성이 낮다.
+- AR Point Clouds Manager (script) : 평면을 인식하는 용도로 점을 찾아낸다 (점 없는 부분 : 평면, 거의 쓸일이 없음)
+- AR Raycast Manager (script) : 광선으로 추적한 obj 정보를 전부 가져옴 
+- Place On Plane (script) : 사각형 평면을 찾아냈을 때 그 위에 어떤 obj를 올릴 건지에 대한 내용
+
+2-1) AR Session Origin - AR Camera
+- Camera
+- Audio listener : 외부 사운드 파일을 재생하는 컴포넌트, 마우스 오른쪽에 붙이면 오른쪽에 소리남 (하나만 있어야 함, 두 개 이상 에러남)
+- AR Pose Driver (script) : AR 카메라 데이터를 가져와 화면에 뿌려줌 (? 확실하지 않음)
+- AR Camera Manager (script)
+- AR Occlusion Manager (script) : 화면이 겹쳤을 때 겹친부분 처리, 구석진 데 좀 더 어둡게 처리해서 현실감
+- AR Camera Background (script) : 배경 어떻게 처리할 건지
+
+- AR Tracked Object Manager (script) : 물체 추적 / Reference Liabrary (추적 기준이 되는 본체 module) / Tracked Object Prefab
+
+- AR Tracked Image Manager (script) :  (Assets폴더-Scenes폴더-ImageTracking폴더)
+- Tracked Image Info Manager (script) : (Assets폴더-Scenes폴더-ImageTracking폴더)
+- Dynamic Library (script) : 
+
+- AR Occulusion Manager (script) : 사람 찾는 속도
+
+# Assets폴더 - Scenes폴더
+- CameraGrain 폴더 : 카메라 해상도
+- Configurations 폴더
+- Depth 폴더
+- FaceTracking 폴더 : 얼굴 인식
+- ImageTracking 폴더 : 이미지 추적
+- ObjectTracking 폴더
+
+
+
+[Unity]
+* visual studio         : c, c++, c# 등 지원되나 그만큼 프로그램이 무겁다. 
+  visual studio code  : 자동완성 되고 가벼우므로 적극 권장. (https://code.visualstudio.com/Download)
+
+* Package import : Package import 시킬 때 기존 파일 전부 백업시키는 습관이 있어야 한다.
+
+* Package Manager : 모든 패키지 설치 및 관리하는 곳, 설치된 패키지는 hierarchy창의 XR로 전부 소환할 수 있다.
+
+* 좌표 : 3차원 행렬, unity에서는 transform함수에서 행렬 계산을 대신해준다
+왼손 법칙 : x축 중지 (좌우), y축 검지 (앞뒤), z축 엄지 (위아래)
+
+* 함수 호출 순서 (Life Cycle : Class(Script)가 돌아가는 방식 / 구글 검색 : unity3D lifecycle - ex) https://lhh3520.tistory.com/83)
+1) 서로 다른 Class(서로 다른 Script)의 OnStart() 실행 순서 : Hierarchy창의 game obj 순차적으로 하나씩 실행시킨다.
+2) game obj가 상속 관계일 경우 : 자식부터 먼저 실행하고 부모는 맨 나중에 실행된다. 
+3) 함수 가져올 때 : public 선언으로 가져오기 >>> get components 등으로 가져오기 (권장하지 않음. start()에서 딱 1번 실행시키는 건 괜찮으나 update()에서는 속도 느려지므로 절대 금지.)
+
+* Material :  똑같은 메쉬도 material에 따라 화질이 다르다.(GPU에서 지정) / Inspector 영역에 다운받은 png파일을 놓으면 재질 덮어씌우기가 가능 
+Shader
+에셋스토어에서 shader를 가져와 어떻게 표현하느냐에 따라 질이 달라진다
+
+Rendering Mode
+- cutout : 일정 색상만 빼냄
+- fade
+- opaque : 불투명
+- transparent : 투명
+
+Main Maps
+- Albedo
+- Normal Map : 음각 ?  		        / (* Normal Map과 Occlusion) 
+- Height Map  : 높낮이
+- Occlusion     : 현실처럼 음영차이, 현실감   / (* Normal Map과 Occlusion)
+- Detail mask
+
+Secondary Maps
+- Normal Map           		        / (* Normal Map과 Occlusion)
+- UV Set : 좌표 (최대값 1)
+- Reflections : 반사 (제대로 나오는 편은 아니지만 GPU에 따라 실물처럼 나온다고 함)
+
+
+*** Android로 import/compile하는 법은 구글에 잘 안 나오니 반드시 배우고 가야한다. 다들 공개하기 싫어서 안 해준다.
+
+* Unreal은 공개된 정보가 없어 개노가다를 해야 하니 unity에 집중하는 것이 낫다. unity 잘하면 unreal도 잘하게 된다.
+
+* window용, android용 앱만 생각하고 iPhone, Mac은 생각도 하지 말라.
+window에서 Mac compile 하지 말것 (IOS, MAC은 보완이 철저해서 이렇게 빌드한 데이터는 앱스토어에 등록이 안 된다.)
+구글 Appstore : 지정된 아이디 외에 다른 아이디는 런칭이 안됨 
 
 
 [Unity - Hierarchy / Inspector에서 설명한 부분]
-- Layer : (놓침) 
+- Layer 
 - Light : Point (부분 그림자 제거, 보통 영화에는 사람 1당 수천개가 들어간다)
 - UI(Graphic User Interface) : Canvas(2D형태) - image : 원 그림을 손실시켜 압축시킴 / raw image : 원 그림 그대로 / UI생성시 자동으로 생성되는 EventSystem : 유저가 액션을 취했을 때 이벤트를 처리
 - Package Manager : 모든 패키지 설치 및 관리하는 곳
 - 우클릭 - XR (Package Manager를 통해 폴더에 설치된 패키지들은 XR로 전부 소환가능)
 
 
-
-[AR Session Origin] #이 부분 한번 더 확인할 것
-(우클릭 - XR - AR Session)
-- AR Session : tracking mode :  position and rotation(위치는 고정하고 그 주위를 회전하는)
-
-(우클릭 - XR - AR Session Origin)
-- AR Session Origin : 3D AR에서 쓰는 가상 카메라 매칭
-- AR Plane Manager : 평면을 image processing하여 추적, 정확하게 찾아내지는 못함  / image processing : 1+1 = 2가나올 확률이 50%냐, 70%냐 ex)주차할때 인식하는 용도 / HolloRense는 정확하게 잡아내지만 AR은 image processing 정확도가 떨어지므로 발전 가능성이 낮다.
-- AR Point Clouds Manager : 평면을 인식하는 용도로 점을 찾아낸다 (점 없는 부분 : 평면, 거의 쓸일이 없음)
-- AR Raycast Manager : 광선으로 추적한 obj 정보를 전부 가져옴 
-- Place On Plane : 사각형 평면을 찾아냈을 때 그 위에 어떤 obj를 올릴 건지에 대한 내용
-
-AR Session Origin - AR Camera - component
-- Audio listener : 외부 사운드 파일을 재생하는 컴포넌트, 마우스 오른쪽에 붙이면 오른쪽에 소리남 (하나만 있어야 함, 두 개 이상 에러남)
-- AR Pose Driver(Script) : AR 카메라 데이터를 가져와 화면에 뿌려줌 (? 확실하지 안흥ㅁ)
-- AR Occlusion Manager (Script) : 화면이 겹쳤을 때 겹친부분 처리, 구석진 데 좀 더 어둡게 처리해서 현실감
-- AR Camera Backgrount (Script) : 배경 어떻게 처리할 건지
-
-
-
-
-[Unity]
-- visual studio       : c, c++, c# 등 지원되나 그만큼 프로그램이 무겁다. 
-visual studio code  : 자동완성 되고 가벼우므로 적극 권장. (https://code.visualstudio.com/Download)
-
-- Package import : 시킬 때 기존 파일 전부 백업시키는 습관이 있어야 한다.
-
-- Package Manager : 모든 패키지 설치 및 관리하는 곳
-
-- 좌표 : 3차원 행렬, Unity에서는 transform()에서 행렬 계산을 대신해준다
-x축 중지 (좌우)
-y축 엄지 (앞뒤)
-z축 검지 (위아래)
-
-- 함수 호출 순서 : Life Cycle (하나의 class(script)가 돌아가는 방식)  / 구글 : unity3d lifecycle 검색 - ex) https://lhh3520.tistory.com/83
-1) 서로 다른 Class(서로 다른 script)의 OnStart() 실행 순서 : Hierarchy창에서 game obj 순차적으로 하나씩 실행시킨다.
-2) Game Obj가 상속 관계일 경우 실행시키는 순서 : 자식부터 먼저 실행하고 부모는 맨 나중에 실행된다. 
-3) 함수 가져올 때 : Public 선언으로 가져오기 >>> get components 등으로 가져오기(start()에서 딱 1번 실행시키는 건 괜찮음. update내에서는 속도 느려지므로 절대 사용 금지)
-
-
-- Material : (GPU에서 지정, 화질이 달라보임 / png 파일을 game obj의 inspector창에 끌어놓으면 연결 가능)   
-Material - Shader(에셋스토어 - shader를 가져와 어떻게 표현하느냐에 따라 질이 달라진다.)
-
-Albedo
-occlusion
-detail mask
-
-cutout 일정 색상만 빼냄
-opaque 불투명체 
-transparent 투명처리 
-
-Normal Map : 구멍?
-Height map  : 높낮이
-Occlusion     : 현실처럼 음영차이, 현실감   / Normal Map과 Occlusion 
-Detail Mask   : ?
-UV Set : 좌표, 최대값 1 :
-Reflection : 반사 (제대로 나오는 편은 아니지만 좋은 그래픽 카드 넣으면 실물처럼 잘 나온다고 함)
-
-
-- Android로 import/compile하는 법은 구글에 잘 안 나오니 반드시 배워놓고 가라. 다들 공개하기 싫어서 안 해준다.
-- 언리얼은 공개된 정보가 없어 개노가다를 해야 한다. 그냥 unity에 집중하라. unity 잘하면 unreal도 잘하게 된다.
-
-- Window에서 MAC 컴파일 하지 말것 (MAC은 정책 상 시키는 대로만 개발해야함)
-IOS과 MAC은 보완이 철저해서 그렇게 빌드한 데이터는 앱스토어에 등록이 안 된다.
-구글 앱스토어 : 지정된 아이디 외에 다른 아이디는 런칭이 안됨 
-window용, android용 앱만 생각하고 아이폰,맥은 생각도 하지 마셈
-
-
 -------------------------------
 
 
-Image Tracking 
+
+[Project Setting - Player] 
+- Splash Image - Virtual Reality Splash Image : 프로그램 실행시 로고 이미지(무료/유료)
+- Other Settings - Configuration - Scripting Backend : 
+Mono  : android / IOS 코딩 가능 (? - 보충 설명 필요)
+IL2CPP : 모바일로 코딩 가능 (? - 보충 설명 필요)
+- Other Settings - Configuration - Api Compatibility Level :  .Net Framework (c#으로)  /  .Net Standard 2.1()
+
+- Stack Trace : 전부 none
 
 
-[Project Setting] 
-splash image : 프로그램 실행시 로고 이미지(를 보고 무료/유료 구분)
-configuration - mono : c#코드로 안드로이드 / 아이폰 코딩 가능
-                 - IL2CPP : 모바일로 코딩 가능
-
-
-Api Compatibility Level - .Net Framework (c#으로 ) / .Net Standard 2.1()
-
-Stack Trace : 전부 none
-
-
-obj tracking은 변환을 해야하지만 이 이미지는 그대로 쓸 수 있다.
+obj tracking은 변환을 해야하지만 이 이미지는 그대로 쓸 수 있다.  ??????
 
 
 카메라 작동에 꼭 필요한 스크립트
@@ -172,11 +190,11 @@ join 사람 관절
 Depth : 거리, 잘 나오지만 정확하지 않다.
 Depth Image : 깊이 색 지정
 
-AR Occulusion Manager : 사람 찾는 속도
+AR Occulusion Manager (script) : 사람 찾는 속도
 
 
-[Preference (edit-Preference)]
-External Tools : 안드로이드를 컴파일하는 엔진 라이브러리, jdk mdk , 
+[edit - Preference]
+- External Tools : andorid를 compile하는 엔진 라이브러리, jdk mdk , 
 
 [모바일 세팅]
 Build Setting, Preference
@@ -185,10 +203,15 @@ asset store - sample --
 
 
 ------------------------
+# 22.08.26 특강
+
+
 
 [MAXST]
-MAXST(IOS) / Vuforia(Android) 비교영상 : https://www.youtube.com/watch?v=PyPinrG1GdA (IOS보다 Android가 떨어지므로 정당한 비교라고 볼 수는 없다.)
-360도로 회전하며 3D 스캔 후 tracking에 사용(점들은 3D에서 생성된 좌표값) 
+
+MAXST(IOS)와 Vuforia(Android) 비교영상 : https://www.youtube.com/watch?v=PyPinrG1GdA
+- IOS보다 Android가 떨어지므로 정당한 비교라고 볼 수는 없다.
+- 360도로 회전하며 3D 스캔 후 점으로 생성된 좌표값을 tracking에 사용
 
 
 1) 파일 다운 후 Unity에 연결 (Download - SDK - Unity Download) : https://developer.maxst.com/MD/downloadsdk
