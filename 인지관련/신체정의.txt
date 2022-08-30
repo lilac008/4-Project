@@ -1,23 +1,33 @@
+[동작 퀘스트 공통]
+- 효과음/이펙트/점수 : 성공시에만 넣고 계산, 실패시에는 넣거나 계산하지 않는다. (부정적인 쪽으로 낙인 효과를 심어주지 않기 위함) 
+
+
+[난이도 설정]
+Easy   - 전체 체조순서 동일, 세부 체조 순서 2회씩 반복
+Normal - 전체 체조순서 (미정), 세부 체조순서 (미정)
+Hard   - 둘 다 랜덤
+
+
+[참고(Reference)]
+# hand tracker - KIZUNA AI 참조 : https://www.youtube.com/watch?v=plNZAVFuRuI
+(패널을 없애고 앞으로 오는 큐브를 치는 식으로 가도 괜찮을듯)
+# head tracker - TRIPP 참조 : https://www.oculus.com/experiences/quest/2173576192720129/?locale=ko_KR
 
 
 
-정답 이펙트, 
+[전체 체조 순서]
 
-1. 단어 중 없는 단어
-2. 여러 문구에 들어갈 공통 단어
-3. 가격 계산
-4. 사진의 이름 / 성분 / 용도 등
- 
+1. 목 돌리기(목운동) (좌)/(우) 			  : head tracker, raycast, 시야 앞에 움직이는 빛나는 물체 인지
+2. 양팔 돌리기(어깨운동) (좌-전/후)/(우-전/후)  : hand tracker, raycast, 양 손 옆에 움직이는 빛나는 물체 인지
+3. 하늘보며 만세(등운동) 					   : hand/head tracker, raycast
+4. 옆구리 운동 (좌)/(우) 				   : hand tracker, raycast
+5. 한 손으로 원을 그리며 반대쪽 발 짚기 (좌)/(우) : hand tracker, raycast 
+6. 두 손 바닥에 짚기 -> 하늘보며 만세(등운동)	   : hand/head tracker, raycast
+7. 양 손 번갈아 내밀면서 주먹치기 (좌)/(우) y축:90/135/180도 -> x축:180/135/90도
+(허리운동에서 대체됨)
+8. 양손 번갈아서 교차로 손 모으기              :
+9. 양 손으로 원을 그리기 (좌)/(우)			   : hand tracker, raycast  
+10. 하늘보며 만세 (등운동)				   : hand/head tracker, raycast
 
-
-기본 체조  
-목 돌리기 좌/우
-양팔 돌리기(어깨운동) 앞/뒤 
-뒷짐지고 하늘보기(등운동)
-옆구리 운동 좌/우
-한 손으로 반대쪽 발 짚기 좌/우
-두 손 바닥에 짚기 
-두 손모아 허리돌리기(허리운동) 좌/우
-넓게 손뼉치기 
-팔다리 벌리고 뛰면서 위아래로 박수
-앉아서 하늘보며 만세 - 두 손 발끝으로 모으기  
+# hand tracker - KIZUNA AI 참조 : https://www.youtube.com/watch?v=plNZAVFuRuI
+# head tracker - TRIPP 참조 : https://www.oculus.com/experiences/quest/2173576192720129/?locale=ko_KR
