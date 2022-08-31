@@ -5,9 +5,10 @@ using UnityEngine;
 
 
 
-///Start Zone (shop zone 복사) : untagged, shop script삭제, StartZone script 연결, 우클릭추가-3Dobject-3DText(Next Stage)
+///StartZone (ShopZone복사) : untagged, Shop script삭제, StartZone script 추가, 우클릭추가-3Dobject-3DText(Next Stage)
 
-
+/// Enemy Zone Group(빈obj) - Enemy Respawn Zone (StartZone 복사 후 collider, script, stage text 전부 제거)
+/// 
 
 
 
@@ -19,15 +20,10 @@ public class Startzone : MonoBehaviour
 
 
 
-
-
-    private void OnTriggerEnter(Collider collider) 
+    private void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
             gameManager.StageStart();
-
-
-        
     }
 
 

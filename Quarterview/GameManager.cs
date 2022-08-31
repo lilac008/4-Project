@@ -12,7 +12,7 @@ using UnityEngine.UI;  ///
 /// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
 
 
-///Enemy Zone Group - Enemy Respawn Zone 4개() 
+///Enemy Zone Group - Enemy Respawn Zone 4개(비활성화) 
 
 
 
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public Player player;                           /// Player script drag
     public Boss boss;                               /// Boss script drag
-    public int stage;                               ///4
+    public int stage;                               ///4 
     public float playTime;
     public bool isBattle;                           ///활성화시 누적시간
     public int enemyCntA;                           ///각각 2,3,5
@@ -107,6 +107,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void GameOver()           
+    {
+
+
+    }
+
     public void StageStart()  ///17-1
     {
         itemShop.SetActive(false);
@@ -117,15 +123,15 @@ public class GameManager : MonoBehaviour
         startWall3.SetActive(false);
         startWall4.SetActive(false);
 
-        foreach (Transform data in enemyZone) data.gameObject.SetActive(true);
+        foreach (Transform data in enemyZone) data.gameObject.SetActive(true);  
 
         isBattle = true;
-        StartCoroutine(InBattle());
+        StartCoroutine(InBattle());     /// Coroutine으로 소환
     }
 
     public void StageEnd()  ///17-1
     {
-        player.transform.position = Vector3.back * 0.8f;   /// 플레이어 재위치
+        player.transform.position = Vector3.up * 0.8f;   /// 플레이어 재위치
 
         itemShop.SetActive(true);
         weaponShop.SetActive(true);
@@ -141,15 +147,15 @@ public class GameManager : MonoBehaviour
         stage++;                                        ///스테이지 종료시 stage값 1 증가
     }
 
-    IEnumerator InBattle() ///17-1
+    IEnumerator InBattle()   ///17-1 
     {
-        if (stage % 5 == 0)
+        if (stage % 5 == 0)  ///stage가 5단위일때
         {
             enemyCntD++;  
             GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
             Enemy enemy = instantEnemy.GetComponent<Enemy>();            
             enemy.target = player.transform;
-            enemy.manager = this;                                               
+            enemy.gameManager = this;                                               
             boss = instantEnemy.GetComponent<Boss>();
 
             if (boss) bossMap.SetActive(true);
@@ -157,7 +163,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < stage; i++)         ///17-2
+            for (int i = 0; i < stage; i++)       ///17-2
             {
                 int ran = Random.Range(0, 3);
                 enemyList.Add(ran);
@@ -182,7 +188,7 @@ public class GameManager : MonoBehaviour
                 GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZone[ranZone].position, enemyZone[ranZone].rotation);
                 Enemy enemy = instantEnemy.GetComponent<Enemy>();                /// prefab화 된 obj는 scene에 접근할 수 없다.       ///따라서 hierarchy Player에 접근하기 위해 component를 가져옴
                 enemy.target = player.transform;
-                enemy.manager = this;                                            /// Enemy 스크립트에서 감소된 카운트를 가져온다.
+                enemy.gameManager = this;                                        /// Enemy 스크립트에서 감소된 카운트를 가져온다.
                 enemyList.RemoveAt(0);                                           /// 생성 후에 사용된 데이터 삭제, nemyList.Count = 0이되면 while문 종료
                 yield return new WaitForSeconds(4f);                             ///
             }
@@ -264,9 +270,9 @@ public class GameManager : MonoBehaviour
         if (boss != null)         /// 보스 변수가 비었을때 UI 업데이트 하지 않도록
         {
             bossHealthGroup.anchoredPosition = Vector3.down * 30;
-            bossHealthBar.localScale = new Vector3((float)boss.curHelath / boss.maxHelath, 1, 1);         
+            bossHealthBar.localScale = new Vector3((float)boss.curHelath / boss.maxHelath, 1, 1);
         }
-        else
+        else                 
         {
             bossHealthGroup.anchoredPosition = Vector3.up * 200;
         }

@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     bool isBorder;
     bool isDamage;
     bool isShop;                            ///쇼핑중 변수
+    bool isDead;
 
     GameObject obj;                         /// isTrigger로 접촉한 obj 인식
 
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour
     public GameObject[] inactiveGrenades;   /// 몸 주위에 공전하는 비활성 수류탄들 : (G Group(빈obj) - Front/Back/Right/Left(각각 빈obj)에 G prefab 추가 - 하위 mesh obj에 각각 Light, Particle( Emission:(RoT:0, RoD:10) )추가 및 mesh obj - Simulation Space - World   / Orbit script 추가 )
     public GameObject grenadeObj;           /// Throw Grenade prefab끌어서 드래그
 
-    public int hasAmmo;                     ///각각 100, 5000, 99
+    public int hasAmmo;                     ///각각 100, 5500, 100
     public int hasCoin;                     
     public int health;
     public int hasGrenades;
@@ -89,9 +90,11 @@ public class Player : MonoBehaviour
 
     float fireDelay;                       /// 공격 딜레이
 
-    public Camera cam;                     ///메인카메라 드래그
+    public Camera camera;                     ///메인카메라 드래그
 
     public int score;                      ///16강-3,  50000
+
+    public GameManager gameManager;
 
 
 
@@ -167,7 +170,7 @@ public class Player : MonoBehaviour
             mVec = dVec;
 
         /// 무기교체 시 이속0,   /6, 8 10
-        if (isSwap || !isReload || !isFireReady)     /// 무기교체o  장전,발사준비시 x  
+        if (isSwap || !isReload || !isFireReady || isDead)     /// 무기교체o  장전,발사준비시 x  
             mVec = Vector3.zero;                   /// 방향이동 0
         transform.position += mVec * speed * (walkKey ? 0.3f : 1f) * Time.deltaTime;
 
@@ -187,9 +190,9 @@ public class Player : MonoBehaviour
         transform.LookAt(transform.position + mVec); ///LookAt() : 지정된 방향을 향해 회전시킴
 
         /// 11 공격시에만 마우스에 의한 화면 회전 (7부 40분)
-        if (fireKey)
+        if (fireKey && !isDead)
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition) ///ScreenPointToRay : 스크린에서 (마우스 위치)로 빛을 쏘는 함수
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition) ///ScreenPointToRay : 스크린에서 (마우스 위치)로 빛을 쏘는 함수
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 100))                 ///
             {
@@ -204,7 +207,7 @@ public class Player : MonoBehaviour
 
     void Jump() ///3 점프 (project Setting - physics - Gravity 필요한만큼 적용)
     {
-        if (sKey && mVec == Vector3.zero && !isJump && !isDodge && !isSwap) /// spaceKey && 이동방향 0 && !점프중 && !회피중 && !무기교체중 
+        if (sKey && mVec == Vector3.zero && !isJump && !isDodge && !isSwap && !isDead) /// spaceKey && 이동방향 0 && !점프중 && !회피중 && !무기교체중 
         {
             r.AddForce(Vector3.up * 15, ForceMode.Impurse)
 
@@ -221,9 +224,9 @@ public class Player : MonoBehaviour
         if (hasGrenades == 0)
             return;
 
-        if (grenadeKey && !isReload && !isSwap) 
+        if (grenadeKey && !isReload && !isSwap && !isDead) 
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition) ///ScreenPointToRay : 스크린에서 (마우스 위치)로 빛을 쏘는 함수
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition) ///ScreenPointToRay : 스크린에서 (마우스 위치)로 빛을 쏘는 함수
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 100))                 ///
             {
@@ -252,7 +255,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.attackSpeed < fireDelay;    /// true = 무기공속 < fireDelay;  공속 시간동안 연타 금지
 
-        if (fireKey && isFireReady && !isDodge && !isSwap && !isShop )
+        if (fireKey && isFireReady && !isDodge && !isSwap && !isShop && !isDead)
         {
             equipWeapon.Use();
             a.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "tSwing" : "tShot");  ///9 Weapon script
@@ -271,7 +274,7 @@ public class Player : MonoBehaviour
         if (hasAmmo == 0)                              ///소유 탄약 0일시 탈출
             return;
 
-        if (rKey && !isJump && !isDodge && !isSwap && isFireReady && !isShop)   ///r키,공격준비시간 o 점프,회피,무기교체시 x
+        if (rKey && !isJump && !isDodge && !isSwap && isFireReady && !isShop && !isDead)   ///r키,공격준비시간 o 점프,회피,무기교체시 x
         {
             a.SetTrigger("tReload");                            ///애니메이터 호출
             isReload = true;                                      ///장전 활성화
@@ -292,7 +295,7 @@ public class Player : MonoBehaviour
 
     void Dodge() ///4 회피
     {
-        if (sKey && v != Vector3.zero && !isJump && !isDodge && !isSwap) /// spaceKey && 이동방향 0 && !점프중 && !회피중 && !무기교체중 
+        if (sKey && v != Vector3.zero && !isJump && !isDodge && !isSwap && !isDead) /// spaceKey && 이동방향 0 && !점프중 && !회피중 && !무기교체중 
         {
             dVec = mVec;
             speed *= 2;                      /// 회피 중 속도 2배 
@@ -327,7 +330,7 @@ public class Player : MonoBehaviour
         if (swap3) wIndex = 2;
 
 
-        if ((swap1 || swap2 || swap3) && !isJump && !isDodge)
+        if ((swap1 || swap2 || swap3) && !isJump && !isDodge && !isDead)
         {
             /// [ Weapon equipW; 으로 선언했을 경우 ]      (6부 18분)
             if (equipWeapon != null)
@@ -362,7 +365,7 @@ public class Player : MonoBehaviour
 
     void Interaction() ///5-2 템 줍기
     {
-        if (eKey && obj != null && !isJump && !isDodge)
+        if (eKey && obj != null && !isJump && !isDodge && !isDead)
         {
             if (obj.tag == "Weapon")
             {
@@ -416,11 +419,11 @@ public class Player : MonoBehaviour
 
 
 
-    void onTriggerEnter(Collider t)     ///7 접촉 진입
+    void onTriggerEnter(Collider colider)     ///7 접촉 진입
     {
-        if (t.tag == "Item")                        ///7 플레이어가 아이템에 접촉할 경우
+        if (colider.tag == "Item")                        ///7 플레이어가 아이템에 접촉할 경우
         {
-            Item cItem = t.GetComponent<Item>();
+            Item cItem = colider.GetComponent<Item>();
             switch (item.type)
             {
                 case Item.Type.Ammo;
@@ -445,25 +448,24 @@ public class Player : MonoBehaviour
                         hasGrenade = maxGrenades;
                     break;
             }
-            Destroy(t.gameObject);
+            Destroy(colider.gameObject);
         }
-        else if (t.tag == "EnemyBullet")     ///17   Player가 EnemyBullet tag에 접촉할 경우
+        else if (colider.tag == "EnemyBullet")     ///17   Player가 EnemyBullet tag에 접촉할 경우
         {
             if (!isDamage) 
             {
-                Bullet enemyBullet = t.GetComponent<Bullet>();
+                Bullet enemyBullet = colider.GetComponent<Bullet>();
                 health -= enemyBullet.damage;
 
-                bool isBossAttack = t.name == "Boss Melee Area";    ///t.name == "Boss Melee Area이면 true
+                bool isBossAttack = colider.name == "Boss Melee Area";    ///t.name == "Boss Melee Area이면 true
 
                 StartCoroutine(OnDamage(isBossAttack));
-
             }
 
             ///플레이어 무적타임과 관계없이 투사체미사일이 파괴되도록 if문 밖으로 빼기
-            if (t.GetComponent<Rigidbody>() != null)    ///19  Missile이 가지고 있는 rigidbody 유무를 조건
+            if (colider.GetComponent<Rigidbody>() != null)    ///19  Missile이 가지고 있는 rigidbody 유무를 조건
             {
-                Destroy(t.gameObject);
+                Destroy(colider.gameObject);
             }
         }
 
@@ -512,6 +514,16 @@ public class Player : MonoBehaviour
 
         if (isBossAttack)                                               ///
             r.velocity = Vector3.zero;     ///
+
+        if (health <= 0)
+            OnDie();
+    }
+
+    void OnDie() 
+    {
+        anim.SetTrigger("tDie");
+        isDead = true;
+        gameManager.GameOver();
     }
 
 

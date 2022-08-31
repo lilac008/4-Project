@@ -20,7 +20,6 @@ using UnityEngine.AI;  ///NavMeshAgent
 /// 2. Nav Mesh Agent(AngularSpeed(회전속도):360, Acceleration(가속도):30) 추가 / Floor,Wall : Static 설정(static만 bake가능) / Window - AI - Navigation - Bake - Advanced:Bake  (NavMesh는 NavAgent가 경로를 그리기 위한 바탕, NavMeshAgent는 navigation을 사용하는 AI)
 /// 3. Mesh Obj - Animator(Enemy A) 추가, 애니메이션 Idle(우클릭-SetAsLayerDefaultState), Walk, Attack, Die 추가 (영상11부 12분 참조), bWalk, bAttack, tDie
 /// 4. 아래의 Enemy Bullet 추가 후 Enemy A 정면 앞에 배치
-/// EnemyA/B/C/D 위치 초기화 후 prefab
 
 
 /// Enemy B (돌격형) : 1. Enemy A 따라서 그대로 복사
@@ -43,6 +42,8 @@ using UnityEngine.AI;  ///NavMeshAgent
 ///                                  4. Open prefab(Tranform(0,0,0), )
 
 
+///  17강 - EnemyA/B/C/D에 score, coins에 맞는 값 추가, 위치초기화(0,0,0), prefab으로 저장  
+
 
 
 
@@ -59,7 +60,7 @@ public class Enemy : MonoBehaviour
     public Transform target;           /// Player 드래그
     public BoxCollider meleeArea;      /// 공격범위 : EnemyA의 EnemyBullet 드래그
     public GameObject bullet;          /// EnemyC에 Missile prefab 드래그
-    public GameObject[] coins;         /// EnemyA/B/C/D -> coin prefab 3개
+    public GameObject[] coins;         /// EnemyA/B/C/D에 각각 coin prefab 3개
     public bool isChase;
     public bool isAttack;              
     public bool isDead;                /// 죽었을 때를 알기 위한 flag
@@ -69,6 +70,8 @@ public class Enemy : MonoBehaviour
     public MeshRenderer[] meshs;
     public NavMeshAgent nav;
     public Animator ani;
+
+    public GameManager gameManager;
 
 
 
@@ -270,8 +273,25 @@ public class Enemy : MonoBehaviour
 
             Player player = target.GetComponent<Player>();                          /// 17강-1
             player.score += score;                                                  /// 
-            int ranCoin = Random.Range(0, 3);                                       ///
-            Instantiate(coins[ranCoin], transform.position, Quaternion.identity);   ///회전제로?
+            int ranCoin = Random.Range(0, 3);                                       /// 
+            Instantiate(coins[ranCoin], transform.position, Quaternion.identity);   ///Quaternion 회전제로?
+
+            switch (enemyType) 
+            {
+                case Type.A:
+                    gameManager.enemyCntA--;
+                    break;
+                case Type.B:
+                    gameManager.enemyCntB--;
+                    break;
+                case Type.C:
+                    gameManager.enemyCntC--;
+                    break;
+                case Type.D:
+                    gameManager.enemyCntD--;
+                    break;
+
+            }
 
             if (isGrenade)
             {
