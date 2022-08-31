@@ -11,10 +11,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    /// Player 
-    /// 1) x,z rotation 얼림
-    /// 2) transform이동 : 물리 충돌 무시하는 경우, 추가로 Rigidbody에서 collision ditection - Continuous로 변경, Floor과 Wall은 모두 static으로 변경
-    /// 3) Tag/Layer : Player 추가
+    /// Player : 1) x,z rotation 얼림
+    ///          2) transform이동 : 물리 충돌 무시하는 경우, 추가로 Rigidbody에서 collision ditection - Continuous로 변경, Floor과 Wall은 모두 static으로 변경
+    ///          3) Tag/Layer : Player 추가
+    /// Player - Mesh Object / Bullet Pos / Jump Sound(빈obj, Audio Source(AudioClip-다운받은효과음, PlayOnAwake 비활성화) 추가)
 
 
     /// World space - Floor,Wall 
@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
     /// 5) Grenade - Mesh Obj - Trail Renderer(Width:하향, Time:3, Color-alpha:100, Material:Default-Line) 추가
     /// 6) PlayerBullet tag 추가 (player와 부딛혀 밀리는 것 방지)
     /// 7) prefab에 저장 후 Transform.position(0,0,0)
+
+
+
+
 
 
 
@@ -96,6 +100,8 @@ public class Player : MonoBehaviour
 
     public GameManager gameManager;
 
+    public AudioSource jumpSound;          //             
+
 
 
 
@@ -111,7 +117,7 @@ public class Player : MonoBehaviour
 
         debug.Log(PlayerPrefs.GetInt("MaxScore"));
 
-    }
+    }   
 
     void Update()
     {
@@ -185,14 +191,14 @@ public class Player : MonoBehaviour
     }
 
 
-    void Turn() ///2,11 육체 회전
+    void Turn() ///2,11 화면 회전
     {
         transform.LookAt(transform.position + mVec); ///LookAt() : 지정된 방향을 향해 회전시킴
 
         /// 11 공격시에만 마우스에 의한 화면 회전 (7부 40분)
         if (fireKey && !isDead)
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition) ///ScreenPointToRay : 스크린에서 (마우스 위치)로 빛을 쏘는 함수
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition)     ///ScreenPointToRay : 스크린에서 (마우스 위치)로 빛을 쏘는 함수
             RaycastHit rayHit;
             if (Physics.Raycast(ray, out rayHit, 100))                 ///
             {
@@ -216,6 +222,9 @@ public class Player : MonoBehaviour
             a.SetTrigger("tJump");
 
             isJump = true;              ///활성화, 비활성화시 바닥에 닿을-물리충돌(OnCollisionEnter())-경우 false로
+
+
+            jumpSound.Play();
         }
     }
 
@@ -504,6 +513,9 @@ public class Player : MonoBehaviour
         if (isBossAttack)                                               ///
             r.AddForce(transform.forward * -25, ForceMode.Impulse);     ///
 
+        if (health <= 0 && !isDead)             ///계속 죽음 방지 : !isDead일 경우에만 onDie() 호출 
+            OnDie();
+
         yield return new WaitForSeconds(1f);    ///1초 무적 - 1초 지나고
         isDamage = false;                       ///1초 무적 - 비활성화
 
@@ -513,15 +525,14 @@ public class Player : MonoBehaviour
         }
 
         if (isBossAttack)                                               ///
-            r.velocity = Vector3.zero;     ///
+            r.velocity = Vector3.zero;                                  ///
 
-        if (health <= 0)
-            OnDie();
+
     }
 
     void OnDie() 
     {
-        anim.SetTrigger("tDie");
+        anim.SetTrigger("tDie");    ///Player Animator에 Die(animation) 추가
         isDead = true;
         gameManager.GameOver();
     }

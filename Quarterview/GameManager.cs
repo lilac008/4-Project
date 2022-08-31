@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  /// 
+using UnityEngine.UI;               /// 
+using UnityEngine.SceneManagement;  /// SceneManager.LoadScene(0); 
 
 
 ///16강
 /// Game Manager(빈 obj,) 생성
 /// Canvas - Game Panel - Score Group, Status Group, Stage Group, Enemy Group, Equip Grop, Boss Group, Item Shop Group, Weapon Shop Group 
 
-
 /// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
 
-
 ///Enemy Zone Group - Enemy Respawn Zone 4개(비활성화) 
+
+///GameOver panel (MenuPanel 복사) - 17강 35분 참조
+/// 1. Restart Button (Navigation - None(키보드 입력이 버튼을 클릭하지 않도록) 
+
+/// Hierarchy - Button 검색 후 모두 Navigation - None 설정
+
+
+
+
 
 
 
@@ -35,8 +43,6 @@ public class GameManager : MonoBehaviour
     public GameObject menuPanel;                    ///Canvas - menuPanel
     public GameObject gamePanel;                    ///Canvas - gamePanel
     public GameObject gameoverPanel;
-    /// Score Group
-    public Text curScoreText;
     /// Stage Group 
     public Text stageText;                           ///Game Panel - Stage Group - Stage Text  
     public Text playTimeText;                        ///Game Panel - Stage Group - TimeText 
@@ -56,8 +62,10 @@ public class GameManager : MonoBehaviour
     /// Boss Group
     public RectTransform bossHealthGroup;           ///Game Panel - Boss group
     public RectTransform bossHealthBar;             ///Game Panel - Boss group - Image - Boss Health Image
+    /// Score Group
+    public Text curScoreText;
     /// GameOver
-    public Text bestText;
+    public Text bestScoreText;
     public Text maxScoreText;                        ///Menu Panel - Max Score Text
     public Text scoreText;                           ///Game Panel - Score group - Score Text
 
@@ -85,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         maxScoreText.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));    ///16-1 string.Format() 문자열 양식
 
-        if (PlayerPrefs.HasKey("MaxScore"))                                             /// HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
+        if (PlayerPrefs.HasKey("MaxScore"))        /// MaxScore가 있는지 확인 후, 없다면 0으로 저장
             PlayerPrefs.SetInt("MaxScore", 0);
     }
 
@@ -208,19 +216,18 @@ public class GameManager : MonoBehaviour
     {
         gamePanel.SetActive(false);
         gameoverPanel.SetActive(true);
-
         curScoreText.text = scoreText.text;
 
-        /// 기존에 저장된 최고점수를 불러와 비교 후 높으면 갱신
+
         int maxScore = PlayerPrefs.GetInt("MaxScore");
-        if (player.score > maxScore)
+        if (player.score > maxScore)                             ///기존에 저장된 최고점수와 비교 후 높으면 갱신
         {
-            bestText.gameObject.SetActive(true);
-            PlayerPrefs.SetInt("MaxScore", player.score);
+            bestScoreText.gameObject.SetActive(true);
+            PlayerPrefs.SetInt("MaxScore", player.score);       ///MaxScore에 player.score를 저장
         }
     }
 
-    public void ReStart()
+    public void ReStart()   ///게임오버 후 재시작
     {
         SceneManager.LoadScene(0);
     }

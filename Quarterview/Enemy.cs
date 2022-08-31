@@ -42,7 +42,7 @@ using UnityEngine.AI;  ///NavMeshAgent
 ///                                  4. Open prefab(Tranform(0,0,0), )
 
 
-///  17강 - EnemyA/B/C/D에 score, coins에 맞는 값 추가, 위치초기화(0,0,0), prefab으로 저장  
+///  17강 - EnemyA/B/C/D에 score, coins에 맞는 값 추가, 위치초기화(0,0,0), prefab으로 저장   
 
 
 
