@@ -209,28 +209,28 @@ asset store - sample --
 
 [MAXST]
 
-MAXST(IOS)와 Vuforia(Android) 비교영상 : https://www.youtube.com/watch?v=PyPinrG1GdA
+# MAXST(IOS)와 Vuforia(Android) 비교영상 : https://www.youtube.com/watch?v=PyPinrG1GdA
 - IOS보다 Android가 떨어지므로 정당한 비교라고 볼 수는 없다.
 - 360도로 회전하며 3D 스캔 후 점으로 생성된 좌표값을 tracking에 사용
 
+# MAXST 설치법
+1) MAXST AR SDK 다운(Download - SDK - Unity Download) 후 Unity에 연결 ( 링크 : https://developer.maxst.com/MD/downloadsdk )
+2) Unity에서 설정하기
+(File - Build Setting - Project Setting - Player - Other Setting)
+1) Other Setting - Rendering - Auto Graphics API for Windows 비활성화
+2) Other Setting - Graphics APIs for windows - OpenGLCore 추가, 기존의 Dirext3D11 해제
 
-1) 파일 다운 후 Unity에 연결 (Download - SDK - Unity Download) : https://developer.maxst.com/MD/downloadsdk
-2) 설정하기
-File - Buildsetting - Project Setting - Player - Other Setting
-- Rendering - Auto Graphics API 비활성화
-- Graphics APIs for windows - Direct 비활성화
+# [Assets 폴더 - MaxstAR 폴더 - Prefabs 폴더]
+- AR camera : (prefab: open / select가 뜨면 prefab으로 만들어져있다는 의미)
+- AR camera - CameraBackground : unity에 있는 카메라를 반영
 
-ARcamera : prefab : select가 뜨면 prefab으로 만들어져있다는 의미
-- camera background : unity에 있는 카메라를 반영
-
-
-[OpenGL ???  script]
+# 스크립트 설명
+[OpenGL ??? script]
 SystemInfo.GraphicsDeviceType 정의로 이동 : GPU 뭘 사용할 수 있는지 알 수 있음 
 Application.platform 정의로 이동 - RuntimePlatform 정의로 이동 :  뭘 사용할 수 있는지 알 수 있음
 
 [CameraDevice script]
 cameraType = AbstractConfigurationScriptableObject. : 첫번째 카메라를 사용하여 AR
-
 
 - 1byte = 8bit / 화면에 출력된 점 하나 : 4byte = 32bit, 
 - 2D sprite(그림 파일)   : CPU에서 data 처리
@@ -238,13 +238,10 @@ cameraType = AbstractConfigurationScriptableObject. : 첫번째 카메라를 사
 - 
 Asset
 - MaxstARSamples - Scenes - CodeReader : 바코드 읽기    /  모바일로 바코드 scan할 때 Maxst 사용
-
 code scan sample
 
 
-- Maxst AR SDK 듀토리얼 - instant Tracker (ver 3.5) : https://www.youtube.com/watch?v=uC1_h3RrQ2o
-
-
+( Maxst AR SDK 듀토리얼 - instant Tracker (ver 3.5) : https://www.youtube.com/watch?v=uC1_h3RrQ2o )
 AR camera - configuration - License Key Setting :  앱 하나당 라이센스키 하나
 camera Type
 webcam Type 
@@ -254,7 +251,6 @@ wearable Type : image processing은 CPU와 관련있다.(GPU (X))
 optimize : 속도 용량을 줄임
 
 - 해상
-
 
 
 (졸다가 놓침)
@@ -328,7 +324,7 @@ Xcode (MAC) : c, c++, swift
 
 
 ------------------------------------------------------------------------------------------------------
-[프로그래머의 자세]
+# [프로그래머의 자세]
 - 대중적 / 상업적 가치를 위해 만들어야 하는 것 > 내가 좋아하는 것, 내가 원하는 것 
 (IT 업계에서 예술적 가치를 고수해봐야 의미없다. 대중에게 외면받아 10년 안에 사라지는 것들이 대부분, 예술 고집하다 배 굶기 딱 좋음) 
 프로그래머가 자기가 원하는 걸로만 집어넣으면 대중의 외면을 받아 100% 망한다. 일단 재밌는 게 제일 중요하다.
@@ -338,3 +334,63 @@ Xcode (MAC) : c, c++, swift
 ex) unity 2020에서 업그레이드 된 
 
 ------------------------------------------------------------------------------------------------------
+
+
+# 2022.09.02 특강
+
+
+1) 클라우드 서버 종류 (기계)
+마이크로소프트, 아마존, 구글 클라우드, 세일즈포스, SAP, 오라클, 서비스나우, 워크데이, IBM
+
+2) 클라우드/빅데이터란
+링크 : 아직안봄
+
+3) NOSQL특징
+링크 : 아직안봄
+
+
+[몽고DB 클라우드]  
+- 10gen사에서 c++로 개발, 데이터를 JSON 형태로 관리
+- 서버가 없어 마이크로소프트 등에서 빌림
+
+
+[몽고DB특징과 장단점] 링크 : https://www.youtube.com/watch?v=81JnYGT2HVQ
+특징
+- Key : Value (키 : 값 형태) (영상 3:35)
+- 형식 : JSON(JavaScript Object Notation)형태로 전송 (XML(무거움)이 가진 오버헤드를 줄이기 위해 JSON사용(ex)모바일,몽고DB))
+- (영상 5:55~7:20)
+
+장점 (영상 7:30~)
+- 빅데이터, 대용량 데이터를 신속 처리
+
+단점
+- Shards에 분산시스템이기에 데이터 손실 가능성
+- 충분한 메모리 확보
+- 비효율적인 Key 중복 입력 -> 데이터 공간소모 
+
+
+[몽고DB : 샤딩 방식으로 저장] (영상 18:50)
+응용 계층 : client - 유니티
+중개자 계층 : MONGO DB 
+데이터 계층 : Shards (데이터 분산처리) 
+
+
+[몽고DB 클라이언트 준비]
+1. Plugins 파일을 압축 해제 후 Unity에 연결
+2. 구글 mongoDB atlas 검색 (링크 : https://www.mongodb.com/cloud/atlas/lp/try4?utm_content=rlsavisitor&utm_source=google&utm_campaign=gs_apac_rlsamulti_search_core_brand_atlas_desktop_rlsa&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=14412646476&adgroup=131761130772&gclid=EAIaIQobChMI7_OjlP30-QIVl6uWCh2EsQzCEAAYASAAEgKtBvD_BwE )
+
+1) start free 클릭 -> 회원가입/로그인 -> Shards 선택 -> aws / seoul 선택 후 create cluster
+2) + new project -> test11로 생성 -> create project -> build database -> Shards create -> aws / seoul 선택 후 create cluster -> username : test11 / passward : test11 입력 후 create User ->  cloud environment -> IP 선택 -> add my current ip adress ->  
+(데이터베이스 생성 완료)
+3) connect -> connect your application -> Driver : C#/.Net,  Version : 2.13 or later -> close
+4) Browse Collections -> + Create Database -> Database name : test11 / Collection name : test11_col 입력 후 create 
+(데이터베이스 안에 콜렉션 / 테이블을 집어넣기)
+5) Unity에서 데이터베이스/콜렉션 등에 접근하기 위한 script 작업 (mongoDB in Unity 참조)
+
+
+
+#
+- udp(데이터를 주고 확인은x, 속도만 빠름), tcpi(데이터를 주고 확인하는, 속도는 느리지만 정확도)
+- 몽고DB(데이터관리), 포춘(동기화시켜 빨리내보냄)
+
+
