@@ -4,8 +4,63 @@ https://blog.naver.com/ndskr/222660166494
 http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=9788960778214
 
 -----------------------------------------------------------------------------------------
+[Unity가 지원하는 주요 플랫폼]
+스마트폰 : IOS Android 
+PC : Window Mac Rinux
 
-Renderer
+
+[Unity Asset Store]
+Asset : 게임에 사용되는 리소스
+
+
+[Unity 실행환경]
+아이폰에서 실행 : Mac, Xcode 필요
+안드로이드에서 실행 : JDK(오라클 사이트), Android Studio 필요
+
+
+[Unity에서 사용하는 언어]
+- object는 script에 맞춰 움직인다.
+- C#(라이브러리가 충실하고 java보다 빠르게 움직인다), java, Boo
+
+
+[선언]
+using UnityEngine; 		//유니티가 작동하도록 선언
+using System.Collections;     //데이터를 저장하기 위한 틀
+
+
+[프레임]
+FPS(Frame Per Second) 
+10FPS : 1초에 10frame 속도로 그림을 전환 
+
+
+[변수 선언]
+   int         age   =     10;
+데이터형 상자이름 상자에 담을 크기
+
+
+지역 변수 범위 : 변수를 선언한 중괄호 안에서만 사용 가능 
+
+
+[반복횟수]
+for(초기값; 반복 조건; 변수 갱신) { }
+
+
+[배열]
+- 배열과 for문은 자주 함께 쓰이므로 묶음으로 생각하면 편하다.
+ex)   int[] array = new int[5];    	//int형 data를 5개 담을 상자를 준비, new : 새롭게 만들다는 의미에 가깝다
+ex) 
+
+인수(매개변수) : 함수에서 받는 값
+반환값 : 함수로 반환하는 값
+
+
+Player player = new Player();
+player에 Player의 실체(instance)를 대입
+      
+
+
+
+[Renderer]
 유니티 쉐이더
 String -  / 이미지도 string으로 된 집합 / 구글 : 유니티 stirng 함수 검색 (데이터를 쪼개서 내가 원하는 부분값(string)을 얻을 수 있게끔)
 
@@ -35,6 +90,11 @@ apple, banana,
 
 dictionary < list<x>, list<y>>
 list[0], - key를 list[0]으로 가져왔을 때
+ 
+
+
+
+
 
 --------------
 instance = 접근자
