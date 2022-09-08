@@ -58,7 +58,7 @@ namespace C_Sharp
 
             for (int i = 0; i < ArrayItem.Length; i++)
             {
-                Console.WriteLine(ArrayItem[i].Name);                              /// 공간 배열에 아이템 생성
+                Console.WriteLine(ArrayItem[i].name);                              /// 공간 배열에 아이템 생성
             }
 
         }
