@@ -24,6 +24,7 @@ namespace Basic_CSharp_Examples
                 rem += (number % 2).ToString();
                 number = q;
             }
+
             string binary = "";
             for (int i = rem.Length - 1; i >= 0; i--) 
             {

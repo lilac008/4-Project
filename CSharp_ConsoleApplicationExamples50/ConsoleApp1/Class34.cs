@@ -18,21 +18,21 @@ namespace Basic_CSharp_Examples
         {
             Console.Write("Enter something for to check that is it palindrome :");
             string text = Console.ReadLine();
-            int textLength = text.Length;
+            int textlength = text.Length;
             bool flag = true;
 
-            //check palindrome
-            for (int i=0; i<textLength/2; i++) 
+
+            for (int i=0; i<textlength/2; i++)             //check palindrome
             {
-                if (text[i] != text[textLength - (i + 1)]) 
+                if ( text[i] != text[ textlength-(i+1) ] ) 
                 {
                     flag = false;
                     break;
                 }
             }
 
-            //if flag true, text is palindrome
-            if (flag) 
+
+            if (flag)                                             //if flag true, text is palindrome
             {
                 Console.WriteLine("{0} is palindrome", text);
             }
