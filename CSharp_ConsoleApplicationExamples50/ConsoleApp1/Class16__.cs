@@ -11,6 +11,7 @@ namespace Basic_CSharp_Examples
     internal class Class16__
     {
         static long[] numbers;
+
         static long Fib(int n) 
         {
             if (0 == numbers[n]) 

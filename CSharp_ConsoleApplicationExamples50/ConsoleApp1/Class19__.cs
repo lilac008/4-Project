@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class19
+    internal class Class19__
     {
         static void Main1(string[] args)
         {
             int num1, num2, sayac = 0;
             Console.Write("Enter lower range :");
             num1 = Convert.ToInt32(Console.ReadLine());
+
             Console.Write("Enter upper range : ");
             num2 = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Prime numbers between {0} and {1} are :", num1, num2);
-            for (int i=num1; i<num2; i++) 
+
+            for ( int i=num1;  i<num2;  i++ ) 
             {
                 sayac = 0;  
                 if (i > 1) 
