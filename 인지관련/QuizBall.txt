@@ -34,7 +34,6 @@ class Quiz
 		
 		
 		/*2가지 선택지 생성*/
-		Random random = new Random();
 		QuizBall option1 = new QuizBall();
 		QuizBall option2;
 		
