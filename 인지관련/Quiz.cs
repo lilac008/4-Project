@@ -2,6 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+/// 다음 색상과 문자를 기억하시고 정답을 고르세요.
+/// 
+/// 
+/// 
+/// 빛의 구체 7가지 
+/// 문자열 4가지 
+/// 선택옵션1(무조건 정답),  선택옵션2(무조건 오답)
+
+
+
+
+
 class QuizOption()    ///문제단위
 {
     int color;
@@ -12,13 +26,16 @@ class QuizOption()    ///문제단위
         Random random = new Random();                     ///랜덤함수 객체생성
         this.color = random.Range(1,7);                   ///구체 1~7
         this.letter = random.Range(1,4);                  ///문자열 A,B,C,D
+        ///string[] abc = { "안녕하세요", "감사합니다" };
+        ///abc[letter]
     }
 
     public bool IsEqual(QuizOption _quizOption)               ///비교함수
     {
         if (this.color == _quizOption.color   &&   this.letter == _quizOption.letter)
             return true;
-        else false;
+        
+        return false;
     }
 
     public void Init(int _int1, int _int2)               ///초기화함수(초기값 변경)
@@ -26,6 +43,30 @@ class QuizOption()    ///문제단위
         this.color = _int1;
         this.letter = _int2;
     }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    QuizOption right = "정답";
+    do
+    {
+        QuizOption wrong = random(); //랜덤에서 정답과 같지않은 숫자가 나올때까지 무한반복
+    }
+    while(right == wrong)
+
+    bool answer = random(1, 2) == 1;
+
+    if (answer)
+    {
+        option1 = right;
+        option2 = wrong;
+    }
+    else
+    {
+        option1 = wrong;
+        option2 = right; 
+    }
+
 
 }
 
@@ -44,12 +85,13 @@ class Quiz  ///문제풀이
             {
                 option2 = new QuizOption();               /// (선택옵션2 처음은 무조건 생성, 무한루프마다 새로 생성)
                 if (!option1.IsEqual(option2))            ///1-2. 선택옵션1이 선택옵션2와 동일하지 않으면
-                    return;                               ///1-3. 
+                    return;                               ///1-3. while을 그만두고 싶으면 break, play를 그만두고 싶으면 return
             }
         }
         else                                              ///2-1. (선택옵션1이 정답지와 일치하지 않으면) 선택옵션2를 정답으로
             option2 = rightAnswer;
 
+        
 
         /// 선택옵션 창
         Console.WriteLine("선택하세요.");
@@ -70,6 +112,8 @@ class Quiz  ///문제풀이
     }
 
 }
+
+
 
 
 class Main
