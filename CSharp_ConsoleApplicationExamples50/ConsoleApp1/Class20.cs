@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-using Ch07.Sub1;
 
 /// Example 20: Finding the biggest of three numbers in C#
 
