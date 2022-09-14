@@ -30,7 +30,7 @@ class Quiz
 {
 	public void Play()
 	{
-		QuizBall quiz = new QuizBall(); 		 // 퀴즈볼(정답) 생성.
+		QuizBall quiz = new QuizBall(); 		 // 퀴즈 정답 생성.
 		
 		
 		/*2가지 선택지 생성*/
@@ -59,11 +59,11 @@ class Quiz
 		
 	
 	
-		QuizeBall choiceBall = new QuizBall(); // 할머니 선택 퀴즈볼
+		QuizeBall choiceBall = new QuizBall(); // 유저 선택 퀴즈볼
 		Scanner input = new Scanner();  //자바의 입력객체, 한줄 입력은 readLine() 한키 입력은 nextInt()로 입력받음.
 		int color = input.nextInt(); 
 		int letter = input.nextInt(); // 유니티의 입력함수에 따라 입력의 표현방식 달라짐.
-		choiceBall.Init(color, letter); //할머니 퀴즈볼값 수정완료
+		choiceBall.Init(color, letter); //유저 퀴즈볼값 수정완료
 	
 	
 		if( quiz.IsEqual(choiceBall) )
