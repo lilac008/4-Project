@@ -4,27 +4,52 @@ using UnityEngine;
 using UnityEngine.UI;               ///유니티 UI를 사용하겠다, public Text talkText; 선언에 사용
 
 
+/// [UI]
+/// 1. UI (UserInterface 유저상호작용)
+/// 2. EventSystem : UI에서 키 입력을 결정해주는 component
 
+/// [Canvas] : 화면상 좌표계, 2D로 바꿔서 작업, Game뷰의 해상도(main camera 크기)와 동일한 크기 -> 16:9로 설정
+/// - Rect Transform(화면상 좌표계) : Anchor Presets (shift:UI기준점, Alt:UI위치)
+/// - Canvas - Pixel Perfect 활성화(도트 이미지)
+/// - Canvas Scaler - UI Scale Mode - Scale with screen size : 어느 해상도에서도 크기가 동일하게 출력이 되도록 
+///                                 - Reference Resolution : 해상도, X:1920, Y:1080으로 설정
 
-
-/// UI (UserInterface 유저상호작용 : 스크린 좌표계, 2D로 바꾸면 작업하기 편함  /  Rect Transform(스크린 좌표) - Anchor Presets(shift:UI기준점, Alt:UI위치))
+/// [MenuPanel] : Canvas - UI - Panel 
+/// - Image component : UI에서 이미지를 그려주는 component -> 어두운 색상으로 변경
 /// 
-/// Canvas - Menu Panel - Game Panel 
-/// 1. Canvas (크기:game화면에서 16:9로 설정(canvas크기는 main camera 크기와 동일), pixel perfect(도트) 활성화,  Canvas Scaler(- UI Scale Mode:ScaleWithScreenSize, Reference Resolution(X:1920, Y:1080 해상도)  )
-/// 2. Menu Panel(R click-UI-Panel, Color:Black) - Title Image(R click-UI-Image / Source Image : Title Sprite drag),  Set Native Size 설정) 
-///                                              - Max score Image(R click-UI-Image / Source Image : Icon Score Mini drag)
-///                                              - Max score Text(R click-UI-Text / Text:999999, Fsize:130, Alignm:중앙, col:white, React Transform(W:0,H:0, Scale(글씨압축):0.5), Font:쿠키런bold,  H/V Overflow:Overflow)
-///                                              - Start Button(R click-UI-Button / Source Image: PanelA drag, Image Type:Simple - SetNativeSize - Image Type:Sliced ) - Text (text:Game Start 입력, Font:쿠키런bold, Fsize:110, RectT(scale:0.5,0.5,0.5), H/V Overflow:Overflow)           
-/// 3. Game Panel(R click-UI-Panel, Color: A:0)  - [1] Score Group(빈obj, RectT(W:0,H:0, AnchorPreset:alt,shift,좌측상단, PosX:20,PosY:-20) - Score Image(UI-Image / Source Image:Icon Score Mini drag, RectT(AnchorPreset:alt,shift,좌측상단)), Score Text(UI-Text / Text:999999, Font:쿠키런bold, Fsize:100, RectT(W:0,H:0,scale:0.5x3, AnchorPreset:alt,shift,좌측상단), H/V Overflow:Overflow)  
-///                                              - Status Group ( [1]복사, StatusGroup(RectT(PosX:20,PosY:-20)) 및 자식obj도 RectT-Anchor-alt,shift,좌측하단, 자식obj의 Image와 Text 선택후 2쌍 복사) - Heart/Ammo/Coin Image(Source Image:Icon Heart/Ammo/Coin Mini, setNativeSize), Heart/Ammo/Coin Text (H:100/100, A:-/99, C:1000)
-///                         (이 줄부터 정리안함) - Stage Group( [1]복사, Stage Group(RectT(PosX:-20,PosY:-20)) 및 자식obj도 RectT-Anchor-alt,shift,우측상단 )  -  Stage/Time Image(SourceImage:Icon Stage/Time Mini),  Stage/Time Text(Text:Stage 1/00:00:00, Alignm:우측) 설정후 복사
-///                                              - Enemy Group( [1]복사, ) - Enemy A/B/C/D Image/Text 
-///                                              - Equip Group - Equip 1/2/3(- Weapon Image/Num Image), ControlR(- Weapon Image/Num Image) 
-///                                              - Boss Gruop - Image(SourceImage:, ImageType:Simple, setNativeSize, Anchor:, RectT(W:600,H:50)) - Boss Health Image(SourceImage:, color:Red, ImageType:Simple, setNativeSize, Anchor:, RectT(W:600,H:50)), Boss Text, Boss Image
-///                                              - [2] Item Shop Group         - Item Button A(On) /B/C(- Text, Text, Image),  Exit Button(-Text삭제  ),  Portrait Image,  Talke Text
-///                                              - Weapon Shop Group ([2]복사) - Item Button A/B/C(- Text, Text, Image),  Exit Button(-Text삭제   ),  Portrait Image,  Talk Text 
+/// - Title Image (UI-Image) - Source Image : Title Sprite drag
+///                          - Set Native Size 설정
+/// - Max score Image (UI-Image) - Source Image : Icon Score Mini drag
+///                              - Rect Transform : X : -170, Y : -150
+/// - Max score Text(UI-Text) - Text component - Text : 999999, Font:쿠키런볼드체, Font Size:130, Alignment:중앙정렬, color:white, Horizontal/Vertical Overflow : Overflow
+///                                            - React Transform(W:0, H:0, overflow설정시 영역 부족해도 괜찮음) - Scale(0.5,0.5,0.5 -> 희미한 글씨 압축) 
+/// - Start Button(UI-Button) : React Transform : Y : -350, W:400, H:150
+///                             Image component - Source Image : PanelA drag 
+///                                             - Image Type : Simple, SetNativeSize 설정후 Image Type : Sliced로 변경
+///                           - Text(UI-Text) - Rect Transform : scale(0.5,0.5,0.5 -> 희미한 글씨 압축) 
+///                                           - Text : Game Start입력, Font:쿠키런볼드체, Font Size:110, H/V Overflow:Overflow         
 
-
+/// [Game Panel] : Canvas - UI - Panel
+/// - Color : A:0 -> 투명화
+/// - Score Group (빈obj, Rect Transform(X:20,Y:-20, W:0,H:0, AnchorPreset:alt+shift+좌측상단) - Score Image(UI-Image) : Rect Transform(Anchor Presets:alt+shift+좌측상단 -> 파란색화살표 앵커시 좌표계는 여백으로 설정됨) / Source Image : Icon Score Mini drag
+///                                                                                            - Score Text (UI-Text)  : Rect Transform(Anchor Presets:alt+shift+좌측상단 -> 파란색화살표 앵커시 좌표계는 여백으로 설정됨 / W:0,H:0, scale(0.5,0.5,0.5)) / Text:999999, Font:쿠키런볼드체, Font size:100, H/V Overflow:Overflow  
+/// - Status Group (score group 복사) : Rect Transform (여백 X:20,Y:20 / 자식obj까지 선택 -> Anchor Presets - alt+shift+우측상단)
+///                                   - Heart/Ammo/Coin Image : Source Image:Icon Heart/Ammo/Coin Mini, setNativeSize)
+///                                   - Heart/Ammo/Coin Text  : Text(H:100/100, A:-/99, C:1000)
+/// - Stage Group  (score group 복사) : Rect Transform (여백 X:-20,Y:-20 / 자식obj까지 선택 -> Anchor Presets - alt+shift+우측상단)   
+///                                   - Stage/Time Image : SourceImage:(S:Icon Stage / T:Time Mini)  
+///                                   - Stage/Time Text  : Text(S:Stage 1 / T:00:00:00)
+/// - Enemy Group  (score group 복사) : Rect Transform (여백 X:-20,Y:20 / 자식 obj까지선택 -> Anchor Presets - alt+shift+우측하단)
+///                                   - Enemy A/B/C/D Image : Icon Enemy A/B/C/D
+///                                   - Enemy A/B/C/D Text  :   
+/// - Equip Group (빈obj) - Control L Image (Rect Transform - Anchor Presets - alt+shift+중앙하단 / Source Image : Panel B, Set Native Size) - Weapon Image : Source Image (Icon Weapon Hammer) 
+///                                                                                                                                            - Num Image    : Source Image (Icon Num1)
+///                                                                                                                                            
+/// 
+///                         ControlR(- Weapon Image/Num Image) 
+/// - Boss Gruop - Image(SourceImage:, ImageType:Simple, setNativeSize, Anchor:, RectT(W:600,H:50)) - Boss Health Image(SourceImage:, color:Red, ImageType:Simple, setNativeSize, Anchor:, RectT(W:600,H:50)), Boss Text, Boss Image
+/// - [2] Item Shop Group         - Item Button A(On) /B/C(- Text, Text, Image),  Exit Button(-Text삭제  ),  Portrait Image,  Talke Text
+/// - Weapon Shop Group ([2]복사) - Item Button A/B/C(- Text, Text, Image),  Exit Button(-Text삭제   ),  Portrait Image,  Talk Text 
 
 /// Item Shop   - Table,  Goods Group,  Luna (MeshObj-Animator-Idle,Hello (tHello)),  Zone(빈obj - Particle System (Shpape:Donut, 쿼터뷰 15부 참고), Shop script) - Spawn Pos A/B/C(빈obj)
 /// Weapon Shop - Table,  Goods Group,  Ludo (MeshObj- Luna Animation복사 후 교체 ),  Zone(빈obj - Shop script) - Spawn Pos A/B/C(빈obj)
