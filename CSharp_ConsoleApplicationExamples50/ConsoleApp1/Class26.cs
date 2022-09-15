@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 /// Example 26: C# program to find min and max in an array
 
+
+
+
+
 namespace Basic_CSharp_Examples
 {
     internal class Class26

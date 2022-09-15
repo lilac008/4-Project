@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 /// Example 4: C# Program to Multiply two Floating Point Numbers Entered by User
 
+/// Floating Point Numbers : 부동소수점
+
 namespace Basic_CSharp_Examples
 {
     internal class Class04
@@ -15,7 +17,7 @@ namespace Basic_CSharp_Examples
             float num1, num2, product;
 
             Console.WriteLine("Enter a number1 :");
-            num1 = Convert.ToSingle(Console.ReadLine());         ///
+            num1 = Convert.ToSingle(Console.ReadLine());         ///ToSingle() : 부동소수점으로 변환 
             Console.WriteLine("Enter a number2 :");
             num2 = Convert.ToSingle(Console.ReadLine());
             Console.WriteLine();

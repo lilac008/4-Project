@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 
 
-
-
 namespace Basic_CSharp_Examples
 {
     internal class Class33__
     {
-        static void Main(string[] args)
+
+        static void Main1(string[] args)
         {
             int num1, num2, n, sum, r;
             Console.Write("Enter positive number1 :");
@@ -23,12 +22,13 @@ namespace Basic_CSharp_Examples
             Console.Write("Enter positive number2 :");
             num2 = Convert.ToInt32(Console.ReadLine());
 
+
             Console.WriteLine("Armstrong Number from {0} to {1}", num1, num2);
-            for (int i = num1; i <= num2; i++) 
+            for (int i = num1; i <= num2; i++)
             {
                 sum = 0;
                 n = i;
-                while (n != 0) 
+                while (n != 0)
                 {
                     r = n % 10;
                     sum = sum + (r * r * r);
@@ -38,9 +38,6 @@ namespace Basic_CSharp_Examples
                     Console.WriteLine(i);
             }
             Console.ReadKey();
-
-            
-
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Basic_CSharp_Examples
         static void Main1(string[] args)
         {
             int num1, num2, sum;
-            Console.WriteLine("Calculate the sum of two numbers:");
+            Console.WriteLine("Calculate the sum of two numbers :");
             Console.Write("Input number1:");
             num1 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Input number2:");
@@ -22,9 +22,6 @@ namespace Basic_CSharp_Examples
             Console.Write("Result:"+sum);
 
             Console.WriteLine();
-
-
-
         }
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 /// Example 6:  C# Program to Compute Quotient and Remainder
 
+/// Compute : 계산하다, Quotient : 몫,  dividend:피제수, divisor:제수 (덜 제)
+
 namespace Basic_CSharp_Examples
 {
     internal class Class06

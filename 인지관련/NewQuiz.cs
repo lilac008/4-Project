@@ -10,6 +10,7 @@ class QuizUnit
     int color;
     int letter;
 
+
     /** 인수를 주지 않았을때의 생성자 **/
     public QuizUnit()
     {
@@ -116,7 +117,7 @@ class Quiz
                     유니티화면표시(opt1.color);
                     유니티화면표시(opt2.color);
 
-                    /// 할머니 선택과 결과 표시
+                    /// 유저 선택과 결과 표시
                     System.println("선택하세요");
                     choice = input.nextInt();
                     if (choice == ans.color)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 /// Example 2: C# Program to Print an Integer Entered by User
 
+/// integer : 정수
+
 namespace Basic_CSharp_Examples
 {
     internal class Class02
@@ -15,9 +17,9 @@ namespace Basic_CSharp_Examples
         {
             int num;
             Console.WriteLine("Enter a number:");
-            num = Convert.ToInt32(Console.ReadLine());
+            num = Convert.ToInt32(Console.ReadLine());      ///int형으로 변환
 
-            Console.WriteLine("You enter : {0}", num);
+            Console.WriteLine("You entered : {0}", num);
             Console.WriteLine();
         }
     }

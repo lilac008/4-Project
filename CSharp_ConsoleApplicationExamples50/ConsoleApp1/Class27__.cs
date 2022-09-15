@@ -16,12 +16,10 @@ namespace Basic_CSharp_Examples
         {
             int baseNumber, expNumber;
             double result = 1;
-
             Console.Write("Base Number : ");
             baseNumber = Convert.ToInt32(Console.ReadLine());
-            
             Console.Write("exponent Number : ");
-            expNumber = Convert.ToInt32(Console.ReadLine());
+            expNumber = Convert.ToInt32(Console.ReadLine());        ///exponent : 거듭제곱한 횟수 
 
             bool sing = false;
             if (expNumber > 0) sing = true;
