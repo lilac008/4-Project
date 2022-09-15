@@ -2,6 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// 1. 문제지
+/// 
+/// Q : 다음 색상과 문자를 함께 기억하세요.
+/// 랜덤 - 빛의 구체 7가지 
+/// 랜덤 - 문자열 N가지 (계속 늘어날 예정)
+
+
+/// 2. 선택지
+/// 
+/// 선택옵션1(무조건 정답)
+/// 선택옵션2(무조건 오답)  
+
+
 
 
 
@@ -16,8 +29,8 @@ class QuizUnit
     {
         Random random = new Random();           /// 랜덤함수 객체생성
 
-        this.color = random.Range(7);           /// 0~6 까지의 정수난수 랜덤 생성
-        this.letter = random.Range(4);          /// 0~3 까지의 정수난수 랜덤 생성
+        this.color = random.Range(7);           /// 0~6 까지의 임의의 정수 생성
+        this.letter = random.Range(4);          /// 0~3 까지의 임이의 정수 생성
     }
 
 
@@ -31,7 +44,7 @@ class QuizUnit
 		{
 			this.color = random.Range(7); 
 			this.letter = random.Range(4);
-		} while (this.color == _color && this.letter == _letter)  		/// 둘다 동일하다면 새롭게 난수 생성. 둘중하나라도 동일하지 않을때까지 계속돌림	
+		} while (this.color == _color && this.letter == _letter)  		/// 둘다 동일하다면 새로운 랜덤 생성. 둘 중 하나라도 동일하지 않을때까지 계속돌림	
 	}
 }
 
@@ -40,90 +53,87 @@ class QuizUnit
 
 class Quiz
 {
-    QuizUnit ans;
+    QuizUnit answer;
     QuizUnit opt1;
     QuizUnit opt2;
 
     public void Play()
     {
+        answer = new Quiz();                                        ///정답 생성
+
         Random random = new Random();
 
-        /**정답 생성**/
-        ans = new Quiz();
-
-
-        /**option1과 option2중 랜덤으로 하나를 정답, 하나를 오답으로 생성.**/
-        random = random.Range(2);
+        random = random.Range(2);                                   /// 1/2확률로 랜덤 범위 지정 - 하나가 정답이면 다른 하나는 오답
         switch (random)
         {
             case 0:
                 {
-                    opt1 = ans;
-                    opt2 = new QuizUnit(ans.color, ans.letter);
+                    opt1 = answer;
+                    opt2 = new QuizUnit(answer.color, answer.letter);   ///옵션2는 새로운 임의의 색상/문자 생성
                     break;
                 }
             case 1:
                 {
-                    opt2 = ans;
-                    opt1 = new QuizUnit(ans.color, ans.letter);
+                    opt2 = answer;
+                    opt1 = new QuizUnit(answer.color, answer.letter);
                     break;
                 }
         }
 
 
 
-        /**정답 먼저 보여주기**/
-        유니티화면표시(ans.color);
-        유니티화면표시(ans.letter);
+        //1. 문제지 - 제일 처음 정답을 먼저 보여줘야 함
+        유니티화면표시될함수(answer.color);
+        유니티화면표시될함수(answer.letter);
 
 
 
 
+        //2. 선택지
+        random = random.Range(2);
 
+        ConsoleKeyInfo KeyInfo;                         ///입력객체 -> 유니티에 맞게 변경
+        KeyInfo = Console.ReadKey();                    ///입력객체 -> 유니티에 맞게 변경
+        /// if(KeyInfo.Key == ConsoleKey.A)
 
-        /**문제 보여주고 선택지제시 및 입력받음**/
-        random = random.nextInt(2);
-
-        Scanner input = new Scanner; ///자바전용 입력객체.
         int choice;
 
 
-        /// 처음 문제는 ans의 color와 letter 둘중 하나만 랜덤으로 제시해야 한다.	
-        switch (random)
+        switch (random)   /// 처음 문제는 ans의 color와 letter 둘중 하나만 랜덤으로 제시해야 한다.	
         {
             case 0:
                 {
                     /// 문제 제시
-                    유니티화면표시(ans.color);
+                    유니티화면표시(answer.color);
 
-                    /// 옵션 제시
+                    /// 선택지 제시
                     유니티화면표시(opt1.letter);
                     유니티화면표시(opt2.letter);
 
-                    /// 유저 선택과 결과 표시
-                    System.println("선택하세요");
-                    choice = input.nextInt();
-                    if (choice == ans.letter)
-                        System.println("정답입니다");
+                    /// 유저 선택 및 결과 표시
+                    System.Console.WriteLine("선택하세요"); 
+                    choice = Convert.ToInt32(Console.ReadKey());       ///입력개체 -> 유니티에 맞게 변경
+                    if (choice == answer.letter)
+                        System.Console.WriteLine("정답입니다");         
                     else
-                        System.println("오답입니다.");
+                        System.Console.WriteLine("오답입니다."); 
                 }
             case 1:
                 {
                     /// 문제 제시
-                    유니티화면표시(ans.letter);
+                    유니티화면표시(answer.letter);
 
-                    /// 옵션 제시
+                    /// 선택지 제시
                     유니티화면표시(opt1.color);
                     유니티화면표시(opt2.color);
 
-                    /// 유저 선택과 결과 표시
-                    System.println("선택하세요");
-                    choice = input.nextInt();
-                    if (choice == ans.color)
-                        System.println("정답입니다");
+                    /// 유저 선택 및 결과 표시
+                    System.Console.WriteLine("선택하세요");
+                    choice = Convert.ToInt32(Console.ReadKey());       ///입력개체 -> 유니티에 맞게 변경
+                    if (choice == answer.color)
+                        System.Console.WriteLine("정답입니다");
                     else
-                        System.println("오답입니다.");
+                        System.Console.WriteLine("오답입니다.");
                 }
         }
 
@@ -137,8 +147,8 @@ class Main
 {
     public static void main()
     {
-        Quiz quiz = new Quiz();      //Class Quiz 객체 생성 후 Play함수 호출하면 퀴즈 시작.
-        quiz.Play();                 //퀴즈 4번실행.
+        Quiz quiz = new Quiz();      ///Class Quiz 객체 생성 후 Play함수 호출하면 퀴즈 시작.
+        quiz.Play();                 ///퀴즈 n번실행
         quiz.Play();
         quiz.Play();
         quiz.Play();
