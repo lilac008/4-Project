@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     bool isShop;                            ///쇼핑중 변수
     bool isDead;
 
-    GameObject obj;                         /// isTrigger로 접촉한 obj 인식
+    GameObject colliderObj;                         /// isTrigger로 접촉한 obj 인식
 
     public GameObject[] inactiveWeapons;    /// 손에 든 비활성 무기들 : 무기 3종 Prefab을 여기에 연결 후 비활성화 (준비:Player - righthand - Weapon Points(cylinder형 비활성obj, 4부10분참조) - 무기 3종 prefab 단 후 비활성화)
     public bool[] hasWeapon;                /// 가지고 있는, 소유한 무기들의 bool(활성, 비활성) 상태 여부 : 3 으로 설정 
@@ -374,21 +374,21 @@ public class Player : MonoBehaviour
 
     void Interaction() ///5-2 템 줍기
     {
-        if (eKey && obj != null && !isJump && !isDodge && !isDead)
+        if (eKey && colliderObj != null && !isJump && !isDodge && !isDead)
         {
-            if (obj.tag == "Weapon")
+            if (colliderObj.tag == "Weapon")
             {
-                Item item = obj.GetComponent<Item>();
+                Item item = colliderObj.GetComponent<Item>();
                 int wIndex = item.value;
                 hasWeapon[wIndex] = true;
 
-                Destroy(obj);
+                Destroy(colliderObj);
             }
-            else if (obj.tag == "Shop")                         ///15강-2) Shop script
+            else if (colliderObj.tag == "Shop")                         ///15강-2) Shop script
             {
-                Shop shop = obj.GetComponent<Shop>();           
-                shop.Enter(this);                               ///this = Player script
-                isShop = true;                                  ///15강-
+                Shop shop = colliderObj.GetComponent<Shop>();           
+                shop.Enter(this);                                       /// this = this script = Player script
+                isShop = true;                                          ///15강-
             }
         }
     }
@@ -479,27 +479,26 @@ public class Player : MonoBehaviour
         }
 
     }
-    void OnTriggerStay(Collider colider)      ///5-1 접촉 중
+    void OnTriggerStay(Collider _colider)      ///5-1 접촉 중
     {
-        if(colider.tag == "Weapon" || colider.tag == "Shop")    ///15강-2) Shop script            
-            obj = colider.gameObject;   
+        if(_colider.tag == "Weapon" || _colider.tag == "Shop")    ///15강-2) Shop script            
+            colliderObj = _colider.gameObject;   
 
-        Debug.Log(obj.name);            ///출력 확인
+        Debug.Log(colliderObj.name);            ///출력 확인
     }
-    void OnTriggerExit(Collider collider)      ///5-1 접촉 끝
+    void OnTriggerExit(Collider _collider)      ///5-1 접촉 끝
     {
-        if (collider.tag == "Weapon")
-            obj = null;                 ///비우기
-        else if (collider.tag == "Shop")                        ///15강-3) 퇴장함수 + Shop script 
+        if (_collider.tag == "Weapon")
+            colliderObj = null;                 ///비우기
+        else if (_collider.tag == "Shop")                        ///15강-3) 퇴장함수 + Shop script 
         {
-            Shop shop = obj.GetComponent<Shop>();
+            Shop shop = colliderObj.GetComponent<Shop>();
             shop.Exit();
-            obj = null;
+            colliderObj = null;
             isShop = false;                                  ///15강-
         }
-
-
     }
+
 
     IEnumerator OnDamage(bool isBossAttack)                  ///17 플레이어 피격  (쿼터뷰 12부 )
     {
