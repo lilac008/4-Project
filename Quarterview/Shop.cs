@@ -54,9 +54,10 @@ using UnityEngine.UI;               ///유니티엔진의 UI를 가져옴, public Text tal
 ///                                                                                                                                              - Boss Text  : Source Image : Icon Boss - Set Native Size
 /// (아래서부터 쿼터뷰 15강)
 /// - Item Shop Group : Rect Transform(Y:-1000->canvas밖에 위치 / W:1000, H:500), Image - Source Image : Panel A 
-///                   - Item Button A/B/C (source Image : Panel A) - Name Text
-///                                                                - Price Text
-///                                                                - Item(source Image :Icon Heart/Ammo/WeponGenerade) / Coin Image(source Image : Icon Coin Mini)
+///                   - Item Button A/B/C (source Image:Panel A  /  OnClick():Item/Weapon Shop - Zone, Shop script의 Buy()함수 연결(Button A:0, B:1, C:2) - Name Text
+///                                                                                                                                                      - Price Text
+///                                                                                                                                                      - Item(source Image :Icon Heart/Ammo/WeponGenerade) / Coin Image(source Image : Icon Coin Mini)
+///                                                                
 ///                   - Exit Button - Image  : source Image(Icone Close, Set Native Size)
 ///                                 - Button : - Transition : Normal / Highlighted(마우스가져다댈때) / Pressed(버튼눌렀을때) / Selected(한번 선택시 고정) / Disable Color
 ///                                            - OnClick()  : Item Shop-Zone, Shop script의 Exit()함수 연결  
@@ -67,10 +68,6 @@ using UnityEngine.UI;               ///유니티엔진의 UI를 가져옴, public Text tal
 ///                   - Exit Button - Image  : source Image(Icone Close, Set Native Size)
 ///                                 - Button : - Transition : Normal / Highlighted(마우스가져다댈때) / Pressed(버튼눌렀을때) / Selected(한번 선택시 고정) / Disable Color
 ///                                            - OnClick()  : Weapon Shop-Zone, Shop script의 Exit()함수 연결  
-
-
-
-
 
 
 
@@ -115,7 +112,7 @@ public class Shop : MonoBehaviour
     public int[] itemPriceArray;                  /// Luna/Ludo-Zone(Shop script: ItemPriceArray - size:3 설정 후 Luna : 1000/1200/2500 or Ludo : 500/3000/5000 입력 )
     public Transform[] itemPosArray;              /// Luna/Ludo-Zone(Shop script: ItemPosArray   - size:3 설정 후 Luna-Zone-Spawn Pos A/B/C 연결 )
     public Text talkText;                         /// Luna/Ludo-Zone(Shop script: TalkText       - Game Panel - Item / Weapon Shop Group - TalkText 연결 )
-    public string[] shopTalkArray;                /// Luna/Ludo-Zone(Shop script: shopTalkArray  - size:2 설정 후  0:소모품/장비는 안전을 지켜주지,  1:돈이 부족해... 다시 확인해봐. 입력)
+    public string[] shopTalkArray;                /// Luna/Ludo-Zone(Shop script: shopTalkArray  - size:2 설정 후 element 0:(Ln:소모품도 든든하게 챙겨야해요/Ld:장비는 안전을 지켜주지),  1:돈이 부족해... 다시 확인해봐. 입력)
 
 
     /// Item Shop Group   - Exit Button : On Click()함수에  Luna 드래그 후 Shop - Exit() 설정
@@ -141,24 +138,22 @@ public class Shop : MonoBehaviour
     public void Buy(int _int)
     {
         int price = itemPriceArray[_int];
-
-        if (price > player.coin)    /// 금액이 부족하면 return
+        if (price > player.coin)        /// 유저 금액 부족시
         {
-            
-            StopCoroutine(Talk());      /// 이용자가 중복으로 누를 때 대사가 꼬이는걸 방지하기 위해 한 번 정지한다.
-            StartCoroutine(Talk());     /// 대사 함수 호출
+            StopCoroutine(Talk());      /// 한번 정지 - 유저가 반복해서 누를시 대사가 꼬이는 걸 방지
+            StartCoroutine(Talk());     /// talk() 호출
             return;
         }
-
-        player.coin -= price;                                                                              ///돈이 있으면 금액차감
-        Vector3 randomVec = Vector3.right * Random.Range(-3, 3)  +  Vector3.forward * Random.Range(-3, 3); /// 랜덤 위치 변수
-        Instantiate(itemObjArray[_int], itemPosArray[_int].position + randomVec,  itemPosArray[_int].rotation);  /// 아이템 생성
+        ///유저 금액이 있으면
+        player.coin -= price;                                                                                    
+        Vector3 randomVec = Vector3.right * Random.Range(-3, 3)  +  Vector3.forward * Random.Range(-3, 3);        ///랜덤 위치
+        Instantiate(itemObjArray[_int], itemPosArray[_int].position + randomVec,  itemPosArray[_int].rotation);   ///아이템 랜덤위치에 생성
     }
     IEnumerator Talk()
     {
         talkText.text = shopTalkArray[1];            
         yield return new WaitForSeconds(2f);    ///2초 정지
-        talkText.text = shopTalkArray[0];
+        talkText.text = shopTalkArray[0];       ///원래 대사로 돌아옴
     }
 
 
