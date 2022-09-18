@@ -14,10 +14,13 @@ namespace Basic_CSharp_Examples
         {
             int num1, num2, sum;
             Console.WriteLine("Calculate the sum of two numbers :");
+
             Console.Write("Input number1:");
-            num1 = Convert.ToInt32(Console.ReadLine());
+            num1 = Convert.ToInt32(Console.ReadLine());          ///입력된 string형을 int형으로 변환
+
             Console.Write("Input number2:");
             num2 = Convert.ToInt32(Console.ReadLine());
+
             sum = num1 + num2;
             Console.Write("Result:"+sum);
 

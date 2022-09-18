@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 /// Example 17: Find Number is Even or Odd using if else Statement in C#
 
+
+/// dataType.Parse   : null이 입력될 경우 ArgumentNullException(매개변수 예외처리) -> java 예외처리 찾아볼것
+/// Convert.dataType : null이 입력될 경우 0을 반환
+
+
 namespace Basic_CSharp_Examples
 {
     internal class Class17
@@ -15,7 +20,7 @@ namespace Basic_CSharp_Examples
         {
             int num;
             Console.WriteLine("Enter an integer :");
-            num = Int32.Parse(Console.ReadLine());
+            num = Int32.Parse(Console.ReadLine());           ///string형을 integer형으로 변환
 
             if (num % 2 == 0) 
             { Console.WriteLine("{0} is even", num); }

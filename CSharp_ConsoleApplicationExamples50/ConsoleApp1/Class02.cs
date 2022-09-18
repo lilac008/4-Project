@@ -17,7 +17,7 @@ namespace Basic_CSharp_Examples
         {
             int num;
             Console.WriteLine("Enter a number:");
-            num = Convert.ToInt32(Console.ReadLine());      ///int형으로 변환
+            num = Convert.ToInt32(Console.ReadLine());      ///입력된 string형을 integer형으로 변환
 
             Console.WriteLine("You entered : {0}", num);
             Console.WriteLine();

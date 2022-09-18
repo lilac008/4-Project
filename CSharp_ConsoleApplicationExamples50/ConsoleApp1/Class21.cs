@@ -13,21 +13,22 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            int number, sum = 0;
+            int num, sum = 0;
 
             Console.WriteLine("Enter a Number : ");
-            number = Convert.ToInt32(Console.ReadLine());
+            num = Convert.ToInt32(Console.ReadLine());
 
-            if (number < 0)
+
+            if (num < 0)
             {
                 Console.WriteLine("Please Enter Positive Number");
             }
             else
             {
-                while (number > 0) 
+                while (num > 0) 
                 { 
-                    sum += number; 
-                    number -= 1;
+                    sum += num; 
+                    num -= 1;
                 }
             }
 

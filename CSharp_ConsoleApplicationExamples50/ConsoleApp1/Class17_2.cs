@@ -17,11 +17,11 @@ namespace Basic_CSharp_Examples
         {
             if (num % 2 == 0)
             {
-                return true;
+                return true;                        /// 1
             }
             else 
             {
-                return false;
+                return false;                       /// 0
             }
         }
 
@@ -29,7 +29,7 @@ namespace Basic_CSharp_Examples
         {
             int n;
             Console.Write("Enter an integer :");
-            n = Int32.Parse(Console.ReadLine());
+            n = Int32.Parse(Console.ReadLine());   ///string 형을 integer형으로 변환
 
             if (IsEvenNumber(n)) 
             { Console.WriteLine("{0} is even", n); }

@@ -15,7 +15,6 @@ namespace Basic_CSharp_Examples
             float num1, num2, product;
             num1 = 12.45f;
             num2 = 10.74f;
-            
             product = num1 * num2;
 
             Console.WriteLine("{0}*{1}={2}",num1,num2, product);

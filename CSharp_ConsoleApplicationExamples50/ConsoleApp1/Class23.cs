@@ -13,11 +13,11 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            int monthNumber;
+            int month;
             Console.Write("Enter Month Number (1-12) :");
-            monthNumber = Convert.ToInt32(Console.ReadLine());
+            month = Convert.ToInt32(Console.ReadLine());            ///입력된 string형을 int형으로 변환
 
-            switch (monthNumber) 
+            switch (month) 
             {
                 case 1:
                     Console.WriteLine("January");

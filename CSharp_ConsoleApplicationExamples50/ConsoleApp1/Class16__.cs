@@ -10,25 +10,28 @@ namespace Basic_CSharp_Examples
 {
     internal class Class16__
     {
-        static long[] numbers;
+        static long[] numArray;
 
         static long Fib(int n) 
         {
-            if (0 == numbers[n]) 
+            if (0 == numArray[n]) 
             {
-                numbers[n] = Fib(n - 1) + Fib(n - 2);
+                numArray[n] = Fib(n - 1) + Fib(n - 2);   ///numarray[4] = fib(3) + fib(2)
+                                                         ///               
             }
-            return numbers[n];
+            return numArray[n];
         }
 
 
         static void Main1(string[] args)
         {
             Console.WriteLine("n=");
-            int n = int.Parse(Console.ReadLine());
-            numbers = new long[n + 2];
-            numbers[1] = 1;
-            numbers[2] = 1;
+            int n = int.Parse(Console.ReadLine());          ///입력된 string형을 int형으로 변환
+            
+            numArray = new long[n + 2];                     ///numArray = {null, 1, 1, null, null ... };
+            numArray[1] = 1;
+            numArray[2] = 1;
+
             long result = Fib(n);
             Console.WriteLine("fib({0})={1}", n, result);
             Console.ReadKey();

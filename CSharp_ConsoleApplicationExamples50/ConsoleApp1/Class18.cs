@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// Example 18: Find Numbers Above and Below the Average in C#
+ 
+/// dataType.Parse   : null이 입력될 경우 ArgumentNullException(매개변수 예외처리) -> java 예외처리 찾아볼것
+/// Convert.dataType : null이 입력될 경우 0을 반환
+
 
 namespace Basic_CSharp_Examples
 {
@@ -13,14 +17,14 @@ namespace Basic_CSharp_Examples
         static void Main1(string[] args)
         {
             int counter = 0;
-            int[] numbers = new int[10];
+            int[] intArray = new int[10];
             int sum = 0, avg = 0, low = 0, high = 0;
 
             for (int i=0; i<10; i++) 
             {
                 Console.WriteLine("Number {0}:", (i+1));
-                numbers[i] = Convert.ToInt32(Console.ReadLine());
-                sum += numbers[i];
+                intArray[i] = Convert.ToInt32(Console.ReadLine());  ///
+                sum += intArray[i];
             }
 
             avg = sum / 10; 
@@ -28,7 +32,7 @@ namespace Basic_CSharp_Examples
 
             for (int i=0; i<10; i++) 
             {
-                if (numbers[i] < avg)
+                if (intArray[i] < avg)
                 {   low++;   }
                 else 
                 {   high++;  }

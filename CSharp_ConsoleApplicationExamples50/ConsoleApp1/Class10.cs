@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 /// Example 10: Area and Perimeter of Circle in C# Console Application
 
+///Math.Pow(double x,double y); x^y   
+///= Math.Power
 
 namespace Basic_CSharp_Examples
 {
@@ -13,11 +15,12 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            double r, perimeter, area;
+            double radius, perimeter, area;
             Console.Write("Please write the radius of your cirlce :");
-            r = Convert.ToDouble(Console.ReadLine());
-            perimeter = 2 * 3.14 * r;
-            area = 3.14 * Math.Pow(r,2);    //area = 3.14 * r * r;
+            radius = Convert.ToDouble(Console.ReadLine());                  ///입력된 string형을 double형으로 변환
+
+            perimeter = 2 * 3.14 * radius;
+            area = 3.14 * Math.Pow(radius,2);      ///circle area = 3.14 * r * r
             Console.WriteLine("==============================");
             Console.WriteLine("The perimeter of your circle : {0}", perimeter);
             Console.WriteLine("The area of your circle : {0}", area);

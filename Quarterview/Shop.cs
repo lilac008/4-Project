@@ -115,6 +115,7 @@ public class Shop : MonoBehaviour
     public string[] shopTalkArray;                /// Luna/Ludo-Zone(Shop script: shopTalkArray  - size:2 설정 후 element 0:(Ln:소모품도 든든하게 챙겨야해요/Ld:장비는 안전을 지켜주지),  1:돈이 부족해... 다시 확인해봐. 입력)
 
 
+    /// * 이 부분은 수정해야함 *
     /// Item Shop Group   - Exit Button : On Click()함수에  Luna 드래그 후 Shop - Exit() 설정
     /// Weapon Shop Group - Exit Button : On Click()함수에  Ludo 드래그 후 Shop - Exit() 설정
     /// Item Shop Group   - Item Button A/B/C 각각 : On Click()함수에 (Luna-)zone 드래그 후 Shop - Buy(int) - 0/1/2 설정 

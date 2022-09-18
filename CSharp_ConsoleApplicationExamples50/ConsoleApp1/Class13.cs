@@ -13,15 +13,16 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            double baseNumber, powerNumber;
+            double baseN, exponentN;
 
             Console.Write("Enter base number :");
-            baseNumber = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Enter exponent number :");
-            powerNumber = Convert.ToDouble(Console.ReadLine());
+            baseN = Convert.ToDouble(Console.ReadLine());             ///입력된 string형을 double형으로 변환
 
-            double returnNumber = Math.Pow(baseNumber, powerNumber);
-            Console.WriteLine("{0}^{1}={2}", baseNumber, powerNumber, returnNumber);
+            Console.Write("Enter exponent number :");
+            exponentN = Convert.ToDouble(Console.ReadLine());          
+
+            double powerN = Math.Pow(baseN, exponentN);               ///Math.Pow()는 double형 매개변수만 받는다.
+            Console.WriteLine("{0}^{1}={2}", baseN, exponentN, powerN);
 
             Console.WriteLine();
         }

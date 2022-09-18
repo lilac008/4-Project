@@ -7,6 +7,9 @@ using System.Collections;
 
 /// Example 20: Finding the biggest of three numbers in C#
 
+/// data Type.Parse   : null이 입력될 경우 ArgumentNullException(매개변수 예외처리) -> java 예외처리 찾아볼것
+/// Convert.data Type : null이 입력될 경우 0을 반환
+
 
 namespace Basic_CSharp_Examples 
 {
@@ -14,28 +17,28 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            int number1, number2, number3;
+            int num1, num2, num3;
             string result;
 
             Console.WriteLine("Input the first number :");
-            number1 = Convert.ToInt32(Console.ReadLine());
+            num1 = Convert.ToInt32(Console.ReadLine());             ///입력된 string형을 int형으로 변환
             Console.WriteLine("Input the second number :");
-            number2 = Convert.ToInt32(Console.ReadLine());
+            num2 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Input the third number :");
-            number3 = Convert.ToInt32(Console.ReadLine());
+            num3 = Convert.ToInt32(Console.ReadLine());
 
 
-            if (number1 > number2 && number1 > number3)
+            if (num1 > num2 && num1 > num3)
             {
-                result = "The 1st Number is the greatest among three. |n";
+                result = "The 1st Number is the greatest among three. \n";
             }
-            else if (number2 > number1 && number2 > number3)
+            else if (num2 > num1 && num2 > num3)
             {
-                result = "The 2nd Number is the greatest among three. |n";
+                result = "The 2nd Number is the greatest among three \n";
             }
-            else 
+            else
             {
-                result = "The 3rd Number is the greatest among three. |n";
+                result = "The 3rd Number is the greatest among three \n";
             }
 
             Console.WriteLine(result);

@@ -14,15 +14,17 @@ namespace Basic_CSharp_Examples
         static void Main1(string[] args)
         {
             int num1, num2, num3, average;
+
             Console.Write("Enter 1st number :");
-            num1 = Convert.ToInt32(Console.ReadLine());
+            num1 = Convert.ToInt32(Console.ReadLine());             ///입력된 string형을 int형으로 변환
+
             Console.Write("Enter 2nd number :");
             num2 = Convert.ToInt32(Console.ReadLine());
+
             Console.Write("Enter 3rd number :");
             num3 = Convert.ToInt32(Console.ReadLine());
 
             average = (num1+num2+num3) / 3;
-
             Console.Write("Average of three number is {0}", average);
             Console.WriteLine();
 
