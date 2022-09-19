@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// Example 16: Fibonacci Series in C# with Method
+/// vs Example 16, 38
+
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class16__
+    internal class Class16__fibonacci
     {
         static long[] numArray;
 

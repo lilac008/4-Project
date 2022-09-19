@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// Example 12: C# Math.Pow Example
+/// Example 12: C# Math.Pow Example    (vs Example 27)
+
 
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class12
+    internal class Class12__power
     {
         static void Main1(string[] args)
         {

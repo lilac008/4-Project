@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 
 
 /// Example 27: C# Program to Calculate the Power of a Number Without Using Math.Pow
+/// code : (with While Loop)
 
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class27_2__
+    internal class Class27_2
     {
         static void Main1(string[] args)
         {
-            int baseNumber, expNumber, result = 1;
+            int baseN, exponentN, powerResult = 1;
             Console.Write("Base Number : ");
-            baseNumber = Convert.ToInt32(Console.ReadLine());
+            baseN = Convert.ToInt32(Console.ReadLine());
             Console.Write("Exponent Number : ");
-            expNumber = Convert.ToInt32(Console.ReadLine());
+            exponentN = Convert.ToInt32(Console.ReadLine());
 
-            while (expNumber != 0) 
+            while (exponentN != 0) 
             {
-                result += baseNumber;
-                --expNumber;
+                powerResult *= baseN;
+                --exponentN;
             }
-            Console.WriteLine("Result={0}", result);
+            Console.WriteLine("Result={0}", powerResult);
             Console.ReadLine();
         }
 

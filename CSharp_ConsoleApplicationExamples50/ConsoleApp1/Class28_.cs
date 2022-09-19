@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class28__
+    internal class Class28_
     {
         static void Main1(string[] args)
         {
-            int i, number, fact;
+            int i, input, factorial;
             Console.WriteLine("Enter the Number");
-            number = int.Parse(Console.ReadLine());
-            fact = number;
-            for (i = number - 1; i >= 1; i--) 
+            input = int.Parse(Console.ReadLine());
+
+            factorial = input;
+            for (i = input - 1; i >= 1; i--) 
             { 
-                fact = fact * 1;
+                factorial = factorial * i;
             }
-            Console.WriteLine("\n Factorial of Given Number is: " + fact);
+            Console.WriteLine("\n Factorial of Given Number is: " + factorial);
             Console.ReadLine();
         }
 

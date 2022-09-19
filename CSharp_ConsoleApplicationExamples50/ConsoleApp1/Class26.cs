@@ -16,24 +16,24 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            ///www.csharp-console-examples.com
-            int[] numbers = new int[10];
+            int[] numArr = new int[10];
             Random random = new Random();
             int min, max;
 
-            for (int i=0; i < numbers.Length; i++) 
+            for (int i=0; i < numArr.Length; i++) 
             {
-                numbers[i] = random.Next(1,100);
-                Console.WriteLine(numbers[i]);
+                numArr[i] = random.Next(1,100);       ///random.Next()범위 내의 수를 numArr[i]에 집어넣음
+                Console.WriteLine(numArr[i]);
             }
-            min = numbers[0];
-            max = numbers[0];
-            for (int i=1; i < numbers.Length; i++) 
+
+            min = numArr[0];                          ///numArr[0]을 기준으로
+            max = numArr[0];
+            for (int i=1; i < numArr.Length; i++) 
             {
-                if (min > numbers[i])
-                    min = numbers[i];
-                if(max < numbers[i])
-                    max = numbers[i];
+                if(min > numArr[i])                   ///numArr[0]과 numArr[1~numArr.Length]까지 순서대로 비교
+                    min = numArr[i];                  ///numArr[0]보다 numArr[i]가 작으면 numArr[i]를 min에 저장
+                if(max < numArr[i])
+                    max = numArr[i];                  ///numArr[0]보다 numArr[i]가 크면 numArr[i]를 max에 저장
             }
             Console.WriteLine();
             Console.WriteLine("The highest number in the array: " + max);

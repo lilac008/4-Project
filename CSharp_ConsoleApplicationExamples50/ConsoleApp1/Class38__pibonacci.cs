@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class38__
+    internal class Class38__pibonacci
     {
         static long[] numbers;
-        static long Fib(int n) 
+
+        static long Fib(int n)
         {
-            if (0 == numbers[n]) 
+            if (0 == numbers[n])
             {
                 numbers[n] = Fib(n - 1) + Fib(n - 2);
             }
             return numbers[n];
         }
 
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             Console.Write("n = ");
             int n = int.Parse(Console.ReadLine());
@@ -33,5 +34,6 @@ namespace Basic_CSharp_Examples
             Console.ReadKey();
 
         }
+
     }
 }

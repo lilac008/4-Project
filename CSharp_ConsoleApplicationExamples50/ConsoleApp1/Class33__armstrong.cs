@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 /// Example 33: Display Armstrong Number Between Two Intervals in C#
 
+/// Armstrong : 각 자리의 세제곱이 자기 자신과 같은 수
+/// ex) 370 =  3^3 + 7^3 + 0^3 = 370   (27 + 343 + 0 = 370)
 
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class33__
+    internal class Class33__armstrong
     {
 
         static void Main1(string[] args)

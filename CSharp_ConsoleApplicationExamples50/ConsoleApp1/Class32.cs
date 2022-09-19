@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// Example 32: Nested For Loop in C# (Multiplication Table)
+/// code 1 :
+
+///nested : 중첩 
+
 
 namespace Basic_CSharp_Examples
 {

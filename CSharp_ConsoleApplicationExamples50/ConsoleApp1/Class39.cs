@@ -14,12 +14,13 @@ namespace Basic_CSharp_Examples
         static void Main(string[] args)
         {
             double sum = 0, avg = 0;
-            double[] numbers = { 10, 20, 50, 40 };
-            for (int i = 0; i < numbers.Length; i++) 
+            double[] numArr = { 10, 20, 50, 40 };
+
+            for (int i = 0; i < numArr.Length; i++) 
             {
-                sum += numbers[i];
+                sum += numArr[i];
             }
-            avg = sum / numbers.Length;
+            avg = sum / numArr.Length;
             Console.WriteLine("The Sum is : " + sum);
             Console.WriteLine("The Average is : " + avg);
 

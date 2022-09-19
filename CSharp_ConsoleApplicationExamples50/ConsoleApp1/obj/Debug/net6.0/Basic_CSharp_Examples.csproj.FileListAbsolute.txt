@@ -29,3 +29,11 @@ C:\Users\hee\Desktop\학원\Tem\Temporary\CSharp_ConsoleApplicationExamples50\Co
 C:\Users\hee\Desktop\학원\Tem\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.dll
 C:\Users\hee\Desktop\학원\Tem\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\refint\Basic_CSharp_Examples.dll
 C:\Users\hee\Desktop\학원\Tem\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.pdb
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.csproj.AssemblyReference.cache
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.AssemblyInfoInputs.cache
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.AssemblyInfo.cs
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.csproj.CoreCompileInputs.cache
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.dll
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\refint\Basic_CSharp_Examples.dll
+C:\Users\1302\Desktop\Unity1302\Temporary\CSharp_ConsoleApplicationExamples50\ConsoleApp1\obj\Debug\net6.0\Basic_CSharp_Examples.pdb

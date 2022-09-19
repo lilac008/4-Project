@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class19__
+    internal class Class19__prime
     {
         static void Main1(string[] args)
         {

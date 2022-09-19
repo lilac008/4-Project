@@ -26,7 +26,7 @@ namespace Basic_CSharp_Examples
             int days;
             float fine = 0;
 
-            Console.Write("Enter total days : ");
+            Console.Write("Enter total days(overdue date) : ");
             days = Convert.ToInt32(Console.ReadLine);
 
             if (days <= 5)                           
