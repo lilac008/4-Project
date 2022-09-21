@@ -8,31 +8,32 @@ using System.Threading.Tasks;
 /// vs Example 16, 38
 
 
+///fibonacci numbers : 첫째, 둘째 항이 1이며 그 뒤의 모든 항은 바로 앞의 두 항의 합인 수열 ex) 1, 1, 3, 5, 8, 13, 21, 34, 55 .... 
+
 namespace Basic_CSharp_Examples
 {
     internal class Class16__fibonacci
     {
-        static long[] numArray;
+        static long[] fiboArray;
 
-        static long Fib(int n) 
+        static long Fib(int _int) 
         {
-            if (0 == numArray[n]) 
+            if (0 == fiboArray[_int]) 
             {
-                numArray[n] = Fib(n - 1) + Fib(n - 2);   ///numarray[4] = fib(3) + fib(2)
-                                                         ///               
+                fiboArray[_int] = Fib(_int - 1) + Fib(_int - 2);   ///피보나치 수 = 바로 앞 두 항의 합
             }
-            return numArray[n];
+            return fiboArray[_int];
         }
 
 
         static void Main1(string[] args)
         {
             Console.WriteLine("n=");
-            int n = int.Parse(Console.ReadLine());          ///입력된 string형을 int형으로 변환
+            int n = int.Parse(Console.ReadLine());           ///string형으로 입력된 data를 int형으로 변환
             
-            numArray = new long[n + 2];                     ///numArray = {null, 1, 1, null, null ... };
-            numArray[1] = 1;
-            numArray[2] = 1;
+            fiboArray = new long[n + 2];                     ///fiboArray = {null, 1, 1, null, null ... };
+            fiboArray[1] = 1;
+            fiboArray[2] = 1;
 
             long result = Fib(n);
             Console.WriteLine("fib({0})={1}", n, result);
