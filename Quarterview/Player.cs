@@ -33,8 +33,7 @@ public class Player : MonoBehaviour
     /// 7) prefab에 저장 후 Transform.position(0,0,0)
 
 
-
-
+    
 
 
 
@@ -113,8 +112,8 @@ public class Player : MonoBehaviour
         r = GetComponent<Rigidbody>();                       ///5
         meshs = GetComponentsInChildren<MeshRenderer>();     ///모든 몸통 부위들(자식 obj)에서 가져옴(복수)
 
-        //PlayerPrefs.SetInt("MaxScore", 112500);
-
+        
+        ///PlayerPrefs.SetInt("MaxScore", 112500);            ///16강 - PlayerPrefs : unity에서 제공하는 간단한 저장기능
         debug.Log(PlayerPrefs.GetInt("MaxScore"));
 
     }   

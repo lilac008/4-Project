@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;               /// 
+using UnityEngine.UI;               /// UI class 사용
 using UnityEngine.SceneManagement;  /// SceneManager.LoadScene(0); 
 
 
-///16강
-/// Game Manager(빈 obj,) 생성
+/// 쿼터뷰 16강
+/// 공통 - Main Camera 복사
+/// Menu Camera : Camera script 삭제, Yoyo Animation 생성 후 여기에 추가(Motion:Yoyo Animation(scene창 - menu camera 클릭시 활성화) - Add Property - Transform - Rotation 추가(Rotation.X=60, Rotation.Y=-20) - Loop Time 활성화 
+///             - (menu panel 활성화, player 비활성화,)  
+/// Game Camera :  
+
+/// Canvas - Menu Panel - Title Image(scale(1.4,1.4,1.4))
+
+
+/// Game Manager(빈 obj) - GameManager script 추가
 /// Canvas - Game Panel - Score Group, Status Group, Stage Group, Enemy Group, Equip Grop, Boss Group, Item Shop Group, Weapon Shop Group 
 
-/// Menu Camera : follow script 삭제, Animation(AddProperty-Transform-Rotation-자세한 값) 생성 후 드래그하면 animator(speed:0.1) 자동생성 / script가 자동 생성되었는지 확인  
 
 ///Enemy Zone Group - Enemy Respawn Zone 4개(비활성화) 
 
