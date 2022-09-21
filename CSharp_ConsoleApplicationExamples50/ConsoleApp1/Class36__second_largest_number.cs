@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class36__
+    internal class Class36__second_largest_number
     {
 
         static void Main1(string[] args)

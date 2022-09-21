@@ -14,30 +14,32 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class27__power
+    internal class Class27__power_for__
     {
         static void Main1(string[] args)
         {
             int baseN, exponentN;
-            double powerResult = 1;
+            double result = 1;
             Console.Write("Base Number : ");
             baseN = Convert.ToInt32(Console.ReadLine());
             Console.Write("exponent Number : ");
             exponentN = Convert.ToInt32(Console.ReadLine());         
 
             bool sing = false;
-            if (exponentN > 0) sing = true;
-            exponentN = Math.Abs(exponentN);
+            if (exponentN > 0)                      ///지수가 0보다 크면 
+                sing = true;
+
+            exponentN = Math.Abs(exponentN);        ///Math.Abs() : 절대값 반환 -> 지수를 양수로
 
             for (int i = 1; i <= exponentN; i++) 
             {
                 if (sing)
-                    powerResult = powerResult * baseN;
+                    result = result * baseN;       /// 결과 * 밑을 저장
                 else
-                    powerResult /= baseN;
+                    result /= baseN;               /// 결과를 밑으로 나눔
             }
 
-            Console.WriteLine("Base {0} and exponent {1} Result = {2}", baseN, exponentN, powerResult);
+            Console.WriteLine("Base {0} and exponent {1} Result = {2}", baseN, exponentN, result);
             Console.ReadLine();
         }
 

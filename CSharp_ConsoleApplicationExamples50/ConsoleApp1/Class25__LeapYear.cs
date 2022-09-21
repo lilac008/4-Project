@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class25__
+    internal class Class25__LeapYear
     {
         static void Main1(string[] args)
         {
@@ -22,7 +22,7 @@ namespace Basic_CSharp_Examples
             Console.Write("Enter the Year :");
             year = Convert.ToInt32(Console.ReadLine());
             
-            if (year % 400 == 0 || (year % 4==0 && year % 100 !=0))
+            if (year % 400 == 0 || (year % 4==0 && year % 100 !=0)) ///2) 400으로 나누어 떨어지는 해  1) (평년이 아닐 경우) 4로 나누어 떨어지지만 100으로는 나누어 떨어지지 않는 해
                 Console.WriteLine("{0} is Leap Year", year);
             else
                 Console.WriteLine("{0} is not a Leap Year", year);

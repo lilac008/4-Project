@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class12__power
+    internal class Class12_power_math
     {
         static void Main1(string[] args)
         {
             double baseN, exponentN;
 
             Console.Write("Enter base number :");
-            baseN = Convert.ToDouble(Console.ReadLine());              ///입력된 string형을 double형으로 변환
+            baseN = Convert.ToDouble(Console.ReadLine());              ///string형으로 입력된 data를 double형으로 변환
 
             Console.Write("Enter exponent number :");
             exponentN = Convert.ToDouble(Console.ReadLine());           

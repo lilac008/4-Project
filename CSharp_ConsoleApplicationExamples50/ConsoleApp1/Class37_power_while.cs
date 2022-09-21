@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class37_power
+    internal class Class37_power_while
     {
         static void Main1(string[] args)
         {

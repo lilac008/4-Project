@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class34__
+    internal class Class34_palindrome
     {
         static void Main1(string[] args)
         {
