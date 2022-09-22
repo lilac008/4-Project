@@ -25,18 +25,20 @@ namespace Basic_CSharp_Examples
             Console.Write("exponent Number : ");
             exponentN = Convert.ToInt32(Console.ReadLine());         
 
-            bool sing = false;
-            if (exponentN > 0)                      ///지수가 0보다 크면 
-                sing = true;
 
-            exponentN = Math.Abs(exponentN);        ///Math.Abs() : 절대값 반환 -> 지수를 양수로
+            bool flag = false;                      /// flag 비활성화
+            if (exponentN > 0)                      /// 지수가 0보다 클때만 flag 활성화
+                flag = true;
+            
+            exponentN = Math.Abs(exponentN);        /// 지수를 양수로 만듬   / Math.Abs() : 절대값 반환 함수
 
-            for (int i = 1; i <= exponentN; i++) 
+
+            for (int i = 1; i <= exponentN; i++)    /// i가 1~N이면
             {
-                if (sing)
-                    result = result * baseN;       /// 결과 * 밑을 저장
+                if (flag)                           /// 지수가 0보다 클경우 true
+                    result = result * baseN;        /// 결과 = 결과 * 밑
                 else
-                    result /= baseN;               /// 결과를 밑으로 나눔
+                    result /= baseN;                /// (지수가 0보다 작을경우) 결과 = 결과 / baseN;   
             }
 
             Console.WriteLine("Base {0} and exponent {1} Result = {2}", baseN, exponentN, result);

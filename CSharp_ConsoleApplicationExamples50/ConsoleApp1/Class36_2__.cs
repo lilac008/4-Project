@@ -30,7 +30,6 @@ namespace Basic_CSharp_Examples
                     }
                 }
                 else
-
                 {
                     if (chr.Key == ConsoleKey.Backspace && num.Length > 0)
                     {

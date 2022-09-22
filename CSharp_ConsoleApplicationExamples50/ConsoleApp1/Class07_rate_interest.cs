@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 /// Example 7: Program To Calculate the Simple Interest in C#
 
-/// rate : 과세, 등급, 견적
-/// interest : 
+/// rate : 비율
+/// interest : 이자율
 
 namespace Basic_CSharp_Examples
 {

@@ -15,24 +15,24 @@ namespace Basic_CSharp_Examples
     {
         static void Main1(string[] args)
         {
-            int num;
+            int input;
             Console.Write("Enter a Number : ");
-            num = int.Parse(Console.ReadLine());
+            input = int.Parse(Console.ReadLine());
 
             int q;
-            string rem = "";
-            while (num >= 1)
+            string rem = "";                        /// remainder 나머지 
+            while (input >= 1)
             {
-                q = num / 2;
-                rem += (num % 2).ToString();
-                num = q;
+                q = input / 2;                      /// 입력값을 2로 나눠서 
+                rem += (input % 2).ToString();      ///
+                input = q;
             }
             string binary = "";
             for (int i = rem.Length - 1; i >= 0; i--)
             {
                 binary = binary + rem[i];
             }
-            Console.WriteLine("The Binary format for {0} is {1}", num, binary);
+            Console.WriteLine("The Binary format for {0} is {1}", input, binary);
             Console.ReadLine();
         }
     }

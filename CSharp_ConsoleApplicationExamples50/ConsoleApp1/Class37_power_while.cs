@@ -19,7 +19,7 @@ namespace Basic_CSharp_Examples
             int baseN, exponentN, powerResult = 1;
             Console.Write("Base Number : ");
             baseN = Convert.ToInt32(Console.ReadLine());
-            Console.Write("exponent Number : ");
+            Console.Write("Exponent Number : ");
             exponentN = Convert.ToInt32(Console.ReadLine());
 
 
