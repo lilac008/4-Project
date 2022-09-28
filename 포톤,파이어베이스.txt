@@ -1,0 +1,82 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Server-Client 방식
+- server (서비스 제공하는 컴퓨터, 게임세상) 
+- client  (서비스 받는 컴퓨터, player) 방식
+
+- Host server : - 로비 마련, 동기화 
+	       - player 중 한 명을 호스트로 지정해서 다른 플레이어가 참가하게 함
+- Dedicated server : 컴퓨터의 100% 모든 자원을 게임 서버를 떠받치는데 사용, 네트워크 품질이 좋아짐
+
+
+A 서버 
+abcd : a가 local player(host), 나머지는 remote player(replica) -> A의 a를 제외한 모든 a는 개별 obj, 동기화를 걸기 때문에 같은 행동을 취하는 것 뿐
+
+B 서버 
+abcd : b가 local player(host), 나머지는 remote player(replica)
+
+C 서버 
+abcd : c가 local player(host), 나머지는 remote player(replica)
+
+D 서버
+abcd : d가 local player(host), 나머지는 remote player(replica)
+
+----------------------------------------
+[플레이어가 방장인 경우 - P2P방식 / 방장으로 선택된 player의 컴퓨터 자원에 의존]
+Host server  -  다른 세상의 b,c,d player는 방장인 Host server에 오른쪽으로 움직여 달라고 부탁하고, Host server의 b,c,d가 움직이면 다른 서버에게 전달
+                    ex 다른 서버에서 핵을 써도 방장 서버에서는 정상적으로 처리되기 때문에 다른 서버에 전달되는 값도 정상적으로 처리된다.
+                    ex 다른 서버에서 목표를 맞춰도 방장 서버에서 동기화가 어긋나 빗나가게 처리되면 모든 서버에 데미지가 들어가지 않는다.
+	        ex 1초에 100발 쏘더라도, 0.1초마다 10발씩 전송되므로 단 하나의 패킷만 날라가도 10발이 통채로 사라진다.
+
+	     -  각 서버의 모든 처리를 동기화하지 않는다. 네트워크 비용이 비싸지기 때문에 중요한 데이터만 주고받는다. 
+	        ex a player가 뛰는 처리를 할때, 뛴다는 사실만 전송하지 애니메이션 동작 부분하나하나 세세하게 전달하지는 않는다. 따라서 각 서버마다 뛰는 모습이 조금씩 다르다.
+
+B 서버 abcd
+C 서버 abcd
+D 서버 abcd
+
+
+[서버용 컴퓨터가 따로 있음]
+Dedicated server : 컴퓨터의 100% 모든 자원을 게임 서버를 떠받치는데 사용, 네트워크 품질이 좋아짐
+
+A - ab
+B - ab
+C - ab 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+구글 firebase : 계정인증
+Photon : network  게임 플레이어
+Photon Match-Making서버 : 빈방 생성, 이미 생성된 방에 접속해서 폰 게임을 지킴
+
+- 롤 커갈 리모트 오브젝트의 차이
+- rpc 
+
+
+
+
+1. UNITY로 Network Pong 열기 (2019.2.6f1 버전)
+Unity-Network-Pong : https://www.dropbox.com/s/mz1qf0qvl1glskm/Unity-Network-Pong.zip?dl=0
+
+2. Unity Setting
+File - Build Setting - Android - Switch Platform
+
+3. Firebase Unity SDK 다운 (백엔드 플랫폼, 구글 상품)
+Firebase Unity SDK 다운 및 열기 - dotnet4 (Unity 2019.2.6f1 버전이므로) - FirebaseAuth.unitypackage 를  Unity에 import
+
+4. Pun2 Free (Photon의 UNITY SDK)
+Window - AssetStore - Pun2 Free 를 다운 후 unity에 import 
+(여기까지 하면 console창의 붉은 오류가 사라진다.)
+
+5. Android 앱 식별자 설정(Firebase가 이 project를 인식하기 위해서) 
+File - Build Setting - Player Setting - Android Setting - Identification - Package Name : Com.ELsoft.firebasepong
+File - Build Setting - Player Setting - Android Setting - Publishing Settings - Keystore Manager - Keystore... : (  Create New  -  Anywhere - (이름설정 : User) - Save  )                
+  						    	                                    - Password : keystore 비번설정
+										- Confirm password : 
+										- Alias : pong
+										- Password : Alias 비번설정
+										- Confirm password :            까지 설정후 Add Key - Yes
+
+5. Photon 클라우드 서비스 생성
+Photon 로그인 - Your Applications - CREATE / NEW APP - Photon Type : Photon PUN
+ 
+
+
+
