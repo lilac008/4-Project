@@ -1,3 +1,4 @@
+
 22.09.26 (월) 특강 
 
 [UNITY 개발 규칙]
@@ -13,7 +14,6 @@
                                                                          (v) openJDK
                                                                          (v) Android SDK & NDK Tools
 2) File - Build Setting - Android - Install with Unity Hub - Switch Platform (project 창에 있는 data를 Android용에 맞게 변형시켜줌) 
-
 
 2. (Hierarchy 창에서) 3D큐브 생성 후 Yrot script 연결 
 --------------------------------------------------------------
@@ -35,7 +35,6 @@ public class Yrot : MonoBehaviour
                                                                                      (- version 0.1 : 업그레이드시마다 버전을 올림)
 3) File - Build Setting - Build - (바탕화면에 따로 Result 폴더 생성) - Android1.apk 파일 생성 (.apk : Android Application Package, 안드로이드에서 프로그램 형태로 배포되는 형식)
 
-
 4. Android 폰 개발자 옵션 활성화 : https://blog.naver.com/lifeformula/221685090225
 - 위 링크와 동일 (휴대폰 설정 - 시스템 - 휴대전화 정보 - 빌드번호 (5번 터치) - 개발자옵션 활성화)
 - 강사님 견해로는 이때까지 개발자 옵션 활성화해서 사용해와도 폰 사용에 별 문제가 없었다고 하심.
@@ -49,6 +48,8 @@ public class Yrot : MonoBehaviour
 
 
 
+
+
 [UNITY에서 구현된 AR(증강현실)을 Android 폰에서 확인하기]
 
 # 1 - Camera Configuration (ver : Unity 2021.3.7f1 - 0926_Maxst)
@@ -57,7 +58,6 @@ public class Yrot : MonoBehaviour
 1) Maxst 홈 (회원가입) - Download - SDK - Unity 다운 ( https://developer.maxst.com/MD/downloadsdk ) - 다운받은 MAXSTARSDK_Unity_5.0.6 파일을 Unity project 창에 drag 및 import
 2) File - Build Setting - Android - Install with Unity Hub - Switch Platform (project 창에 있는 data를 Android용에 맞게 변형시켜줌)
 3) UNITY 재실행
-
 
 2. Unity에 Camera Configuration 구현
 1) Assets 폴더 - MaxstARSamples 폴더 - Scenes 폴더 - CameraConfiguration.unity 파일을 Hierarchy 창으로 drag
@@ -101,12 +101,12 @@ The minSDK version can not be specified in the AndroidManifest.xml file. You hav
 
 
 
+
 # 2 - Code Reader (ver : Unity 2021.3.7f1 - 0926_Maxst)
 
 1. Unity Setting
 1) Maxst 홈 (회원가입) - Download - SDK - Unity 다운 ( https://developer.maxst.com/MD/downloadsdk ) - 다운받은 MAXSTARSDK_Unity_5.0.6 파일을 Unity project 창에 drag 및 import
 2) File - Build Setting - Android - Install with Unity Hub - Switch Platform (project 창에 있는 data를 Android용에 맞게 변형시켜줌) 
-
 
 2. Unity에 Code Reader 구현
 1) Assets 폴더 - MaxstARSamples 폴더 - Scenes 폴더 - CodeReader.unity 파일을 Hierarchy 창으로 drag
@@ -114,7 +114,6 @@ The minSDK version can not be specified in the AndroidManifest.xml file. You hav
 * (Hierarchy 창) CodeReader - Canvas : 연동된 Android 폰 화면에 보이는 모습
                                      - SceneManager - CodeScanSample script  (bar code, QR code를 인식하는 script)
 ----------------------------------------------------------------------------------------------
-
 
 3. Build하기
 ----------------------------------------------------------------------------------------------
@@ -185,24 +184,19 @@ Maxst홈 - License Manager - My Licenses - SDK License - ImageTrack(License Name
 4. Android 폰 개발자 옵션 활성화 (생략)
 
 5. 컴퓨터와 Android 폰 연동 (생략)
-------------
+-------------------------------------------------------------------------------------
 [구현된 모습]
 Assets 폴더 - Editor 폴더 - MaxstAR 폴더 - Textures 폴더 - Image Target 폴더 -  Blocks_resized.jpg  를 Android폰으로 찍으면 AR 이미지가 생성되는 것을 알 수 있다.
 				 	       			  -  Glacier_resized.jpg
     			      			       	              -  Lego_resized.jpg
--------------
-
+-------------------------------------------------------------------------------------
 
 * Image Traker의 기존 이미지 파일을 다른 이미지로 교체해보기
 - Image Tracking : 점(point)이 많고, 음영이 확실히 구분이 되는 것들이 잘 된다.
 1) Maxst - My menu - Target manager - + (Create New Target Group) - MAXSTimageTrack 폴더 생성 - Upload Target Image - jpg/png 사진 3개 업로드 (* Image Tracking : 점(point)이 많고, 음영이 확실히 구분이 되는 것들이 잘 된다. 별 5개일수록 인식이 쉽다. 별 4개는 잘 안 되었음.)
-
 2) Target manager - MAXSTimageTrack 폴더 - 다운받은 jpg/png 사진 3개 선택 - Download Target(상자 or 인쇄 모양 그림 클릭) : Unity로 설정 - Download - 다운 받은 MAXSTimageTrack 파일을 unity에 import
-
 3) Unity - Assets 폴더 - StreamingAssets 폴더 - MaxstAR 폴더 - MAXSTimageTrack 폴더 - 그림파일명.2dmap 파일을 각각 Hierarchy 창의 ImageTracker - imageTrackable, imageTrackable(1), imageTrackable(2) - Image Trackable Behaviour script : Storage type 아래에 빈 칸에 각각 drag
-
 4) 이후 다운받은 jpg/png 파일을 ImgTrack.apk가 설치된 android 폰으로 비추면 똑같이 AR 이미지가 나타나는 것을 확인할 수 있다.
-
 
 
 * image Tracker 관련 설명 중에 나온 내용들
@@ -224,10 +218,8 @@ Assets 폴더 - Editor 폴더 - MaxstAR 폴더 - Textures 폴더 - Image Target 
 1) Maxst 홈 (회원가입) - Download - SDK - Unity 다운 ( https://developer.maxst.com/MD/downloadsdk ) - 다운받은 MAXSTARSDK_Unity_5.0.6 파일을 Unity project 창에 drag 및 import
 2) File - Build Setting - Android - Install with Unity Hub - Switch Platform (project 창에 있는 data를 Android용에 맞게 변형시켜줌) 
 
-
 2. Unity에 Instant Tracker 구현
 Assets 폴더 - MaxstARSamples 폴더 - Scenes 폴더 - InstantTracker.unity를 Hierarchy창으로 drag
-
 
 3. Build 하기
 1) UNITY에서 package name 설정
