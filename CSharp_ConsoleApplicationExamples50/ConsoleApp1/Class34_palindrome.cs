@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
 
 /// Example 34: Checking for Palindrome Strings or Numbers in C#
-0/// Palindrome : 회문, 거꾸로 읽어도 제대로 읽는 것과 같은 문장, 낱말, 숫자, 문자열.
+/// 
+/// Palindrome : 회문, 거꾸로 읽어도 제대로 읽는 것과 같은 문장, 낱말, 숫자, 문자열.
+/// ex) Level 
+
+
 
 
 
@@ -18,19 +23,19 @@ namespace Basic_CSharp_Examples
         {
             Console.Write("Enter something for to check that is it palindrome :");
             string text = Console.ReadLine();
-            int len = text.Length;
-            bool flag = true;
+            int textlength = text.Length;
+            bool isPalindrome = true;
 
-            for (int i = 0; i < len / 2; i++)       ///회문확인
+            for (int r = 0;  r < textlength/2;  r++)       
             {
-                if (text[i] != text[len - (i + 1)])
+                if ( text[r] !=  text[ textlength - (r+1) ] )   /// index : 0 - 4,  1 - 3,  2 - 2     
                 {
-                    flag = false;
+                    isPalindrome = false;
                     break;
                 }
             }
 
-            if (flag)///if flag true, text is palindrome
+            if (isPalindrome)
             {
                 Console.WriteLine("{0} is palindrome", text);
             }

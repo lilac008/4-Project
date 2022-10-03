@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 /// Below the Average
 
 
+
 namespace Basic_CSharp_Examples
 {
     internal class Class40__above_below_average
@@ -25,7 +26,7 @@ namespace Basic_CSharp_Examples
             {
                 Console.Write("Number {0} :", (i+1));
                 intArr[i] = Convert.ToInt32(Console.ReadLine());
-                sum += intArr[i];
+                sum += intArr[i];    
             }
             avg = sum / 10;          ///avg = sum / numbers.Length;
 

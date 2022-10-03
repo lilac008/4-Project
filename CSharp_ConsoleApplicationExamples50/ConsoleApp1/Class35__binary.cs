@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 /// Example 35: Converting Algorithm of Decimal to Binary in C#
 
 /// Decimal : 십진법,  Binary ; 이진법  
+/// 
+
+
 
 
 namespace Basic_CSharp_Examples
@@ -20,13 +23,15 @@ namespace Basic_CSharp_Examples
             input = int.Parse(Console.ReadLine());
 
             int q;
-            string rem = "";                        /// remainder 나머지 
-            while (input >= 1)
+            string rem = "";                    /// remainder
+            int r = input;
+            while (r >= 1)                      /// 입력값이 1 이상이면 무한반복
             {
-                q = input / 2;                      /// 입력값을 2로 나눠서 
-                rem += (input % 2).ToString();      ///
-                input = q;
+                q = r / 2;                      /// 입력값을 2로 나눠서 
+                rem += (r % 2).ToString();      ///
+                r = q;
             }
+
             string binary = "";
             for (int i = rem.Length - 1; i >= 0; i--)
             {
@@ -34,6 +39,7 @@ namespace Basic_CSharp_Examples
             }
             Console.WriteLine("The Binary format for {0} is {1}", input, binary);
             Console.ReadLine();
+
         }
     }
 }
