@@ -56,9 +56,7 @@ namespace Basic_CSharp_Examples
                     }
                 }
             }
-
             Console.Write("The Second largest element in the array is :  {0} \n\n", secondLargest);
-
             Console.ReadKey();
         }
     }
