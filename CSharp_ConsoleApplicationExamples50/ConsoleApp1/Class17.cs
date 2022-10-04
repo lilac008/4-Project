@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 /// Example 17: Find Number is Even or Odd using if else Statement in C#
 
 
-/// dataType.Parse   : null이 입력될 경우 ArgumentNullException(매개변수 예외처리) -> java 예외처리 찾아볼것
-/// Convert.dataType : null이 입력될 경우 0을 반환
+/// 자료형 변환하는 함수
+/// 1) 자료형.Parse   : null이 입력될 경우 ArgumentNullException(매개변수 예외처리) -> java 예외처리 찾아볼것
+/// 2) Convert.자료형 : null이 입력될 경우 0을 반환
 
 
 namespace Basic_CSharp_Examples

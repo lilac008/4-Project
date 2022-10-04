@@ -11,17 +11,16 @@ using System.Threading.Tasks;
 
 namespace Basic_CSharp_Examples
 {
-    internal class Class14
+    internal class Class14_substring
     {
         static void Main1(string[] args)
         {
-            string input;
-
+            string phrase;
             Console.Write("Enter String :");
-            input = Console.ReadLine();
+            phrase = Console.ReadLine();
 
-            string[] splitSentenceArray = input.Split(' ');         ///부분문자열 배열, 
-            Console.WriteLine("Count of words : " + splitSentenceArray.Length);
+            string[] substringArray = phrase.Split(' ');         ///부분문자열 배열, 
+            Console.WriteLine("Count of words : " + substringArray.Length);
             Console.WriteLine();
 
         }

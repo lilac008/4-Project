@@ -11,38 +11,37 @@ namespace Basic_CSharp_Examples
 {
     internal class Class36__second_largest_number
     {
-
         static void Main1(string[] args)
         {
-            int n, i, j = 0, largest, secondLargest;
-            int[] arr1 = new int[50];
+            int sizeofArr, i, j = 0, largest, secondLargest;
+            int[] arr = new int[50];
 
             Console.Write("\n\nFind the second largest element in an array :\n");
             Console.Write("-----------------------------------------\n");
 
             Console.Write("Input the size of array : ");
-            n = Convert.ToInt32(Console.ReadLine());
-            /* Stored values into the array*/
-            Console.Write("Input {0} elements in the array :\n", n);
-            for (i = 0; i < n; i++)
+            sizeofArr = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input {0} elements in the array :\n", sizeofArr);  /// Stored values into the array
+            for (i = 0; i < sizeofArr; i++)
             {
-                Console.Write("element - {0} : ", i);
-                arr1[i] = Convert.ToInt32(Console.ReadLine());
+                Console.Write("element [{0}] : ", i);
+                arr[i] = Convert.ToInt32(Console.ReadLine());
             }
-            /* find location of the largest element in the array */
-            largest = 0;
 
-            for (i = 0; i < n; i++)
+            /// find location of the largest element in the array
+            largest = 0;
+            for (i = 0; i < sizeofArr; i++)
             {
-                if (largest < arr1[i])
+                if (largest < arr[i])
                 {
-                    largest = arr1[i];
+                    largest = arr[i];
                     j = i;
                 }
             }
-            /* ignore the largest element and find the 2nd largest element in the array */
+
+            /// ignore the largest element and find the 2nd largest element in the array
             secondLargest = 0;
-            for (i = 0; i < n; i++)
+            for (i = 0; i < sizeofArr; i++)
             {
                 if (i == j)
                 {
@@ -51,9 +50,9 @@ namespace Basic_CSharp_Examples
                 }
                 else
                 {
-                    if (secondLargest < arr1[i])
+                    if (secondLargest < arr[i])
                     {
-                        secondLargest = arr1[i];
+                        secondLargest = arr[i];
                     }
                 }
             }

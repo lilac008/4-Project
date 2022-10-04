@@ -28,16 +28,16 @@ namespace Basic_CSharp_Examples
                 intArr[i] = Convert.ToInt32(Console.ReadLine());
                 sum += intArr[i];    
             }
-            avg = sum / 10;          ///avg = sum / numbers.Length;
+            avg = sum / 10;                  ///avg = sum / numbers.Length;
 
 
             for (int i = 0; i < 10; i++) 
             {
-                if (intArr[i] < avg)        ///임의의 숫자가 평균보다 작으면
+                if (intArr[i] < avg)         ///임의의 숫자가 평균보다 작으면
                 { 
                     low++; 
                 }
-                else                        ///그렇지 않으면
+                else                         ///그렇지 않으면
                 { 
                     high++; 
                 }

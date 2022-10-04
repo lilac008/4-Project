@@ -16,29 +16,30 @@ namespace Basic_CSharp_Examples
             double val = 0;
             string num = "";
             Console.Write("Enter Number: ");
-            ConsoleKeyInfo chr;
+            ConsoleKeyInfo iKey;
+
             do
             {
-                chr = Console.ReadKey(true);
-                if (chr.Key != ConsoleKey.Backspace)
+                iKey = Console.ReadKey(true);
+                if (iKey.Key != ConsoleKey.Backspace)
                 {
-                    bool control = double.TryParse(chr.KeyChar.ToString(), out val);
+                    bool control = double.TryParse(iKey.KeyChar.ToString(), out val);
                     if (control)
                     {
-                        num += chr.KeyChar;
-                        Console.Write(chr.KeyChar);
+                        num += iKey.KeyChar;
+                        Console.Write(iKey.KeyChar);
                     }
                 }
                 else
                 {
-                    if (chr.Key == ConsoleKey.Backspace && num.Length > 0)
+                    if (iKey.Key == ConsoleKey.Backspace && num.Length > 0)
                     {
                         num = num.Substring(0, (num.Length - 1));
                         Console.Write("\b \b");
                     }
                 }
             }
-            while (chr.Key != ConsoleKey.Enter);
+            while (iKey.Key != ConsoleKey.Enter);
             Console.ReadKey();
         }
     }

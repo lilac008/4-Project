@@ -17,7 +17,6 @@ namespace Basic_CSharp_Examples
         {
             double dollar;
             int cents;
-            //int compute_cents;
 
             Console.Write("Enter dollar amount : ");
             dollar = Convert.ToDouble(Console.ReadLine());
@@ -30,6 +29,8 @@ namespace Basic_CSharp_Examples
         static int compute_cents(double dollar) 
         {
             return (int)(dollar * 100);
+            ///return Convert.ToInt32(dollar * 100);
+
         }
 
 
