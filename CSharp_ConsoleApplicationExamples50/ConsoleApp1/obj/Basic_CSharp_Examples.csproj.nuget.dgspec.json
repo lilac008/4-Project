@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1302\\Desktop\\Git\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj": {}
+    "C:\\Users\\1302\\Desktop\\Git\\Temporary\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1302\\Desktop\\Git\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj": {
+    "C:\\Users\\1302\\Desktop\\Git\\Temporary\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1302\\Desktop\\Git\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj",
+        "projectUniqueName": "C:\\Users\\1302\\Desktop\\Git\\Temporary\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj",
         "projectName": "Basic_CSharp_Examples",
-        "projectPath": "C:\\Users\\1302\\Desktop\\Git\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj",
+        "projectPath": "C:\\Users\\1302\\Desktop\\Git\\Temporary\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\Basic_CSharp_Examples.csproj",
         "packagesPath": "C:\\Users\\1302\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1302\\Desktop\\Git\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\obj\\",
+        "outputPath": "C:\\Users\\1302\\Desktop\\Git\\Temporary\\Temporary\\CSharp_ConsoleApplicationExamples50\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\1302\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
