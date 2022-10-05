@@ -12,60 +12,26 @@ C# -> 머리, 팔, 다리 각자 따로 개발( 객체지향 프로그래밍 언
 
 WINDOW(Operating System 운영 체계) -> 컴퓨터 작동, 하드디스크에 저장
 롬바이오스    ->  가장 먼저 작동, 회사 로고, cpu / 메모리 / 키보드 / 마우스 / 그래픽 카드가 있나 없나 체크
-CPU            ->  메모리에서 읽어온 데이터를 처리하여 그래픽카드로 보냄 / 한번에 한가지씩 처리 / 시간을 분할하면서 여러개를 조금씩 처리하며 동시에 진행되는 것처럼 보임 (multi-casting) / 진짜 2개를 동시에 처리하고 싶으면 cpu를 두 개를 사야 한다. 
 메모리         ->  공책처럼 모든 컴퓨터 관련 기록(실행)은 메모리에 올라감, 메모리 용량을 넘어선 data는 하드디스크에서 처리(swaping)
+CPU            ->  메모리에서 읽어온 데이터를 처리하여 그래픽카드로 보냄 
+                      한번에 한가지씩 처리, 시간을 분할하면서 여러 개를 조금씩 처리하며 동시에 진행되는 것처럼 보임 (multi-casting) -> 진짜 2개를 동시에 처리하고 싶으면 cpu를 두 개를 사야 한다.
+                      ex) 프로그래밍을 한다 = CPU를 제어한다. (c/c++ -> 네이티브 언어,   c# ->)
 키보드         -> 
 마우스         ->
 그래픽카드    -> 
 하드디스크    ->  저장 기능
 
 
-C/C++  ->  프로그래밍을 한다 = CPU를 제어한다.  /  네이티브 언어 / IPhone(c나 c++)
-C#       ->  프로그래밍을 한다 = CPU를 제어한다. /
-
 ------------------------
 
-class Cat  	         //Cat이라는 class를 선언, 보안이 철저하므로 public을 붙여야 외부에서 끌어들여서 사용할 수 있다.
-{
+public class Cat  	         /// 1) Cat이라는 class를 선언
+{                                /// 2) 보안이 철저하므로 public을 붙여야 외부에서 끌어들여서 사용할 수 있다.
+
 }
 
 사용)
-cat myCat = new cat()    // new -> 새로운 메모리를 확보, 
+cat myCat = new cat()    /// new -> 새로운 메모리를 확보, 
 
-
-
-Unity------------------------
-
-public class test : Mono
-{
-
-void Start()
-{
-  int test_int;
-  Debug.Log(test_int);
-}
-
-void Update()
-{}
-
-}
-
-------------------------
-using 관련 전부 삭제
-
-namespace MyMathClass
-{
-       public class MathPluse 	///함수 = 자판기
-       {
-    	 int plus(int a, int b)	///정수형의 동전 a, b를 집어넣어 a+b를 반환하는 정수형 Plus함수
-     	{
-		return a+ b;
-     	} 
-
-       }
-}
-
-using, import, include 
 
 
 
