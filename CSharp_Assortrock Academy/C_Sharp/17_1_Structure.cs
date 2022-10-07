@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 
 
-///17 - Structure(구조체) : 1. class와 유사하지만 literal에서 초기화 불가, constructor(생성자)에서만 초기화 가능 
+///17 - Structure(구조체) : 1. class와 동일하지만 몇가지 제한 - literal에서 초기화 불가, constructor(생성자)에서만 초기화 가능 
 ///                         2. value형
 
 
@@ -17,9 +17,9 @@ struct Struct17
 {
     public int a;
     public int b;
-    ///public int a = 0;                                  //1 structure는 literal에서 초기화 불가능 (= 0이 기본값) 
+    ///public int a = 0;                                  //구조체는 literal에서 초기화 불가능 (= 0이 기본값) 
 
-    public void Struct17_()                             ///1 structure는 constructor(생성자)에서만 초기화 가능
+    public void Struct17_()                               ///구조체는 생성자에서만 초기화 가능
     {
         a = 100;
         b = 100;
@@ -38,12 +38,12 @@ namespace C_sharp_2
     internal class _17_1_Structure
     {
 
-        static void Test(Struct17 _sturuct17)          ///stack
+        static void Test(Struct17 _sturuct17)            ///stack
         {
             _sturuct17.a = 300;
         }
 
-        static void Test(int _int)                    ///stack 
+        static void Test(int _int)                       ///stack 
         {
             _int = 400;
         }
@@ -63,9 +63,9 @@ namespace C_sharp_2
             newStruct.b = 200;
             Test(newStruct);                              
             Console.WriteLine(newStruct);                 ///value형  
-
-
-
         }
+
+
+
     }
 }
