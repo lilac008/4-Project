@@ -28,3 +28,11 @@ https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/colo
 https://assetstore.unity.com/packages/vfx/particles/dl-fantasy-rpg-effects-68246
 https://assetstore.unity.com/packages/vfx/particles/hit-impact-effects-free-218385
 https://assetstore.unity.com/?free=true&q=effect&orderBy=1&page=4
+
+https://assetstore.unity.com/packages/3d/vegetation/plants/exaggerated-and-unique-foliage-145037
+https://assetstore.unity.com/packages/vfx/particles/3d-games-effects-pack-free-42285
+https://assetstore.unity.com/packages/3d/magic-particle-systems-lite-95868
+https://assetstore.unity.com/packages/vfx/particles/spells/ky-magic-effects-free-21927
+https://assetstore.unity.com/packages/tools/terrain/stampit-collection-examples-218286
+https://assetstore.unity.com/packages/3d/vegetation/plants/pbr-low-lying-plant-pack-150823
+https://assetstore.unity.com/packages/vfx/particles/floating-seeds-and-pollen-90375
