@@ -21,18 +21,38 @@ https://www.youtube.com/watch?v=UPVoeWOokz8
 https://kukuta.tistory.com/392
 
 https://assetstore.unity.com/packages/audio/sound-fx/nature-sounds-pack-free-202076
-https://assetstore.unity.com/packages/vfx/particles/fire-explosions/procedural-fire-141496
-https://assetstore.unity.com/packages/vfx/particles/fire-explosions/particle-systems-fire-168270
-https://assetstore.unity.com/packages/vfx/particles/cool-visual-effects-part-1-hdrp-support-176544
-https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/colorblind-effect-76360
-https://assetstore.unity.com/packages/vfx/particles/dl-fantasy-rpg-effects-68246
-https://assetstore.unity.com/packages/vfx/particles/hit-impact-effects-free-218385
-https://assetstore.unity.com/?free=true&q=effect&orderBy=1&page=4
 
-https://assetstore.unity.com/packages/3d/vegetation/plants/exaggerated-and-unique-foliage-145037
+[이펙트]
+effect 종류 : 
+https://assetstore.unity.com/?free=true&q=effect&orderBy=1&page=4
+됨 :
 https://assetstore.unity.com/packages/vfx/particles/3d-games-effects-pack-free-42285
+
+- 불
+https://assetstore.unity.com/packages/vfx/particles/fire-explosions/particle-systems-fire-168270
+안됨 : https://assetstore.unity.com/packages/vfx/particles/fire-explosions/procedural-fire-141496
+
+- 폭죽
+안됨 : https://assetstore.unity.com/packages/vfx/particles/cool-visual-effects-part-1-hdrp-support-176544
+
+
+https://assetstore.unity.com/packages/vfx/particles/hit-impact-effects-free-218385
+https://assetstore.unity.com/packages/vfx/particles/dl-fantasy-rpg-effects-68246
+
 https://assetstore.unity.com/packages/3d/magic-particle-systems-lite-95868
 https://assetstore.unity.com/packages/vfx/particles/spells/ky-magic-effects-free-21927
-https://assetstore.unity.com/packages/tools/terrain/stampit-collection-examples-218286
+https://assetstore.unity.com/packages/vfx/particles/spells/ky-magic-effects-free-21927
+
+https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/colorblind-effect-76360
+
+
+식물
+https://assetstore.unity.com/packages/3d/vegetation/plants/exaggerated-and-unique-foliage-145037
 https://assetstore.unity.com/packages/3d/vegetation/plants/pbr-low-lying-plant-pack-150823
+민들레
 https://assetstore.unity.com/packages/vfx/particles/floating-seeds-and-pollen-90375
+배경
+https://assetstore.unity.com/packages/tools/terrain/stampit-collection-examples-218286
+
+
+
