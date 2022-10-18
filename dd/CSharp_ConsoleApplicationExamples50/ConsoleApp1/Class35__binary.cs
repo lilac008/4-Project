@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 /// Decimal : 십진법,  Binary ; 이진법  
 /// 
 
-
+/// 10 = 2^3 + 2^1 = 2^3  ...1
+///                = 2^2  ...0
+///                = 2^1  ...1
+///                = 2^0  ...0 
+/// 
 
 
 namespace Basic_CSharp_Examples
@@ -23,12 +27,12 @@ namespace Basic_CSharp_Examples
             input = int.Parse(Console.ReadLine());
 
             int q;
-            string rem = "";                    /// remainder
+            string rem = "";                    
             int r = input;
             while (r >= 1)                      /// 입력값이 1 이상이면 무한반복
             {
                 q = r / 2;                      /// 입력값을 2로 나눠서 
-                rem += (r % 2).ToString();      ///
+                rem += (r % 2).ToString();      /// string형으로 변환해서 이진법을 나열
                 r = q;
             }
 
