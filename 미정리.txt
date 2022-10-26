@@ -1,3 +1,14 @@
+c 언어 소스 암스트롱
+https://ehpub.co.kr/c%EC%96%B8%EC%96%B4-%EC%86%8C%EC%8A%A4-%EC%95%94%EC%8A%A4%ED%8A%B8%EB%A1%B1%EC%9D%98-%EC%88%98-%EA%B5%AC%ED%95%98%EA%B8%B0/
+
+
+포톤
+https://www.youtube.com/watch?v=MV-VniEGK2g&list=PL3KKSXoBRRW23kK4zki9esA1nk3Rp_Vyz
+
+
+셰이더
+https://www.youtube.com/watch?v=KnueAgpUL3Y
+
 shader : 그래픽 data의 음영과 색상을 계산하여 다양한 재질을 표현하는 기법
            3D 컴퓨터 그래픽에서 화면에 출력하는 픽셀의 색을 정해주는 함수.
 
@@ -56,3 +67,17 @@ https://assetstore.unity.com/packages/tools/terrain/stampit-collection-examples-
 
 
 
+맵 참고
+https://www.youtube.com/watch?v=yKO1Q5QRZic
+https://www.youtube.com/watch?v=csB0DUiaHrE
+
+
+건물
+https://assetstore.unity.com/packages/3d/environments/dungeons/cartoon-temple-building-kit-lite-110397#content
+
+기본 빛 이펙트 
+https://assetstore.unity.com/packages/3d/environments/fantasy/polyart-ancient-village-pack-166022
+
+
+동물
+플라밍고, 홍학, 학, 사슴, 새
